@@ -81,26 +81,10 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Red Hat on SDD quality — https://developers.redhat.com/articles/2025/10/22/how-spec-driven-development-improves-ai-coding-quality
 - Darrow, state of vibe-coding (2026) — https://www.kristindarrow.com/insights/the-state-of-vibecoding-in-feb-2026
 
-## SaaS Strategy and GTM
+## Agent Discoverability and Integration
 
-- Bain, agentic AI and SaaS (2025) — https://www.bain.com/insights/will-agentic-ai-disrupt-saas-technology-report-2025/
-- Deloitte, SaaS AI agents (2026) — https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/saas-ai-agents.html
 - a16z, MCP and AI tooling — https://a16z.com/a-deep-dive-into-mcp-and-the-future-of-ai-tooling/
-- Stripe agentic commerce — https://stripe.com/blog/agentic-commerce-suite
 - AAO (Agent-Addressable Optimization) — https://searchengineland.com/aao-assistive-agent-optimization-469919
-- PostHog first 1000 users — https://posthog.com/founders/first-1000-users
-- Resend case study — https://ownerpreneur.com/case-studies/resend-com-how-zeno-rocha-built-a-20000-user-email-platform-in-9-months/
-- HN launch playbook — https://www.markepear.dev/blog/dev-tool-hacker-news-launch
-- GitHub star growth — https://www.star-history.com/blog/playbook-for-more-github-stars
-- OSS conversion rates — https://www.getmonetizely.com/articles/whats-the-optimal-conversion-rate-from-free-to-paid-in-open-source-saas
-- SaaS freemium benchmarks — https://firstpagesage.com/seo-blog/saas-freemium-conversion-rates/
-- PostHog "How They Grow" — https://www.howtheygrow.co/p/how-posthog-grows-the-power-of-being
-- Infisical YC launch — https://www.ycombinator.com/launches/I6Z-infisical-the-open-source-secrets-manager-for-developers
-- Build-in-public guide — https://opentweet.io/blog/build-in-public-twitter-guide-saas-founders
-- Reddit developer tools marketing — https://business.daily.dev/resources/how-to-market-developer-tools-on-reddit-practical-guide/
-- GitHub star launch playbook — https://dev.to/iris1031/github-star-growth-a-battle-tested-open-source-launch-playbook-35a0
-- MCP predictions (2026) — https://dev.to/blackgirlbytes/my-predictions-for-mcp-and-ai-assisted-coding-in-2026-16bm
-- llms.txt explainer — https://www.bluehost.com/blog/what-is-llms-txt/
 
 ## Standards and Protocols
 

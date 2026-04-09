@@ -14,6 +14,10 @@ sources:
   - https://aws.amazon.com/blogs/enterprise-strategy/your-ai-coding-assistants-will-overwhelm-your-delivery-pipeline-heres-how-to-prepare/
   - https://arxiv.org/abs/2310.13548  # Sharma et al., sycophancy (Anthropic, 2023)
   - https://arxiv.org/abs/2305.20050  # Turpin et al., anchoring (2024)
+  - https://a16z.com/a-deep-dive-into-mcp-and-the-future-of-ai-tooling/  # MCP and AI tooling
+  - https://searchengineland.com/aao-assistive-agent-optimization-469919  # AAO
+  - https://llmstxt.org/  # llms.txt standard
+  - https://agents.md/  # AGENTS.md standard
 ---
 
 # 1. Governance
@@ -98,6 +102,43 @@ When you encounter a task without adequate governance artifacts, follow this pro
 
 ---
 
+## 1.4 Designing for Agent Consumers
+
+If you are building a product or API that agents will use, the governance principles extend to how you design for agent consumption.
+
+### 1.4.1 API-First Architecture
+
+The API is the product. Dashboard, CLI, SDK, and MCP server are all clients of the same API. No feature should be accessible only through the UI. An API contract is an enforceable constraint (Handbook 4.2), not a suggestion.
+
+| Agent-friendly | Agent-hostile |
+|---|---|
+| REST/GraphQL with OpenAPI spec | UI-only workflows |
+| Structured JSON responses | Unstructured text |
+| API keys / service tokens | OAuth browser flows only, CAPTCHA |
+| Idempotent operations | Side-effect-heavy calls |
+| Clear error codes + actionable messages | Vague errors |
+| Batch operations | One-at-a-time |
+| Webhook/event support | Polling-only |
+
+### 1.4.2 Agent Discoverability Standards
+
+Three standards make products discoverable and usable by agents:
+
+**MCP (Model Context Protocol)** — Anthropic's open standard for agents to discover and invoke tools programmatically. Supported by Claude, Cursor, Windsurf, and growing. Implementation: thin API wrapper, days not weeks.
+
+**llms.txt** — Markdown file at `/llms.txt` describing capabilities, API, and differentiation. Robots.txt for AI. Thousands of sites support it.
+
+**AGENTS.md** — Linux Foundation standard. Build steps, test commands, conventions in repo root. Enables agents to work in your repo without human guidance. 60,000+ repos.
+
+### 1.4.3 Agent-Addressable Optimization (AAO)
+
+Three levels of agent readiness:
+1. **Discoverability** — agents find you via search indexes, MCP registries, training data
+2. **Evaluability** — agents assess your fit (clear docs, llms.txt, structured API)
+3. **Actionability** — agents actually use your product (MCP server, CLI, well-documented API)
+
+---
+
 ## Application
 
 Agent behavioral rules for governance:
@@ -107,3 +148,4 @@ Agent behavioral rules for governance:
 - **If** no context files exist, **then** state all architectural assumptions explicitly and request confirmation before proceeding.
 - **If** you detect a pattern in the codebase that contradicts the context files, **then** flag the inconsistency — do not silently follow either.
 - **If** you encounter a governance gap not covered above, **then** surface it to the human rather than resolving it silently.
+- **If** designing or evaluating an API surface, **then** check it against the agent-friendly table in §1.4.1. Flag agent-hostile patterns.

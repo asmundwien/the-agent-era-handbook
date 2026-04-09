@@ -40,14 +40,6 @@ This handbook defines how humans and agents work together — covering governanc
 
 - [Consolidated Checklists](checklists.md) — all chapter checklists in one place
 
-## Strategy Playbooks
-
-> Standalone strategy documents — not part of the core methodology. See [strategy/README.md](strategy/README.md).
-
-| Doc | What it covers |
-|---|---|
-| [GTM & Distribution](strategy/gtm-developer-tools.md) | Distribution channels, launch playbooks, content strategy. |
-| [SaaS Defensibility](strategy/saas-defensibility.md) | Agent-era SaaS strategy, defensibility frameworks, pricing. |
 
 ## Using This Handbook
 

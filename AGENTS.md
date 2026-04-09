@@ -7,7 +7,6 @@
 ```
 core/           9 numbered chapters (01-09), agent-optimized reference docs
 guides/         Human-facing narrative summaries for specific roles
-strategy/       Standalone strategy playbooks (GTM, SaaS) — not part of core methodology
 integration/    Platform-specific setup guides
 checklists.md   Consolidated checklists from all core chapters
 ```
