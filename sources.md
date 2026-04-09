@@ -42,6 +42,8 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Mollick, "The Shape of AI" — https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks
 - Anthropic (2026), 17% lower comprehension with AI assistance — https://www.infoq.com/news/2026/02/ai-coding-skill-formation/
 - INNOQ cognitive load study (2026) — https://www.innoq.com/en/blog/2026/03/ai-cognitive-lens-cognitive-load-theory/
+- Perry, Srivastava, Kumar & Boneh (2023), "Do Users Write More Insecure Code with AI Assistants?" (Stanford) — https://arxiv.org/abs/2211.03622
+- Goddard, Roudsari & Wyatt (2012), "Automation Bias" (meta-review) — https://pubmed.ncbi.nlm.nih.gov/22127471/
 - Leroy (2009), "Why Is It So Hard to Do My Work?" (attention residue) — https://www.sciencedirect.com/science/article/abs/pii/S0749597809000399
 - Hill, "Becoming a Manager" (Harvard) — https://www.hbs.edu/faculty/Pages/item.aspx?num=6417
 - CCL leadership transitions — https://cclinnovation.org/wp-content/uploads/2020/03/understandingleadershipchallenges.pdf
@@ -56,6 +58,8 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 
 ## Industry Surveys and Developer Data
 
+- Google DORA (2025), "State of AI-assisted Software Development" — https://dora.dev/research/2025/dora-report/
+- Veracode (2025), 45% of AI-generated code contains security vulnerabilities
 - Stack Overflow 2025 Developer Survey — https://survey.stackoverflow.co/2025/ai
 - JetBrains State of Developer Ecosystem 2025 — https://blog.jetbrains.com/research/2025/10/state-of-developer-ecosystem-2025/
 - Faros AI: 91% review time increase — https://www.faros.ai/blog/ai-software-engineering

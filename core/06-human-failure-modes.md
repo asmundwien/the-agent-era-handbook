@@ -43,7 +43,7 @@ Automation bias is one of the most replicated findings in human factors research
 
 - Aviation simulator studies: experienced pilots followed incorrect automated recommendations **55-70% of the time**, even with contradictory information on other instruments.
 - Medical decision support: clinicians followed incorrect alerts at **50-70%** rates.
-- AI code generation: developers using AI assistants produced code with more security vulnerabilities while believing their code was *more* secure (Sandoval et al., 2023).
+- AI code generation: developers using AI assistants produced code with more security vulnerabilities while believing their code was *more* secure (Perry et al., 2023).
 
 **Critical finding:** Automation bias persists even when users are warned about automation errors, trained to watch for them, and have experienced failures before (Goddard, Roudsari, & Wyatt, 2012 meta-review). Attitudinal interventions ("be more careful") have limited effect. Structural interventions work.
 

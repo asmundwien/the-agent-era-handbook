@@ -7,6 +7,7 @@ audience:
 sources:
   - https://www.augmentcode.com/guides/what-is-spec-driven-development
   - https://vishalgandhi.in/spec-driven-development/
+  - https://dora.dev/research/2025/dora-report/  # Google DORA 2025
   - https://www.kristindarrow.com/insights/the-state-of-vibecoding-in-feb-2026
   - https://addyosmani.com/blog/ai-coding-workflow/
   - https://addyosmani.com/blog/good-spec/
@@ -39,8 +40,8 @@ AI agents are excellent executors but poor decision-makers. A human developer en
 ### 1.1.1 Evidence
 
 - **67.3% of AI-generated PRs get rejected** vs 15.6% for human code (LinearB). The likely gap is governance quality, not coding capability — though alternative explanations (review bias against AI-labeled PRs, AI-generated PRs attempting harder tasks) have not been ruled out.
-- **110,000+ surviving AI-introduced issues** in production codebases that passed automated checks (Augment Code).
-- Google DORA 2025: 90% AI adoption but 9% climb in bug rates and 91% increase in code review time.
+- **45% of AI-generated code contains security vulnerabilities** (Veracode, 2025), with eight systematic failure patterns — hallucinated APIs, missing edge cases, security issues — that human developers rarely produce (Augment Code).
+- Google DORA 2025: 95% AI adoption but 9% climb in bug rates and 91% increase in code review time.
 
 ### 1.1.2 Why Agents Specifically Need Governance
 

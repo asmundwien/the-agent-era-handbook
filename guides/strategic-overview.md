@@ -14,7 +14,7 @@ The bottleneck is no longer "can we build it fast enough?" The bottleneck is "do
 
 The data is stark: 67.3% of AI-generated PRs get rejected, versus 15.6% for human code. Not because agents can't code — because they're given ambiguous inputs and make confident wrong decisions.
 
-Google DORA 2025 found 90% AI adoption but a 9% climb in bug rates and 91% increase in code review time. Organizations without governance are drowning in plausible-looking bad code.
+Google DORA 2025 found 95% AI adoption but a 9% climb in bug rates and 91% increase in code review time. Organizations without governance are drowning in plausible-looking bad code.
 
 The governance stack that works, ranked by impact:
 
