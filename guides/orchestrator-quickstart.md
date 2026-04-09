@@ -25,21 +25,25 @@ The spec is your primary output now. Not code — the spec. A good spec produces
 **A concrete example:**
 
 ```
-Feature: Translation key deletion
+Feature: User account deletion
 
-Given a translation key "welcome.title" exists with translations in 3 languages
-When the user deletes the key
-Then the key and all associated translations are removed
-And any published bundles referencing the key are regenerated within 60 seconds
-And the deletion is recorded in the audit log with the user's identity
+Given a user with an active account and 3 pending orders
+When the user requests account deletion
+Then the account is marked for deletion (not immediately removed)
+And the user receives a confirmation email with a 14-day cancellation window
+And active sessions are terminated
+And the deletion request is recorded in the audit log
 
 Edge cases:
-- Given the key is referenced by another key's interpolation
-  When the user deletes it
-  Then the system warns about the dependency and requires confirmation
-- Given a bundle regeneration is already in progress
-  When the key is deleted
-  Then the deletion is queued until the current regeneration completes
+- Given the user has a pending payment
+  When they request deletion
+  Then the system blocks deletion and shows "Complete or cancel pending payments first"
+- Given two deletion requests arrive simultaneously (e.g., user clicks twice)
+  When the second request is processed
+  Then it is silently ignored (idempotent)
+- Given the 14-day window expires
+  When the system processes the deletion
+  Then all personal data is removed but order history is retained (anonymized) for compliance
 ```
 
 **What a bad spec looks like:**
