@@ -68,3 +68,9 @@ Start with the guide for your role (links in the table above). Each guide is a 1
 - **Evidence-backed.** Claims trace to sources listed in each chapter's frontmatter.
 - **Behaviorally effective.** Every chapter ends with "If [condition], then [action]" rules agents can follow mechanically.
 - **Tone-aware.** Includes a tone protocol (Handbook 6.8) for surfacing human failure modes without condescension.
+
+## Scope
+
+This handbook covers software development with a single orchestrator directing AI agents. It is opinionated, evidence-backed where possible, and calibrated to 2024-2025 model behavior (primarily Claude).
+
+It does not cover non-code workflows, organizational adoption, agent economics, security models for agent-driven development, or multi-team coordination. Recommendations may not transfer directly to models with different training. Measure outcomes and update accordingly.
