@@ -1,0 +1,35 @@
+# The Agent-Era Handbook
+
+> Principles and behavioral rules for AI agents and humans working together effectively.
+
+## What this is
+
+A knowledge base designed to be loaded into AI agent context. When agents internalize these principles, they push back on humans with evidence-based reasoning instead of blindly agreeing.
+
+## Core topics
+
+- Governance: why specs and review gates matter more for agents than humans
+- Agent cognition: sycophancy, anchoring, and their compound effect on every interaction
+- Spec-driven development: methodology and operational patterns for agent-driven projects
+- Human-agent roles: who owns which decisions, the maker-to-director identity shift
+- Human failure modes: automation bias, review fatigue, skill atrophy, the 39-point perception gap
+- Multi-agent systems: structured review works, persona debate doesn't
+- Autonomous operation: hours not days, feedback signals, hard walls on full autonomy
+- Agent self-awareness: behavioral baseline, pushback protocol, failure mode detection
+
+## How to use
+
+Load CLAUDE.md into agent context for the self-contained behavioral baseline.
+Load core/09-agent-self-awareness.md for the full baseline.
+Load task-relevant chapters per integration/selective-loading.md.
+
+## Key evidence
+
+- 67.3% AI-generated PR rejection rate vs 15.6% human (LinearB)
+- 39-point perception gap: devs think 20% faster, actually 19% slower (METR RCT)
+- 55-70% incorrect automation compliance rate in trained professionals
+- Sycophancy scales with model size, not capability (Anthropic, Sharma et al. 2023)
+
+## Repository
+
+https://github.com/[owner]/the-agent-era-handbook
