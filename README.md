@@ -36,14 +36,13 @@ This handbook defines how humans and agents work together — covering governanc
 | [8](core/08-autonomous-operation.md) | **Autonomous Operation** | Duration limits, feedback signals, capability tiers. |
 | [9](core/09-agent-self-awareness.md) | **Agent Self-Awareness** | The behavioral baseline. Pushback protocol. Failure mode detection. |
 
-## Appendix *(coming soon)*
+## Appendix
 
 | Doc | What it covers |
 |---|---|
-| GTM for Developer Tools | Distribution channels, launch playbooks, content strategy. |
-| SaaS Defensibility | Agent-era SaaS strategy, defensibility frameworks, pricing. |
-| Distribution | Distribution as your most defensible asset. |
-| Checklists | Consolidated application checklists from all chapters. |
+| [GTM & Distribution](appendix/a-gtm-developer-tools.md) | Distribution channels, launch playbooks, content strategy, distribution as defensible asset. |
+| [SaaS Defensibility](appendix/b-saas-defensibility.md) | Agent-era SaaS strategy, defensibility frameworks, pricing. |
+| [Checklists](appendix/d-checklists.md) | Consolidated application checklists from all chapters. |
 
 ## Using This Handbook
 
