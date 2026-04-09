@@ -42,7 +42,7 @@ This handbook defines how humans and agents work together — covering governanc
 |---|---|
 | [GTM & Distribution](appendix/a-gtm-developer-tools.md) | Distribution channels, launch playbooks, content strategy, distribution as defensible asset. |
 | [SaaS Defensibility](appendix/b-saas-defensibility.md) | Agent-era SaaS strategy, defensibility frameworks, pricing. |
-| [Checklists](appendix/d-checklists.md) | Consolidated application checklists from all chapters. |
+| [Checklists](appendix/c-checklists.md) | Consolidated application checklists from all chapters. |
 
 ## Using This Handbook
 

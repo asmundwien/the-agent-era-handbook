@@ -94,6 +94,13 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - GitHub star growth — https://www.star-history.com/blog/playbook-for-more-github-stars
 - OSS conversion rates — https://www.getmonetizely.com/articles/whats-the-optimal-conversion-rate-from-free-to-paid-in-open-source-saas
 - SaaS freemium benchmarks — https://firstpagesage.com/seo-blog/saas-freemium-conversion-rates/
+- PostHog "How They Grow" — https://www.howtheygrow.co/p/how-posthog-grows-the-power-of-being
+- Infisical YC launch — https://www.ycombinator.com/launches/I6Z-infisical-the-open-source-secrets-manager-for-developers
+- Build-in-public guide — https://opentweet.io/blog/build-in-public-twitter-guide-saas-founders
+- Reddit developer tools marketing — https://business.daily.dev/resources/how-to-market-developer-tools-on-reddit-practical-guide/
+- GitHub star launch playbook — https://dev.to/iris1031/github-star-growth-a-battle-tested-open-source-launch-playbook-35a0
+- MCP predictions (2026) — https://dev.to/blackgirlbytes/my-predictions-for-mcp-and-ai-assisted-coding-in-2026-16bm
+- llms.txt explainer — https://www.bluehost.com/blog/what-is-llms-txt/
 
 ## Standards and Protocols
 
