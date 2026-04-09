@@ -26,7 +26,7 @@ The full handbook is ~1,320 lines across 9 chapters. If your context window can 
 
 ## Setup: Claude Code
 
-Add to your project's CLAUDE.md:
+Clone or submodule the handbook from https://github.com/asmundwien/The-Agent-Era-Handbook into your project, then add to your project's CLAUDE.md:
 
 ```markdown
 ## Agent-Era Handbook
@@ -34,17 +34,17 @@ Add to your project's CLAUDE.md:
 This project follows the Agent-Era Handbook methodology.
 
 ### Always read:
-- path/to/handbook/CLAUDE.md
-- path/to/handbook/core/09-agent-self-awareness.md
+- ./the-agent-era-handbook/CLAUDE.md
+- ./the-agent-era-handbook/core/09-agent-self-awareness.md
 
 ### Read when relevant:
-- Planning/architecture: handbook/core/01-governance.md, core/03-sdd-methodology.md, core/05-human-agent-roles.md
-- Implementation: handbook/core/04-sdd-operations.md
-- Code review: handbook/core/02-agent-cognition.md, core/06-human-failure-modes.md
-- Multi-agent: handbook/core/02-agent-cognition.md, core/07-multi-agent-systems.md
+- Planning/architecture: the-agent-era-handbook/core/01-governance.md, core/03-sdd-methodology.md, core/05-human-agent-roles.md
+- Implementation: the-agent-era-handbook/core/04-sdd-operations.md
+- Code review: the-agent-era-handbook/core/02-agent-cognition.md, core/06-human-failure-modes.md
+- Multi-agent: the-agent-era-handbook/core/02-agent-cognition.md, core/07-multi-agent-systems.md
 ```
 
-Adjust `path/to/handbook/` to match where the handbook lives relative to your project. If the handbook is a git submodule or symlinked into the project, use the relative path.
+Adjust paths to match where the handbook lives relative to your project.
 
 ## Setup: Cursor
 

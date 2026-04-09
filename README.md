@@ -47,12 +47,14 @@ This handbook defines how humans and agents work together — covering governanc
 
 The following instructions are for **human operators** configuring agent context.
 
-Add to your project's CLAUDE.md or equivalent context file. At minimum, include the handbook's CLAUDE.md — it contains a self-contained behavioral baseline:
+Clone or submodule the handbook into your project from https://github.com/asmundwien/The-Agent-Era-Handbook, then add to your project's CLAUDE.md:
 
 ```markdown
 ## Agent-Era Handbook
-Read: path/to/agent-era-handbook/CLAUDE.md
+Read: ./the-agent-era-handbook/CLAUDE.md
 ```
+
+Adjust the path to match where the handbook lives relative to your project.
 
 For deeper integration, also load chapter 9 and task-relevant chapters. See [integration/selective-loading.md](integration/selective-loading.md) for the full setup guide.
 
