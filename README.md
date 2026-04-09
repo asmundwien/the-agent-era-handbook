@@ -10,9 +10,9 @@ This handbook defines how humans and agents work together — covering governanc
 
 | Role | Start here | Core chapters |
 |---|---|---|
-| **Strategic** (founders, CTOs, product leads) | Strategic Overview *(coming soon)* | 1 (Governance), 3 (SDD), 5 (Roles), 8 (Autonomy) |
-| **Orchestrator** (directing agents day-to-day) | Orchestrator Quickstart *(coming soon)* | 3 (SDD), 4 (Operations), 5 (Roles), 6 (Failure Modes) |
-| **Reviewer** (evaluating agent output) | Reviewer Handbook *(coming soon)* | 2 (Cognition), 6 (Failure Modes) |
+| **Strategic** (founders, CTOs, product leads) | [Strategic Overview](guides/strategic-overview.md) | 1 (Governance), 3 (SDD), 5 (Roles), 8 (Autonomy) |
+| **Orchestrator** (directing agents day-to-day) | [Orchestrator Quickstart](guides/orchestrator-quickstart.md) | 3 (SDD), 4 (Operations), 5 (Roles), 6 (Failure Modes) |
+| **Reviewer** (evaluating agent output) | [Reviewer Handbook](guides/reviewer-handbook.md) | 2 (Cognition), 6 (Failure Modes) |
 
 ### Agent Actors
 
