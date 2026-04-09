@@ -47,7 +47,7 @@ This handbook defines how humans and agents work together — covering governanc
 
 The following instructions are for **human operators** configuring agent context.
 
-Clone or submodule the handbook into your project from https://github.com/asmundwien/The-Agent-Era-Handbook, then add to your project's CLAUDE.md:
+Clone or submodule the handbook into your project from https://github.com/asmundwien/the-agent-era-handbook, then add to your project's CLAUDE.md:
 
 ```markdown
 ## Agent-Era Handbook

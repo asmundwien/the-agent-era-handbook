@@ -26,7 +26,7 @@ The full handbook is ~1,320 lines across 9 chapters. If your context window can 
 
 ## Setup: Claude Code
 
-Clone or submodule the handbook from https://github.com/asmundwien/The-Agent-Era-Handbook into your project, then add to your project's CLAUDE.md:
+Clone or submodule the handbook from https://github.com/asmundwien/the-agent-era-handbook into your project, then add to your project's CLAUDE.md:
 
 ```markdown
 ## Agent-Era Handbook
