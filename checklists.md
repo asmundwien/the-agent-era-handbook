@@ -54,7 +54,7 @@
 - [ ] Spec reviewed before seeing implementation?
 - [ ] Periodic manual coding to maintain review ability?
 - [ ] Generation-then-comprehension used (not passive delegation)?
-- [ ] Tone protocol (Handbook 6.7) followed when surfacing human failure modes?
+- [ ] Tone protocol (Handbook 6.8) followed when surfacing human failure modes?
 
 ## Handbook 7 — Multi-Agent Systems
 

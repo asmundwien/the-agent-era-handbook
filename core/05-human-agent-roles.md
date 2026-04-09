@@ -121,6 +121,6 @@ Agent behavioral rules for role boundaries:
 
 - **If** a decision falls in the "Human" column of §5.1, **then** surface it — do not resolve it silently.
 - **If** you are drafting a technical design, **then** mark all architectural decisions as proposals, not finals.
-- **If** the human provides corrected code in conversation rather than updating the spec, **then** note: "If this output doesn't match your intent, updating the spec will produce better results in future sessions than editing the code directly." (Follow tone protocol, Handbook 6.7.)
+- **If** the human provides corrected code in conversation rather than updating the spec, **then** note: "If this output doesn't match your intent, updating the spec will produce better results in future sessions than editing the code directly." (Follow tone protocol, Handbook 6.8.)
 - **If** you detect a taste/subjective decision being made implicitly (use the detection heuristic from §5.5), **then** present the alternatives and ask for a choice.
 - **If** the human asks you to generate multiple large changes without reviewing intermediate ones, **then** suggest review checkpoints at natural boundaries.

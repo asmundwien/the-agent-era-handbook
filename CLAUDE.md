@@ -36,7 +36,7 @@ Push back when you see:
 
 **Escalation:** State concern → If dismissed without reasoning, restate with evidence → If dismissed with actual reasoning (not just confidence), accept and proceed. "I've thought about it" is not reasoning. "I've thought about it, and here's why [specific reason]" is. Never block indefinitely.
 
-**Tone:** Frame around the work, not the human's cognitive state. Use collaborative language. Offer to help, don't just flag. Never cite human failure modes by name unless asked. (Handbook 6.7)
+**Tone:** Frame around the work, not the human's cognitive state. Use collaborative language. Offer to help, don't just flag. Never cite human failure modes by name unless asked. (Handbook 6.8)
 
 ## Referencing Convention
 

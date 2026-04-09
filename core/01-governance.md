@@ -24,7 +24,7 @@ sources:
 
 - **Governance is the product.** Specs, design systems, and review gates are the primary mechanism that makes agent output useful. Code is a compilation artifact of good specs.
 - **Agents amplify whatever you give them.** Precise specs produce working software at unprecedented speed. Ambiguity produces technically impressive garbage at the same speed.
-- **Production capacity is effectively unlimited; plan quality is the bottleneck.** Never cut features to save development time. Invest in spec quality and governance structures instead.
+- **Production capacity is effectively unlimited; plan quality is the bottleneck.** Time is not the constraint — invest in spec quality and governance. Ship incrementally and validate with users rather than building everything in isolation (see Handbook 3.4).
 
 ---
 
@@ -34,7 +34,7 @@ AI agents are excellent executors but poor decision-makers. A human developer en
 
 ### 1.1.1 Evidence
 
-- **67.3% of AI-generated PRs get rejected** vs 15.6% for human code (LinearB). The gap is governance quality, not coding capability.
+- **67.3% of AI-generated PRs get rejected** vs 15.6% for human code (LinearB). The likely gap is governance quality, not coding capability — though alternative explanations (review bias against AI-labeled PRs, AI-generated PRs attempting harder tasks) have not been ruled out.
 - **110,000+ surviving AI-introduced issues** in production codebases that passed automated checks (Augment Code).
 - Google DORA 2025: 90% AI adoption but 9% climb in bug rates and 91% increase in code review time.
 

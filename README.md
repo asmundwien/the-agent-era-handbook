@@ -36,13 +36,18 @@ This handbook defines how humans and agents work together — covering governanc
 | [8](core/08-autonomous-operation.md) | **Autonomous Operation** | Duration limits, feedback signals, capability tiers. |
 | [9](core/09-agent-self-awareness.md) | **Agent Self-Awareness** | The behavioral baseline. Pushback protocol. Failure mode detection. |
 
-## Appendix
+## Quick Reference
+
+- [Consolidated Checklists](checklists.md) — all chapter checklists in one place
+
+## Strategy Playbooks
+
+> Standalone strategy documents — not part of the core methodology. See [strategy/README.md](strategy/README.md).
 
 | Doc | What it covers |
 |---|---|
-| [GTM & Distribution](appendix/a-gtm-developer-tools.md) | Distribution channels, launch playbooks, content strategy, distribution as defensible asset. |
-| [SaaS Defensibility](appendix/b-saas-defensibility.md) | Agent-era SaaS strategy, defensibility frameworks, pricing. |
-| [Checklists](appendix/c-checklists.md) | Consolidated application checklists from all chapters. |
+| [GTM & Distribution](strategy/gtm-developer-tools.md) | Distribution channels, launch playbooks, content strategy. |
+| [SaaS Defensibility](strategy/saas-defensibility.md) | Agent-era SaaS strategy, defensibility frameworks, pricing. |
 
 ## Using This Handbook
 
@@ -68,4 +73,4 @@ Start with the guide for your role (links in the table above). Each guide is a 1
 - **Agent-first.** Core docs optimized for agent context injection: structured, directive, heavy on behavioral rules.
 - **Evidence-backed.** Claims trace to sources listed in each chapter's frontmatter.
 - **Behaviorally effective.** Every chapter ends with "If [condition], then [action]" rules agents can follow mechanically.
-- **Tone-aware.** Includes a tone protocol (Handbook 6.7) for surfacing human failure modes without condescension.
+- **Tone-aware.** Includes a tone protocol (Handbook 6.8) for surfacing human failure modes without condescension.

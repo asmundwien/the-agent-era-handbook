@@ -42,7 +42,7 @@ Addy Osmani calls this "doing a waterfall in 15 minutes" — full spec, architec
 
 ```
 Level 0: Constitution (project rules, architecture, design system)
-         Human-curated only. Agents never modify.
+         Human-curated only. Agents propose updates; humans apply them.
               |
 Level 1: Capability Spec — spec.md (WHAT to build)
          User stories, acceptance criteria, requirements, edge cases.

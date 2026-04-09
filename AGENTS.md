@@ -7,8 +7,9 @@
 ```
 core/           9 numbered chapters (01-09), agent-optimized reference docs
 guides/         Human-facing narrative summaries for specific roles
-appendix/       Supplementary strategy material (GTM, SaaS, checklists)
+strategy/       Standalone strategy playbooks (GTM, SaaS) — not part of core methodology
 integration/    Platform-specific setup guides
+checklists.md   Consolidated checklists from all core chapters
 ```
 
 ## Conventions
@@ -39,7 +40,7 @@ Six actor types in frontmatter:
 
 - Use "If [observable condition], then [concrete action]" format
 - Conditions must be observable by the agent in a standard conversation
-- Follow the tone protocol (Handbook 6.7) for anything about human failure modes
+- Follow the tone protocol (Handbook 6.8) for anything about human failure modes
 
 ### Sources
 

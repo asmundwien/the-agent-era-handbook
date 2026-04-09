@@ -167,6 +167,26 @@ The distinction: examples that define contracts or introduce new patterns are ap
 
 ---
 
+## 4.6 Testing Strategy for SDD
+
+### 4.6.1 The Two-Agent Split
+
+For data model, API, and complex interaction tasks: one agent writes tests from acceptance criteria, a separate agent implements. The test-writing agent never sees the implementation. This prevents the known anti-pattern of self-referential tests (Handbook 9.9.4).
+
+For UI scaffolding and configuration tasks: TDD is optional. The cost of strict TDD exceeds its value for deterministic, low-risk changes.
+
+### 4.6.2 Visual Testing
+
+- **Visual smoke tests** should assert that CSS/styles are actually applied (computed style assertions, not just DOM structure). Agent-generated UI frequently has correct markup with missing or wrong styles.
+- **Visual regression baselines** must be generated from a known-good state — not from an unstyled or broken build. Establishing baselines from the agent's first output locks in any initial styling errors.
+
+### 4.6.3 E2E Test Consolidation
+
+- For static or informational pages: consolidate into user-workflow tests (one test covering a full user journey)
+- For functional flows (forms, interactions, multi-step processes): individual feature tests
+
+---
+
 ## Application
 
 Agent behavioral rules for SDD operations:

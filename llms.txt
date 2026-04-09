@@ -32,4 +32,4 @@ Load task-relevant chapters per integration/selective-loading.md.
 
 ## Repository
 
-https://github.com/[owner]/the-agent-era-handbook
+https://github.com/asmundwien/The-Agent-Era-Handbook

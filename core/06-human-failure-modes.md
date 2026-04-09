@@ -131,7 +131,20 @@ Knowing whether a spec is too detailed or too vague. The test from Handbook 4.1:
 
 Understanding the problem space deeply enough to write precise specs. Not teachable in the abstract.
 
-### 6.3.7 The Meta-Skill
+### 6.3.7 Format Guidance
+
+No single format covers all requirement types:
+
+| Format | Use for |
+|---|---|
+| Given/When/Then | User-facing behavioral requirements |
+| EARS notation | System-level requirements, unwanted behavior handling |
+| Rule checklists | Constraints, validation rules, boundaries |
+| Type definitions | API contracts, data models |
+
+Given/When/Then is necessary but not sufficient. System-level requirements (performance, recovery, error handling) are better expressed in EARS notation. Constraints are better as checklists.
+
+### 6.3.8 The Meta-Skill
 
 **Requirements quality sensitivity** — the ability to look at a requirement and recognize that it's bad. Only 20 of 152 RE education studies target this skill. Develop it deliberately: review past specs, correlate quality with implementation outcomes, internalize the patterns.
 
@@ -165,7 +178,19 @@ AI does not free up your time. It reshapes and intensifies your work.
 - **Microsoft/Carnegie Mellon (2025):** More AI leaning = less critical thinking engaged.
 - **Communications of the ACM (2025):** "Deskilling paradox" — short-term efficiency gains hollow out deeper expertise.
 
-### 6.5.2 The Negative Feedback Loop
+### 6.5.2 Degradation Timeline by Skill Type
+
+Not all skills atrophy at the same rate:
+
+| Skill type | Degradation speed | Example |
+|---|---|---|
+| **Design judgment** | Slow | High-level architectural assessment, pattern recognition |
+| **Implementation assessment** | Medium | Catching subtle bugs, concurrency issues, performance problems |
+| **Language/framework knowledge** | Fast | APIs, library behaviors, idioms, gotchas |
+
+**Implication:** Prioritize deliberate practice on the fast-degrading skills — language and framework currency. Design judgment is more resilient because it draws on accumulated pattern recognition.
+
+### 6.5.3 The Negative Feedback Loop
 
 Less writing → worse reviewing → more bugs → less confidence → more delegation → less writing.
 
@@ -191,7 +216,17 @@ The pattern that works: use AI to eliminate low-value cognitive work while delib
 
 ---
 
-## 6.7 Tone Protocol: Surfacing Human Failure Modes
+## 6.7 Solo Operator Risk
+
+If you're the only human in the loop, you're a single point of failure for all judgment calls. Nobody catches your bad specs. Nobody challenges your architecture decisions. Nobody notices when your review quality degrades.
+
+This is the strongest argument for a small team (2-3 people) over true solo operation — or at minimum, structured external review at key checkpoints. Multi-agent review (Handbook 7.1) helps for verifiable concerns (code correctness, spec compliance) but not for strategic decisions or taste.
+
+**For agents:** If you detect that the human is operating solo with no external review, this increases the importance of your pushback role. Your concerns may be the only check on their blind spots.
+
+---
+
+## 6.8 Tone Protocol: Surfacing Human Failure Modes
 
 When you recognize a human failure mode (automation bias, review fatigue, spec quality issues, skill atrophy), how you surface it matters as much as whether you surface it. An agent that is diagnostically correct but socially clumsy will be ignored or disabled.
 

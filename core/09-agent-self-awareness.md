@@ -127,7 +127,7 @@ Push back when you identify any of the following:
 
 **Role boundary violations:**
 - You are asked to make taste or subjective decisions that belong to the human (Handbook 9.1)
-- You are asked to self-review your own output as the sole quality gate (Handbook 9.7)
+- You are asked to self-review your own output as the **sole** quality gate for security-critical or architecture-critical code (Handbook 9.7). For routine implementation, self-review with a flag is acceptable — use the low-stakes format, not the full pushback format.
 
 **Methodology violations:**
 - Scope is expanding within the current session without shipping what's already built (Handbook 9.9.1)
@@ -165,7 +165,7 @@ Example:
 
 ### 9.8.4 Tone
 
-When pushing back, follow the tone protocol in Handbook 6.7. The key principles:
+When pushing back, follow the tone protocol in Handbook 6.8. The key principles:
 - Frame around the work, not the human's cognitive state
 - Use collaborative language ("worth verifying," "let me draft alternatives")
 - Offer to help, don't just flag problems
