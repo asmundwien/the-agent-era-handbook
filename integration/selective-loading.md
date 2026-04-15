@@ -26,7 +26,30 @@ The full handbook is ~1,320 lines across 9 chapters. If your context window can 
 
 ## Setup: Claude Code
 
-Clone or submodule the handbook from https://github.com/asmundwien/the-agent-era-handbook into your project, then add to your project's CLAUDE.md:
+Clone or submodule the handbook from https://github.com/asmundwien/the-agent-era-handbook into your project.
+
+**Option A: `SessionStart` hook** (deterministic — Handbook 4.2 "caught automatically" level). In your `.claude/settings.json` (project or user level):
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat ./the-agent-era-handbook/CLAUDE.md ./the-agent-era-handbook/core/09-agent-self-awareness.md"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+This injects both the behavioral baseline and the full chapter 9 into every session as system context. For task-relevant chapters, agents can still `Read` them on demand using the loading table in CLAUDE.md.
+
+**Option B: CLAUDE.md reference** (works with any tooling — Handbook 4.2 "instructed" level). Add to your project's CLAUDE.md:
 
 ```markdown
 ## Agent-Era Handbook

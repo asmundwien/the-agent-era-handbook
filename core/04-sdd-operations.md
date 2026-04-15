@@ -93,6 +93,10 @@ Rules can be enforced at three levels, in decreasing reliability:
 
 **Linter rules:** No default exports, no explicit `any`, no unused imports — global rules with file-specific overrides for legitimate exceptions.
 
+**Agent session hooks** (settings.json `SessionStart`):
+- Inject behavioral baselines (e.g., handbook CLAUDE.md) deterministically on every conversation start.
+- Context injection via session hooks operates at the "caught automatically" level — the agent receives governance rules as system context rather than relying on an instruction to read them.
+
 **Agent permission restrictions** (settings.json):
 - Deny lists for dangerous operations (force push, hard reset).
 - Read-deny on secret files (.env).

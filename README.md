@@ -46,15 +46,35 @@ This handbook defines how humans and agents work together — covering governanc
 
 The following instructions are for **human operators** configuring agent context.
 
-Clone or submodule the handbook into your project from https://github.com/asmundwien/the-agent-era-handbook, then add to your project's CLAUDE.md:
+Clone or submodule the handbook into your project from https://github.com/asmundwien/the-agent-era-handbook.
+
+**Option A: Session hook** (deterministic — Handbook 4.2 "caught automatically" level). In your `.claude/settings.json` (project or user level):
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat ./the-agent-era-handbook/CLAUDE.md"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Option B: CLAUDE.md reference** (works with any tooling — Handbook 4.2 "instructed" level). Add to your project's CLAUDE.md:
 
 ```markdown
 ## Agent-Era Handbook
-
-**IMPORTANT: Read and internalize `./the-agent-era-handbook/CLAUDE.md` before doing any work.** This is your behavioral baseline — not optional reference material.
+Read: ./the-agent-era-handbook/CLAUDE.md
 ```
 
-Adjust the path to match where the handbook lives relative to your project.
+Adjust paths to match where the handbook lives relative to your project. Use the highest enforcement level your tooling supports (see Handbook 4.2).
 
 For deeper integration, also load chapter 9 and task-relevant chapters. See [integration/selective-loading.md](integration/selective-loading.md) for the full setup guide.
 
