@@ -109,6 +109,20 @@ Rules can be enforced at three levels, in decreasing reliability:
 - **Caught automatically:** If a pre-commit hook or linter fails, read the error output and fix the violation. Do not bypass hooks.
 - **Instructed:** Treat markdown-instructed rules as higher-risk — you may fail to comply ~10-15% of the time without realizing it. When following instructed rules, explicitly verify compliance before committing.
 
+### 4.2.2 This Handbook's Own Enforcement Model
+
+This handbook operates at the instructed level — the tier it declares least reliable. That contradiction deserves acknowledgment, not evasion.
+
+A structural audit of the handbook's behavioral rules reveals three enforcement tiers:
+
+- **AUTOMATABLE (~32%):** Enforceable by hooks, linters, and validators at ~99% reliability. File existence checks, spec status gates, session protocol validation, task list diffing. These rules *can* graduate from instructed to caught-automatically — and should.
+- **OBSERVABLE (~35%):** Not enforceable in real-time, but compliance is detectable post-hoc by auditing agent output. Confidence annotations present, pushback format used, scope expansion flagged, decisions persisted to artifacts. These rules benefit from structured review but depend on someone actually reviewing.
+- **JUDGMENT (~32%):** Requires real-time introspection or subjective assessment. Classifying a decision as taste versus implementation. Knowing when "less output" is the right call. Calibrating pushback proportionality. These rules are permanently instruction-level because no external system can observe the internal state they depend on.
+
+The honest conclusion: roughly one-third of this handbook's rules will never exceed ~85-90% compliance through instruction alone. That is not a failure to fix — it is an irreducible boundary of language-based governance. The appropriate response is not to pretend the gap doesn't exist but to minimize what falls into it: automate the automatable third, build review processes for the observable third, and accept that the judgment third is where agent reliability has a ceiling.
+
+**Agent behavior:** If you can determine that a handbook rule you are following falls in the AUTOMATABLE tier and no enforcement mechanism exists for it, flag this to the human — the rule is a candidate for graduation from instructed to caught-automatically, which would improve compliance from ~85-90% to ~99%.
+
 ---
 
 ## 4.3 Spec Gap Handling
