@@ -7,7 +7,10 @@ audience:
 sources:
   - https://www.augmentcode.com/guides/what-is-spec-driven-development
   - https://vishalgandhi.in/spec-driven-development/
+  - https://dora.dev/research/2024/dora-report/  # Google DORA 2024
   - https://dora.dev/research/2025/dora-report/  # Google DORA 2025
+  - https://www.faros.ai/blog/ai-software-engineering  # Faros AI 2025 (91% review time increase)
+  - https://www.faros.ai/ai-productivity-paradox  # Faros AI 2026 (Acceleration Whiplash, 4,000 teams)
   - https://www.kristindarrow.com/insights/the-state-of-vibecoding-in-feb-2026
   - https://addyosmani.com/blog/ai-coding-workflow/
   - https://addyosmani.com/blog/good-spec/
@@ -41,7 +44,10 @@ AI agents are excellent executors but poor decision-makers. A human developer en
 
 - **67.3% of AI-generated PRs get rejected** vs 15.6% for human code (LinearB). The likely gap is governance quality, not coding capability — though alternative explanations (review bias against AI-labeled PRs, AI-generated PRs attempting harder tasks) have not been ruled out.
 - **45% of AI-generated code contains security vulnerabilities** (Veracode, 2025), with eight systematic failure patterns — hallucinated APIs, missing edge cases, security issues — that human developers rarely produce (Augment Code).
-- Google DORA 2025: 95% AI adoption but 9% climb in bug rates and 91% increase in code review time.
+- **Google DORA 2024:** AI adoption without segmenting by governance quality showed -1.5% throughput and -7.2% stability — a net negative. DORA 2025 then segmented by capabilities and found governance as the moderating variable. The methodology changed between years (new archetypes replaced clusters), but the progression strengthens the governance argument: raw adoption hurts; governed adoption helps.
+- **Google DORA 2025:** 90% AI adoption, 9% climb in bug rates.
+- **Faros AI (2025):** 91% increase in code review time across 4,000 engineering teams.
+- **Faros AI (2026):** Across 4,000 teams and 2 years of telemetry, quality degradation occurred regardless of pre-existing maturity. Absence of governance correlated with the steepest decline.
 
 ### 1.1.2 Why Agents Specifically Need Governance
 
@@ -61,7 +67,7 @@ AI agents are excellent executors but poor decision-makers. A human developer en
 
 ## 1.2 The Governance Stack
 
-Ranked by impact (based on analysis of 2,500+ agent config files by Addy Osmani):
+Ranked by impact (based on analysis of 2,500+ agent config files by Addy Osmani). Note: this ranking draws on practitioner analysis and correlational evidence (DORA 2025 capability segmentation). Causal validation through controlled intervention studies remains limited.
 
 ### 1.2.1 Tier 1: Non-negotiable
 

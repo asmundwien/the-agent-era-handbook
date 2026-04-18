@@ -161,12 +161,38 @@ METR randomized controlled trial (July 2025) — 16 experienced developers, 246 
 
 Contributing factors: overly simple prompts, limited tool familiarity, high quality standards, insufficient coverage of complex cases, and cognitive distraction from experimenting with AI.
 
+Other RCTs with larger samples found positive effects: Microsoft/Accenture (n=4,867) reported +26% task completion, and Google (n=100) found +21% speed on coding tasks. The discrepancy is likely task-type dependent — controlled, well-defined tasks show gains; complex real-world work on familiar codebases may not. The METR study remains the most ecologically valid (experienced developers, their own repositories, real tasks) but is also the smallest.
+
 **Jevons Paradox applies:** The Berkeley Haas study (2026, 8-month ethnographic study) found three forms of work intensification:
 1. **Task expansion** — people take on work they'd previously avoid
 2. **Blurred boundaries** — conversational AI interface makes work seep into breaks
 3. **Increased multitasking** — managing multiple agent workflows creates constant juggling
 
 AI does not free up your time. It reshapes and intensifies your work.
+
+---
+
+## 6.4.1 What to Measure
+
+The perception gap means self-reported productivity is unreliable. Measure outcomes, not feelings.
+
+**Output quality:**
+- Bugs reaching production (not bugs found in review — that's the process working)
+- Spec-to-implementation match rate: does the delivered code do what the spec said?
+- Edge cases caught in review vs discovered in production
+
+**Process health:**
+- Review-to-approve ratio: what percentage of reviews require revisions?
+- Spec gap severity distribution: are gaps trending toward minor clarifications or major missing sections?
+- Time from spec approval to working implementation
+
+**Skill maintenance:**
+- Periodic comprehension checks: can you explain what the agent built without reading the code? (Handbook 5.4)
+- Deliberate practice time: are you still writing code regularly?
+
+DX (2025, 135,000 developers) found that a 25% increase in structured enablement correlates with 10%+ gains across both developer satisfaction and code maintainability — suggesting that investment in governance infrastructure has measurable returns.
+
+These are signals, not targets. The moment a metric becomes a goal, it ceases to be a good metric (Goodhart's Law). Use them for awareness, not optimization.
 
 ---
 

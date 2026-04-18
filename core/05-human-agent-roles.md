@@ -115,6 +115,18 @@ The most dangerous failures happen when role boundaries blur and neither party c
 
 ---
 
+## 5.6 Team Scope
+
+This handbook assumes a single human orchestrator directing agents. If you're working in a small team (2-3 people), the role boundaries above still apply but three additional concerns emerge:
+
+- **Spec ownership clarity.** One author per spec. Joint authorship creates ambiguity about who resolves conflicting interpretations — the same failure mode as agent-resolved ambiguity (Handbook 5.1), just between humans.
+- **Reviewer independence.** The spec author should not be the sole reviewer of the implementation. The person who wrote the spec is the most likely to read what they intended rather than what the agent produced.
+- **Context file governance.** Constitution-level documents (AGENTS.md, SPEC.md, design systems) need a single owner. Concurrent edits to governance files create the same compound failure as Handbook 5.5 — implicit decisions that propagate unchecked.
+
+Multi-team coordination (shared agents, cross-team specs, organizational governance) is out of scope for this handbook.
+
+---
+
 ## Application
 
 Agent behavioral rules for role boundaries:

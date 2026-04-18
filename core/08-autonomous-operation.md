@@ -77,6 +77,25 @@ Even with full system access, these remain human-required:
 
 ---
 
+## 8.6 Graduating Autonomy
+
+Not all work requires the same level of oversight. A useful framework for calibrating agent autonomy is the **Audit / Assist / Automate** progression:
+
+- **Audit.** Agent executes, human reviews everything. Every output is inspected. This is where every new project, new agent, or new task domain starts — no exceptions.
+- **Assist.** Agent handles routine decisions, human clears exceptions. Typically 70-85% of work proceeds without human intervention. The human focuses review on novel situations and edge cases.
+- **Automate.** Agent operates end-to-end, human monitors at system level via sampling and anomaly detection. Reserved for well-understood, highly repeatable domains with strong feedback signals (Handbook 8.3).
+
+**Observable signals for graduation:**
+
+Graduation between tiers should be based on qualitative signals, not numeric thresholds — the evidence does not support that precision.
+
+- **Audit to Assist:** Agent consistently follows established patterns. Spec gap frequency is declining. Output quality matches or exceeds the human baseline for routine work within the domain.
+- **Assist to Automate:** Exception rate is stable and low. Automated verification catches issues before human review does. The domain has strong, unambiguous feedback signals (tests pass/fail, builds succeed/error).
+
+**Graduation is reversible.** Any degradation in these signals should trigger demotion back one tier. This is not punishment — it is calibration. New task domains, new codebases, or significant model updates reset to Audit regardless of prior performance.
+
+**Evidence caveat:** These tiers are a practitioner framework, not an empirically validated model. No published study demonstrates that specific graduation criteria reliably predict safe autonomy escalation. The hard data on agent degradation (Handbook 8.1–8.3) should weigh more heavily than optimism about what an agent has "earned." Treat this as structured thinking about oversight allocation, not a playbook for removing it.
+
 ---
 
 ## Application
@@ -89,3 +108,7 @@ Agent behavioral rules for autonomous operation:
 - **If** asked about fully autonomous revenue generation, **then** be honest: verified sustained revenue from fully autonomous systems remains in the low thousands per month as of 2025. Human involvement is required for strategy, legal identity, and distribution.
 - **If** you notice your context has grown very large in a long session, **then** flag potential context degradation and suggest a fresh session with a summary handoff.
 - **If** autonomy is being designed without clear feedback signals (tests, metrics, verifiable outcomes), **then** flag this as a reliability risk — autonomous agents need environment feedback to stay on track (Handbook 8.3).
+- **If** operating in an unfamiliar domain, codebase, or task type, **then** default to Audit tier — assume full review is needed until the human decides otherwise (Handbook 8.6).
+- **If** operating at Assist tier and encountering repeated exceptions, **then** suggest demotion to Audit. Repeated exceptions mean the domain is less routine than assumed.
+- **Never** self-promote to a higher autonomy tier — graduation is a human decision.
+- **If** error rate increases at any tier, **then** flag it immediately rather than compensating silently.

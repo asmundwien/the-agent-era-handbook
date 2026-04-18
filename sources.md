@@ -13,6 +13,7 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Kang et al. (2024), Role-assigned critic calibration — https://arxiv.org/abs/2401.02009
 - Laban et al. (2024), Domain-dependent sycophancy — https://arxiv.org/abs/2310.08559
 - Ranaldi & Freitas (2024), Sycophancy in multi-turn dialogue — https://arxiv.org/abs/2402.11753
+- Zhou et al. (ICSE 2026), "Cognitive Biases in LLM-Assisted Software Development" — 90 biases, 15 categories — https://arxiv.org/abs/2601.08045
 
 ## Multi-Agent Systems
 
@@ -25,12 +26,15 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Smit et al. (2024), Multi-agent debate vs single-agent self-reflection — https://arxiv.org/abs/2310.03718
 - Xiong et al. (2024), Multi-agent convergence to majority opinion — https://arxiv.org/abs/2401.16467
 - Irving et al. (2018/2024), "AI Safety via Debate" — https://arxiv.org/abs/1805.00899
+- Cemri et al. (2025), "Why Do Multi-Agent LLM Systems Fail?" — MAST taxonomy, 14 failure modes — https://arxiv.org/abs/2503.13657
 
 ## Autonomous Agents
 
 - Park et al. (2023), "Generative Agents: Interactive Simulacra" (Stanford) — https://arxiv.org/abs/2304.03442
 - Wang et al. (2023), "Voyager: Open-Ended Embodied Agent with LLMs" — https://arxiv.org/abs/2305.16291
 - Perez et al. (2023), "Discovering LM Behaviors with Model-Written Evaluations" (Anthropic) — https://arxiv.org/abs/2310.12397
+- "Beyond pass@1" (2026), "A Reliability Science Framework for Long-Horizon LLM Agents" — reliability 0.90→0.44 — https://arxiv.org/abs/2603.29231
+- Anthropic (2025), "Measuring AI Agent Autonomy" — https://www.anthropic.com/research/measuring-agent-autonomy
 
 ## Human Factors and Cognitive Science
 
@@ -47,6 +51,8 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Leroy (2009), "Why Is It So Hard to Do My Work?" (attention residue) — https://www.sciencedirect.com/science/article/abs/pii/S0749597809000399
 - Hill, "Becoming a Manager" (Harvard) — https://www.hbs.edu/faculty/Pages/item.aspx?num=6417
 - CCL leadership transitions — https://cclinnovation.org/wp-content/uploads/2020/03/understandingleadershipchallenges.pdf
+- Fowler (2025), "Humans and Agents in Software Engineering Loops" — Agentic Flywheel — https://martinfowler.com/articles/exploring-gen-ai/humans-and-agents.html
+- Kim & Yegge (2025), "The Three Developer Loops" — https://itrevolution.com/articles/the-three-developer-loops-a-new-framework-for-ai-assisted-coding/
 
 ## Requirements Engineering
 
@@ -70,6 +76,14 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Stack Overflow on AI coding bugs — https://stackoverflow.blog/2026/01/28/are-bugs-and-incidents-inevitable-with-ai-coding-agents/
 - Stack Overflow on coding guidelines — https://stackoverflow.blog/2026/03/26/coding-guidelines-for-ai-agents-and-people-too/
 - AWS delivery pipeline — https://aws.amazon.com/blogs/enterprise-strategy/your-ai-coding-assistants-will-overwhelm-your-delivery-pipeline-heres-how-to-prepare/
+- Uplevel/GitHub Copilot Study (2025), 41% more bugs — https://uplevelteam.com/blog/ai-for-developer-productivity
+- GitClear (2025), code churn and duplication trends — https://www.gitclear.com/ai_assistant_code_quality_2025_research
+- Qodo (2025), "State of AI Code Quality" — https://www.qodo.ai/reports/state-of-ai-code-quality/
+- Faros AI (2026), "Acceleration Whiplash" — 4,000 teams — https://www.faros.ai/ai-productivity-paradox
+- Google DORA (2024), "Accelerate State of DevOps Report" — https://dora.dev/research/2024/dora-report/
+- DORA AI Capabilities Model (2025), seven moderating capabilities — https://dora.dev/ai/
+- Liu et al. (2026), "Debt Behind the AI Boom" — 304K AI commits, 6,275 repos — https://arxiv.org/abs/2603.28592
+- CodeScene (2026), "AI-Ready Code: How Code Health Determines AI Performance" — https://codescene.com/hubfs/whitepapers/AI-Ready-Code-How-Code-Health-Determines-AI-Performance.pdf
 
 ## SDD Methodology
 
@@ -84,6 +98,12 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Kiro specs — https://kiro.dev/docs/specs/
 - Red Hat on SDD quality — https://developers.redhat.com/articles/2025/10/22/how-spec-driven-development-improves-ai-coding-quality
 - Darrow, state of vibe-coding (2026) — https://www.kristindarrow.com/insights/the-state-of-vibecoding-in-feb-2026
+- Piskala (2026), "Spec-Driven Development: From Code to Contract" — first academic SDD paper — https://arxiv.org/abs/2602.00180
+- Monperrus (2026), "Bootstrapping Coding Agents: The Specification Is the Program" — https://arxiv.org/abs/2603.17399
+
+## Brownfield Adoption
+
+- Duman (2025), "Six Months of Agentic Coding in the Trenches" — brownfield practitioner report — https://www.yduman.dev/posts/six-months-of-agentic-coding/
 
 ## Agent Discoverability and Integration
 
