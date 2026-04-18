@@ -139,4 +139,4 @@ If you load the handbook into your agents' context, they will:
 
 This is the pushback protocol (Handbook 9.8). It works because the agent has explicit triggers and a format for evidence-based disagreement — not vague permission to "push back."
 
-Setup: load the handbook's CLAUDE.md into your project's context file. See `integration/selective-loading.md` for the full guide.
+Setup: load the handbook's AGENTS.md into your project's context file. See `integration/selective-loading.md` for the full guide.

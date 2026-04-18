@@ -67,7 +67,7 @@ Ranked by impact (based on analysis of 2,500+ agent config files by Addy Osmani)
 
 **Specs with explicit acceptance criteria.** Given/When/Then format. Covering edge cases, not just happy paths. Every ambiguity resolved before code generation begins. Bullet points, not prose — agents parse structured formats better.
 
-**Context files (CLAUDE.md, .cursorrules, AGENTS.md).** Persistent project knowledge that survives between sessions: architecture decisions, coding conventions, boundaries, existing patterns. The rule: "every mistake becomes a rule" — update context files as decisions accumulate.
+**Context files (AGENTS.md, .cursorrules).** Persistent project knowledge that survives between sessions: architecture decisions, coding conventions, boundaries, existing patterns. The rule: "every mistake becomes a rule" — update context files as decisions accumulate.
 
 **Automated verification gates.** CI/CD with linting, type checks, test suites, and spec validation that fail builds when code diverges from constraints. Pre-commit hooks are critical because agents make larger commits that are harder to review after the fact.
 

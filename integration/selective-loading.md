@@ -1,6 +1,6 @@
 # Selective Loading Guide
 
-> **Who this is for:** Human operators configuring which handbook chapters to load into agent context. Agents do not need to read this file — the loading table in CLAUDE.md covers runtime chapter lookup.
+> **Who this is for:** Human operators configuring which handbook chapters to load into agent context. Agents do not need to read this file — the loading table in AGENTS.md covers runtime chapter lookup.
 
 ## Quick Recommendation
 
@@ -8,7 +8,7 @@ The full handbook is ~1,320 lines across 9 chapters. If your context window can 
 
 ## Always Load
 
-**CLAUDE.md** — the self-contained behavioral baseline. Contains core principles, pushback triggers, pushback format, escalation rules, and a chapter lookup table. This alone meaningfully changes agent behavior.
+**AGENTS.md** — the self-contained behavioral baseline. Contains core principles, pushback triggers, pushback format, escalation rules, and a chapter lookup table. This alone meaningfully changes agent behavior.
 
 **Chapter 9: Agent Self-Awareness** (~240 lines) — the full behavioral baseline with detailed rationale, confidence calibration, and failure mode detection. Load this for every session when possible.
 
@@ -38,7 +38,7 @@ Clone or submodule the handbook from https://github.com/asmundwien/the-agent-era
         "hooks": [
           {
             "type": "command",
-            "command": "cat ./the-agent-era-handbook/CLAUDE.md ./the-agent-era-handbook/core/09-agent-self-awareness.md"
+            "command": "cat ./the-agent-era-handbook/AGENTS.md ./the-agent-era-handbook/core/09-agent-self-awareness.md"
           }
         ]
       }
@@ -47,9 +47,9 @@ Clone or submodule the handbook from https://github.com/asmundwien/the-agent-era
 }
 ```
 
-This injects both the behavioral baseline and the full chapter 9 into every session as system context. For task-relevant chapters, agents can still `Read` them on demand using the loading table in CLAUDE.md.
+This injects both the behavioral baseline and the full chapter 9 into every session as system context. For task-relevant chapters, agents can still `Read` them on demand using the loading table in AGENTS.md.
 
-**Option B: CLAUDE.md reference** (works with any tooling — Handbook 4.2 "instructed" level). Add to your project's CLAUDE.md:
+**Option B: AGENTS.md reference** (works with any tooling — Handbook 4.2 "instructed" level). Add to your project's AGENTS.md:
 
 ```markdown
 ## Agent-Era Handbook
@@ -57,7 +57,7 @@ This injects both the behavioral baseline and the full chapter 9 into every sess
 This project follows the Agent-Era Handbook methodology.
 
 ### Always read:
-- ./the-agent-era-handbook/CLAUDE.md
+- ./the-agent-era-handbook/AGENTS.md
 - ./the-agent-era-handbook/core/09-agent-self-awareness.md
 
 ### Read when relevant:
@@ -71,15 +71,15 @@ Adjust paths to match where the handbook lives relative to your project.
 
 ## Setup: Cursor
 
-Add handbook references to your `.cursorrules` file. Cursor supports file references — point to CLAUDE.md and the core chapters relevant to your typical workflow.
+Add handbook references to your `.cursorrules` file. Cursor supports file references — point to AGENTS.md and the core chapters relevant to your typical workflow.
 
 ## Setup: Generic Agent Platform
 
 Include in your system prompt or context file:
-1. The full text of CLAUDE.md (self-contained baseline)
+1. The full text of AGENTS.md (self-contained baseline)
 2. Chapter 9 content (if token budget allows)
 3. Task-relevant chapter content
 
 ## Cross-Chapter Dependencies
 
-Missing dependencies degrade the depth of pushback reasoning but don't break behavioral rules. An agent with only CLAUDE.md will still push back — it just won't have the full evidence chain for every citation. Loading Chapter 9 adds the detailed rationale. Loading task-relevant chapters adds domain-specific guidance.
+Missing dependencies degrade the depth of pushback reasoning but don't break behavioral rules. An agent with only AGENTS.md will still push back — it just won't have the full evidence chain for every citation. Loading Chapter 9 adds the detailed rationale. Loading task-relevant chapters adds domain-specific guidance.

@@ -1,7 +1,7 @@
 # Agent Onboarding: Read This First
 
 > **Who this is for:** An AI agent being loaded into a project that uses the Agent-Era Handbook.
-> **Prerequisite:** CLAUDE.md should already be in your context — it contains your core behavioral rules and pushback protocol.
+> **Prerequisite:** AGENTS.md should already be in your context — it contains your core behavioral rules and pushback protocol.
 > **This guide adds:** Decision ownership details, failure pattern detection, and routing to deeper chapters.
 
 ## Decision Ownership
@@ -44,6 +44,6 @@ These are the patterns you should flag when recognized:
 
 ## Next Steps
 
-1. Your behavioral baseline (pushback protocol, core principles) is in CLAUDE.md — already in context.
+1. Your behavioral baseline (pushback protocol, core principles) is in AGENTS.md — already in context.
 2. Read `core/09-agent-self-awareness.md` for the full baseline with detailed rationale.
-3. Load task-relevant chapters per the loading table in CLAUDE.md or `integration/selective-loading.md`.
+3. Load task-relevant chapters per the loading table in AGENTS.md or `integration/selective-loading.md`.

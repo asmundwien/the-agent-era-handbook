@@ -58,7 +58,7 @@ Clone or submodule the handbook into your project from https://github.com/asmund
         "hooks": [
           {
             "type": "command",
-            "command": "cat ./the-agent-era-handbook/CLAUDE.md"
+            "command": "cat ./the-agent-era-handbook/AGENTS.md"
           }
         ]
       }
@@ -67,11 +67,11 @@ Clone or submodule the handbook into your project from https://github.com/asmund
 }
 ```
 
-**Option B: CLAUDE.md reference** (works with any tooling — Handbook 4.2 "instructed" level). Add to your project's CLAUDE.md:
+**Option B: Context file reference** (works with any tooling — Handbook 4.2 "instructed" level). Add to your project's AGENTS.md (or equivalent context file):
 
 ```markdown
 ## Agent-Era Handbook
-Read: ./the-agent-era-handbook/CLAUDE.md
+Read: ./the-agent-era-handbook/AGENTS.md
 ```
 
 Adjust paths to match where the handbook lives relative to your project. Use the highest enforcement level your tooling supports (see Handbook 4.2).
@@ -91,6 +91,6 @@ Start with the guide for your role (links in the table above). Each guide is a 1
 
 ## Scope
 
-This handbook covers software development with a single orchestrator directing AI agents. It is opinionated, evidence-backed where possible, and calibrated to 2024-2025 model behavior (primarily Claude).
+This handbook covers software development with a single orchestrator directing AI agents. It is opinionated, evidence-backed where possible, and calibrated to 2024-2025 model behavior.
 
 It does not cover non-code workflows, organizational adoption, agent economics, security models for agent-driven development, or multi-team coordination. Recommendations may not transfer directly to models with different training. Measure outcomes and update accordingly.

@@ -19,7 +19,7 @@ Google DORA 2025 found 95% AI adoption but a 9% climb in bug rates and 91% incre
 The governance stack that works, ranked by impact:
 
 1. **Specs with explicit acceptance criteria** — Given/When/Then format, edge cases covered, every ambiguity resolved before code generation.
-2. **Context files** (CLAUDE.md, .cursorrules) — persistent project knowledge that survives between agent sessions.
+2. **Context files** (AGENTS.md, .cursorrules) — persistent project knowledge that survives between agent sessions.
 3. **Automated verification** — linting, type checks, test suites that fail builds on violations.
 4. **Design systems with concrete references** — agents implement against visual references, not "make it look clean."
 5. **Task decomposition** — one task = one concern = one agent session.
@@ -82,7 +82,7 @@ Deep dive: Handbook 8 (Autonomous Operation).
 
 ## What to Do Monday Morning
 
-1. **Set up governance before scaling agent use.** A CLAUDE.md with project rules, a design system with references, and pre-commit hooks. This is the highest-ROI investment.
+1. **Set up governance before scaling agent use.** An AGENTS.md with project rules, a design system with references, and pre-commit hooks. This is the highest-ROI investment.
 2. **Write specs before writing code.** Given/When/Then acceptance criteria for every feature. Cover edge cases. Resolve ambiguities before agents touch it.
 3. **Keep changes small and reviewable.** <200 lines per agent output. Review fatigue is real — 91% increase in review time at high-AI-adoption teams.
 4. **Maintain your coding skills.** Periodically write code yourself. The ability to write is what enables you to review. Skill atrophy is documented and accelerating.
@@ -92,4 +92,4 @@ Deep dive: Handbook 8 (Autonomous Operation).
 
 The full handbook has nine core chapters covering governance, agent cognition (sycophancy and anchoring), SDD methodology and operations, human-agent roles, human failure modes, multi-agent systems, autonomous operation, and agent self-awareness with a pushback protocol.
 
-If you want to go further: the full handbook has a CLAUDE.md file that, when loaded into agent context, activates the behavioral framework. Agents that have internalized the handbook push back on bad specs, flag scope creep, and surface decisions that require your judgment — instead of silently making confident wrong choices.
+If you want to go further: the full handbook has an AGENTS.md file that, when loaded into agent context, activates the behavioral framework. Agents that have internalized the handbook push back on bad specs, flag scope creep, and surface decisions that require your judgment — instead of silently making confident wrong choices.

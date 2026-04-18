@@ -6,7 +6,7 @@
 
 ## Handbook 1 — Governance
 
-- [ ] Constitution document (CLAUDE.md or equivalent) with project rules, architecture, boundaries?
+- [ ] Constitution document (AGENTS.md or equivalent) with project rules, architecture, boundaries?
 - [ ] Design system with concrete visual references?
 - [ ] Automated verification (linting, type checks, pre-commit hooks)?
 - [ ] Review gates between spec levels?
