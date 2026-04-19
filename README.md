@@ -46,37 +46,31 @@ This handbook defines how humans and agents work together — covering governanc
 
 The following instructions are for **human operators** configuring agent context.
 
-Clone or submodule the handbook into your project from https://github.com/asmundwien/the-agent-era-handbook.
+**Step 1:** Clone or submodule the handbook into your project:
 
-**Option A: Session hook** (deterministic — Handbook 4.2 "caught automatically" level). In your `.claude/settings.json` (project or user level):
-
-```json
-{
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cat ./the-agent-era-handbook/AGENTS.md"
-          }
-        ]
-      }
-    ]
-  }
-}
+```bash
+git submodule add https://github.com/asmundwien/the-agent-era-handbook.git
 ```
 
-**Option B: Context file reference** (works with any tooling — Handbook 4.2 "instructed" level). Add to your project's AGENTS.md (or equivalent context file):
+**Step 2:** Point your coding agent at the handbook. `AGENTS.md` is the cross-tool convention — supported by Claude Code, Cursor, Windsurf, Cline, and OpenAI Codex. Add to your project's `AGENTS.md`:
 
 ```markdown
 ## Agent-Era Handbook
 Read: ./the-agent-era-handbook/AGENTS.md
 ```
 
-Adjust paths to match where the handbook lives relative to your project. Use the highest enforcement level your tooling supports (see Handbook 4.2).
+**Step 3 (optional):** Use your tool's native features for stronger enforcement. See the platform-specific guide:
 
-For deeper integration, also load chapter 9 and task-relevant chapters. See [integration/selective-loading.md](integration/selective-loading.md) for the full setup guide.
+| Platform | Guide |
+|---|---|
+| Claude Code | [integration/claude-code.md](integration/claude-code.md) |
+| Cursor | [integration/cursor.md](integration/cursor.md) |
+| GitHub Copilot | [integration/github-copilot.md](integration/github-copilot.md) |
+| Windsurf | [integration/windsurf.md](integration/windsurf.md) |
+| Cline | [integration/cline.md](integration/cline.md) |
+| OpenAI Codex | [integration/openai-codex.md](integration/openai-codex.md) |
+
+For selective chapter loading and token budget management, see [integration/selective-loading.md](integration/selective-loading.md).
 
 ### For humans (reading)
 
