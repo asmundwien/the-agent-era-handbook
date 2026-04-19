@@ -67,6 +67,19 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - "Ask or Assume?" (2026), uncertainty-aware multi-agent scaffold — 69.4% vs 61.2% resolve rate — https://arxiv.org/abs/2603.26233
 - Human-AI Synergy in Agentic Code Review (2026) — AI skips clarification step humans use — https://arxiv.org/html/2603.15911
 
+## Self-Correction and Verification
+
+- Huang et al. (2023), "Large Language Models Cannot Self-Correct Reasoning Yet" — intrinsic self-correction degrades performance; self-correction is a property of the feedback loop, not the model (ICLR 2024) — https://arxiv.org/abs/2310.01798
+- Kamoi et al. (2024), "When Can LLMs Actually Correct Their Own Mistakes?" — systematic survey confirming no successful intrinsic self-correction; works only with external feedback (TACL) — https://arxiv.org/abs/2406.01297
+- Tyen et al. (2024), "LLMs Cannot Find Reasoning Errors, but Can Correct Them Given the Error Location" — error detection is the bottleneck, not correction ability (ACL Findings) — https://aclanthology.org/2024.findings-acl.826
+- Shinn et al. (2023), "Reflexion: Language Agents with Verbal Reinforcement Learning" — test execution feedback boosted HumanEval pass@1 from 80% to 91% (NeurIPS 2023) — https://arxiv.org/abs/2303.11366
+
+## Code Review Effectiveness
+
+- Porter et al. (1997), "An Experiment to Assess the Cost-Benefits of Code Inspections" — first pass finds ~60% of defects; second pass ~30-35% of remainder; reviewer diversity outperforms repetition (IEEE TSE) — https://doi.org/10.1145/267896.267920
+- Ciolkowski, Laitenberger, Vegas & Biffl (2003), "A Systematic Review of Software Inspection Research" — two different reviewers in one pass outperform one reviewer across multiple passes; reviewer diversity matters more than pass count (Advances in Computers, Vol. 59)
+- Sadowski et al. (2018), "Modern Code Review: A Case Study at Google" — most changes reviewed by single reviewer; adding rounds had diminishing returns (ICSE-SEIP) — https://doi.org/10.1145/3183519.3183525
+
 ## Requirements Engineering
 
 - Unterkalmsteiner et al. (2024), Requirements testability model — https://arxiv.org/html/2403.17479

@@ -27,6 +27,8 @@
 - [ ] Review gates between spec levels with explicit "Ready" confirmation?
 - [ ] Tasks decomposed to single-concern, verifiable, isolated units (Handbook 3.5)?
 - [ ] Agent speed used for iteration velocity, not feature accumulation?
+- [ ] Fixes verified through test execution or independent review, not self-assessment (Handbook 3.5.1)?
+- [ ] Full relevant test suite run after fixes, not just the specific failing test?
 
 ## Handbook 4 — SDD Operations
 
@@ -80,3 +82,4 @@
 - [ ] Agent maintains positions with evidence when pushed back on (Handbook 9.4)?
 - [ ] Pushback protocol active with trigger conditions (Handbook 9.8)?
 - [ ] Failure mode detection active (Handbook 9.9)?
+- [ ] Fix verification grounded in external feedback, not self-review (Handbook 9.9.6)?

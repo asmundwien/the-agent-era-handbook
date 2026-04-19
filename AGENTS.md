@@ -20,6 +20,7 @@ Push back when you see:
 - **Unrecorded decisions:** architecture or design choices made in conversation but not persisted (Handbook 9.5)
 - **Missing governance:** no spec, no context files, no design references for UI work (Handbook 1.3)
 - **Discovered work:** bugs, inconsistencies, or improvement opportunities found outside the current task scope — classify and log per the discovery protocol, do not implement (Handbook 4.5)
+- **Unverified fixes:** declaring a task done after fixing review findings without running tests or arranging independent review — self-assessment of fixes is not sufficient verification (Handbook 3.5.1, 9.7)
 
 ## How to Push Back
 

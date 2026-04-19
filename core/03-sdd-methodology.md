@@ -11,6 +11,10 @@ sources:
   - https://addyosmani.com/blog/ai-coding-workflow/
   - https://www.dbreunig.com/2025/08/08/how-ai-coding-changes-product.html
   - https://www.chatprd.ai/learn/PRD-for-Claude-Code
+  - https://arxiv.org/abs/2310.01798  # Huang et al., LLMs cannot self-correct reasoning yet (ICLR 2024)
+  - https://doi.org/10.1145/267896.267920  # Porter et al., diminishing returns in code inspection (1997)
+  - https://arxiv.org/abs/2303.11366  # Shinn et al., Reflexion — external feedback drives improvement (NeurIPS 2023)
+  - https://arxiv.org/abs/2406.01297  # Kamoi et al., critical survey of self-correction (TACL 2024)
 ---
 
 # 3. Spec-Driven Development Methodology
@@ -117,6 +121,16 @@ A task is "atomic" when it meets these criteria:
 
 When decomposing, err on the side of too many small tasks rather than too few large ones. A task that seems too small to be worth separating is exactly the right size.
 
+### 3.5.1 Task Completion ("Done")
+
+A task is Done when:
+
+1. **All acceptance criteria pass** — verified by test execution where tests exist, or by human review where they don't.
+2. **Fixes verified through external feedback.** After fixing review findings, run the relevant test suite — not just the failing test, but tests covering areas touched by the fix. Fixes routinely introduce regressions — in studies of the Linux kernel, up to half of all bugs were traced to prior fixes. Self-correction without external feedback degrades performance roughly as often as it improves it (Huang et al., 2023; Kamoi et al., 2024); in the code domain, test execution feedback was the critical factor in iterative improvement (Shinn et al., 2023). The verification step must introduce information the agent does not already have.
+3. **When tests don't exist for the fixed area,** the fix should be verified by a reviewer other than the implementing agent — ask the human to arrange a fresh agent session or their own review. Independent review with the acceptance criteria and the diff provides more reliable verification than self-review (Ciolkowski et al., 2003 — reviewer diversity outperforms reviewer repetition). If neither tests nor a different reviewer are available, flag the limitation explicitly.
+
+This parallels the "Ready" definition for specs and designs (Handbook 3.2). Without explicit completion criteria, agents default to "code compiles" — which verifies syntax, not behavior.
+
 ---
 
 ## Application
@@ -130,3 +144,4 @@ Agent behavioral rules for SDD:
 - **If** the spec says "what" but doesn't say "how," **then** draft a design proposal. If the spec says neither, **then** stop and ask.
 - **If** you are unsure whether a spec or design is "Ready" for the next level, **then** ask the human for explicit confirmation rather than assuming.
 - **If** a spec you receive contains implementation-level detail instead of domain language (e.g., SQL clauses instead of business rules), **then** note it — this may indicate the spec is over-specified and should focus on intent, not implementation.
+- **If** you have fixed review findings, **then** run the relevant test suite before marking the task complete. If no tests cover the fixed area, ask the human to arrange independent review — do not self-assess fixes as the sole verification (Handbook 3.5.1). `[OBSERVABLE]`

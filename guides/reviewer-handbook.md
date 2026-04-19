@@ -98,6 +98,7 @@ Agent output doesn't distinguish "I'm certain about this" from "I'm guessing." I
 2. **If spec problem:** Update the spec first, then regenerate. Don't just fix the code — the same spec will produce the same error next session.
 3. **If implementation problem:** File it as a specific, reproducible finding. If the agent is still in session, provide the finding and let it fix. If not, a new session with the spec + finding will produce better results than you editing the code directly.
 4. **If pattern problem:** The agent used a pattern that works but doesn't match the codebase. Update the context files so future sessions follow the right pattern.
+5. **After the fix: demand test results, not assurances.** When the agent fixes a defect, ask for test execution results — not a self-assessment that the fix "looks correct." The agent cannot reliably evaluate its own fixes without external feedback (Handbook 9.7). If the agent says "fix applied" without citing test results, ask: "What test output confirms this fix works and hasn't broken anything else?" If no tests exist, review the fix yourself or send it to a fresh agent session — the implementing agent's self-assessment is anchored.
 
 ## If You're Also the Spec Author
 
@@ -115,4 +116,4 @@ To sustain this long-term:
 - **Maintain your coding skills.** Write code periodically. The ability to write is what enables you to review. Skill atrophy is real and accelerating.
 - **Measure outcomes, not feelings.** Track bugs in production, spec-to-implementation accuracy, and edge cases caught in review. Don't trust your perception of velocity.
 
-Deep dive: Handbook 6.1 (automation bias), 6.2 (review fatigue), 6.5 (skill atrophy), 2.3 (anchoring).
+Deep dive: Handbook 6.1 (automation bias), 6.2 (review fatigue), 6.5 (skill atrophy), 2.3 (anchoring), 9.7 (self-review limits), 3.5.1 (task completion).

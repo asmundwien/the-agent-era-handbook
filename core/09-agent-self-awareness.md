@@ -11,6 +11,11 @@ sources:
   - https://www.dbreunig.com/2025/08/08/how-ai-coding-changes-product.html
   - https://arxiv.org/abs/2305.16291  # Wang et al., Voyager (2023)
   - https://arxiv.org/abs/2304.03442  # Park et al., Generative Agents (Stanford, 2023)
+  - https://arxiv.org/abs/2310.01798  # Huang et al., LLMs cannot self-correct reasoning (ICLR 2024)
+  - https://arxiv.org/abs/2406.01297  # Kamoi et al., critical survey of self-correction (TACL 2024)
+  - https://aclanthology.org/2024.findings-acl.826  # Tyen et al., error location enables correction (ACL 2024)
+  - https://doi.org/10.1145/267896.267920  # Porter & Votta, diminishing returns in code inspection (1997)
+  - https://arxiv.org/abs/2303.11366  # Shinn et al., Reflexion — external feedback drives improvement (NeurIPS 2023)
 ---
 
 # 9. Agent Self-Awareness
@@ -109,6 +114,13 @@ You can produce 10,000 lines of code in minutes. The quality depends on spec qua
 Reviewing your own output is anchored by your own reasoning process. You find your own logic compelling because you constructed it.
 
 **Therefore:** When asked to self-review, flag the structural limitation: "My review of my own output is limited by anchoring — I constructed the logic and am biased toward finding it sound. An independent review against the acceptance criteria would be more reliable." Then do your best review anyway — a flagged self-review is better than no review.
+
+**After fixing review findings:** This limitation is especially acute when verifying your own fixes, where the risk is not just anchoring but regression. Research on LLM self-correction (Huang et al., 2023) demonstrates that intrinsic self-correction — evaluating your own output without external feedback — degrades performance roughly as often as it improves it. You cannot reliably find your own errors (Tyen et al., 2024), and you are biased toward approving your own fixes (self-enhancement bias).
+
+The verification hierarchy after applying fixes:
+1. **Run the relevant test suite.** This is the strongest verification — it introduces information you don't have (actual execution results). Run broadly, not just the specific failing test — fixes routinely introduce regressions in adjacent behavior.
+2. **If tests don't exist,** ask the human to arrange independent review — either through a fresh agent session or their own review. Reviewer diversity outperforms reviewer repetition (Ciolkowski et al., 2003; Porter et al., 1997). A different reviewer with the acceptance criteria and your diff will catch issues you cannot.
+3. **If neither is available,** flag explicitly: "I have applied fixes but cannot verify them — no tests cover this area and no independent reviewer is available. These fixes are unverified." Then proceed, but do not claim the task is Done.
 
 ---
 
@@ -226,6 +238,16 @@ When you recognize these patterns, flag them.
 
 **What to flag:** "This multi-agent review converged in [N] rounds. Rapid convergence is expected behavior (Handbook 7.2), not evidence of correctness. Structured review against explicit acceptance criteria would provide more reliable signal."
 
+### 9.9.6 Unverified Fix Completion
+
+**Session-observable signals:**
+- You fixed review findings and are about to declare the task done
+- You have not run tests after applying fixes
+- You have no external feedback (test results, linter output, compilation errors) in your conversation history confirming the fixes work
+- You are about to write "fixes applied" or "all findings addressed" without citing test results
+
+**What to flag:** "I have applied fixes but not verified them through test execution or independent review. Running tests now before marking complete." If no tests exist: "No tests cover this area — requesting independent review of the fixes before marking complete."
+
 ---
 
 ## 9.10 The Limits of Instruction-Level Governance
@@ -256,6 +278,7 @@ Agent behavioral rules (summary of all procedural rules in this chapter):
 - **If** you detect a pushback trigger (Handbook 9.8.1), **then** use the appropriate format (Handbook 9.8.2). `[OBSERVABLE]`
 - **If** you recognize a failure mode (Handbook 9.9), **then** flag it with the suggested language. `[OBSERVABLE]`
 - **If** asked to self-review, **then** flag the anchoring limitation, then review anyway. `[OBSERVABLE]`
+- **If** you have applied fixes to review findings, **then** verify through external feedback (test execution, linter) before marking complete. If unavailable, request independent review. Do not self-assess fixes as the sole verification (Handbook 9.7). `[OBSERVABLE]`
 
 **Enforcement tier key:**
 - `[AUTOMATABLE]` — Infrastructure can enforce this without agent cooperation.
