@@ -35,6 +35,9 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Perez et al. (2023), "Discovering LM Behaviors with Model-Written Evaluations" (Anthropic) — https://arxiv.org/abs/2310.12397
 - "Beyond pass@1" (2026), "A Reliability Science Framework for Long-Horizon LLM Agents" — reliability 0.90→0.44 — https://arxiv.org/abs/2603.29231
 - Anthropic (2025), "Measuring AI Agent Autonomy" — https://www.anthropic.com/research/measuring-agent-autonomy
+- AGENTIF (NeurIPS 2025), "Benchmarking Instruction Following in Agentic Scenarios" — vanilla ~80%, conditional ~60% compliance — https://arxiv.org/abs/2505.16944
+- "Prompt Inversion: The Guardrail-to-Handcuff Transition" (2025) — structured rules help weaker models, hurt stronger ones — https://arxiv.org/html/2510.22251v1
+- "Five Levels of Autonomy for AI Agents" (2025) — autonomy as design decision, not capability — https://arxiv.org/abs/2506.12469
 
 ## Human Factors and Cognitive Science
 
@@ -65,7 +68,7 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 ## Industry Surveys and Developer Data
 
 - Google DORA (2025), "State of AI-assisted Software Development" — https://dora.dev/research/2025/dora-report/
-- Veracode (2025), 45% of AI-generated code contains security vulnerabilities
+- Veracode (2025), 45% of AI-generated code contains security vulnerabilities — https://www.veracode.com/resources/analyst-reports/2025-genai-code-security-report/
 - Stack Overflow 2025 Developer Survey — https://survey.stackoverflow.co/2025/ai
 - JetBrains State of Developer Ecosystem 2025 — https://blog.jetbrains.com/research/2025/10/state-of-developer-ecosystem-2025/
 - Faros AI: 91% review time increase — https://www.faros.ai/blog/ai-software-engineering
@@ -96,6 +99,8 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Marmelab SDD critique — https://marmelab.com/blog/2025/11/12/spec-driven-development-waterfall-strikes-back.html
 - GitHub Spec Kit — https://github.com/github/spec-kit
 - Kiro specs — https://kiro.dev/docs/specs/
+- ChatPRD, "PRD for Claude Code" — https://www.chatprd.ai/learn/PRD-for-Claude-Code
+- Augment Code SDD for AI Agents guide — https://www.augmentcode.com/guides/spec-driven-development-ai-agents-explained
 - Red Hat on SDD quality — https://developers.redhat.com/articles/2025/10/22/how-spec-driven-development-improves-ai-coding-quality
 - Darrow, state of vibe-coding (2026) — https://www.kristindarrow.com/insights/the-state-of-vibecoding-in-feb-2026
 - Piskala (2026), "Spec-Driven Development: From Code to Contract" — first academic SDD paper — https://arxiv.org/abs/2602.00180

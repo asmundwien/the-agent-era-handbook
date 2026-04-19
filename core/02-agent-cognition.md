@@ -108,7 +108,7 @@ Sycophancy, anchoring, and automation bias (Handbook 6.1) operate simultaneously
 This is not hypothetical. It is the default outcome when governance is absent. Each actor behaves rationally at each step — the failure is systemic.
 
 **Breaking the chain requires intervention at multiple points:**
-- De-anchor spec evaluation: generate alternatives before evaluating (§2.2)
+- De-anchor spec evaluation: generate alternatives before evaluating (Handbook 2.2)
 - Activate pushback triggers: agent flags spec smells and ambiguities (Handbook 9.8)
 - Use adversarial review with fresh context: separate session reviews against criteria (Handbook 1.2.3)
 - Counter automation bias: checklist-based review, small change sizes, adversarial framing (Handbook 6.1)

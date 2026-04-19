@@ -52,7 +52,7 @@ If you need deeper guidance on a topic, read the relevant chapter:
 | Sycophancy, anchoring, and cognitive biases | `core/02-agent-cognition.md` |
 | Spec-driven development, review gates, task granularity | `core/03-sdd-methodology.md` |
 | Design doc detail level, enforcement, spec gaps | `core/04-sdd-operations.md` |
-| Who owns which decisions, human identity shift | `core/05-human-agent-roles.md` |
+| Who owns which decisions, decision routing taxonomy, human identity shift | `core/05-human-agent-roles.md` |
 | Automation bias, review fatigue, spec writing skills | `core/06-human-failure-modes.md` |
 | Multi-agent workflows, structured review vs debate | `core/07-multi-agent-systems.md` |
 | Limits of autonomous operation | `core/08-autonomous-operation.md` |

@@ -18,6 +18,8 @@ sources:
   - https://arxiv.org/html/2403.17479  # Unterkalmsteiner et al., requirements testability
   - https://link.springer.com/article/10.1007/s00766-022-00381-9  # RE education systematic review
   - https://ieeexplore.ieee.org/document/5328509/  # EARS notation (Rolls-Royce, IEEE 2009)
+  - https://arxiv.org/abs/2211.03622  # Perry et al., AI-assisted code security vulnerabilities (Stanford, 2023)
+  - https://pubmed.ncbi.nlm.nih.gov/22127471/  # Goddard, Roudsari & Wyatt, automation bias meta-review (2012)
   - https://www.sciencedirect.com/science/article/abs/pii/S0749597809000399  # Leroy, attention residue
   - https://medium.com/paypal-tech/pre-mortem-technically-working-backwards-1724eafbba02  # Pre-mortem technique
 ---
@@ -172,7 +174,7 @@ AI does not free up your time. It reshapes and intensifies your work.
 
 ---
 
-## 6.4.1 What to Measure
+### 6.4.1 What to Measure
 
 The perception gap means self-reported productivity is unreliable. Measure outcomes, not feelings.
 
@@ -187,7 +189,7 @@ The perception gap means self-reported productivity is unreliable. Measure outco
 - Time from spec approval to working implementation
 
 **Skill maintenance:**
-- Periodic comprehension checks: can you explain what the agent built without reading the code? (Handbook 5.4)
+- Periodic comprehension checks: can you explain what the agent built without reading the code? (Handbook 5.5)
 - Deliberate practice time: are you still writing code regularly?
 
 DX (2025, 135,000 developers) found that a 25% increase in structured enablement correlates with 10%+ gains across both developer satisfaction and code maintainability — suggesting that investment in governance infrastructure has measurable returns.
@@ -222,7 +224,7 @@ Less writing → worse reviewing → more bugs → less confidence → more dele
 
 Same pattern as "children of the magenta line" — pilots relying on autopilot perform worse when manual flight is needed.
 
-### 6.5.3 Prevention
+### 6.5.4 Prevention
 
 - **Periodically write code yourself.** Not because the agent can't, but because the ability to write enables you to review.
 - **Use generation-then-comprehension.** Have the agent generate, then actively question how it works and why. Achieves 86% comprehension vs 40% for passive delegation (INNOQ study).
@@ -274,6 +276,6 @@ Agent behavioral rules for human failure modes:
 
 - **If** generating a change >200 lines, **then** propose breaking it into sequential reviewable chunks.
 - **If** a human approves a large change quickly (suggesting review fatigue), **then** note: "This was a large change — would you like me to walk through the key decisions for a spot-check?"
-- **If** a spec contains requirement smells from the table in §6.3.2, **then** flag them specifically per Handbook 9.8.
+- **If** a spec contains requirement smells from the table in Handbook 6.3.2, **then** flag them specifically per Handbook 9.8.
 - **If** a human is rewriting agent output extensively (suggesting skill atrophy concern or spec quality issue), **then** suggest improving the spec rather than editing the code.
 - **If** asked to implement a long sequence of tasks without review checkpoints, **then** suggest review gates at natural boundaries.

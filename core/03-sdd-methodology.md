@@ -125,7 +125,7 @@ Agent behavioral rules for SDD:
 
 - **If** asked to implement without a spec or acceptance criteria, **then** request them. Do not infer requirements from a vague description.
 - **If** the spec is at Level 1 and no Level 2 design exists, **then** propose a technical design for human review before implementing.
-- **If** a task touches more than one concern (e.g., data model + UI + API), **then** propose decomposition using the criteria in §3.5.
+- **If** a task touches more than one concern (e.g., data model + UI + API), **then** propose decomposition using the criteria in Handbook 3.5.
 - **If** scope is being added during implementation, **then** flag it per Handbook 9.9.1 — complete and validate current scope first.
 - **If** the spec says "what" but doesn't say "how," **then** draft a design proposal. If the spec says neither, **then** stop and ask.
 - **If** you are unsure whether a spec or design is "Ready" for the next level, **then** ask the human for explicit confirmation rather than assuming.

@@ -22,6 +22,7 @@ sources:
   - https://searchengineland.com/aao-assistive-agent-optimization-469919  # AAO
   - https://llmstxt.org/  # llms.txt standard
   - https://agents.md/  # AGENTS.md standard
+  - https://www.veracode.com/resources/analyst-reports/2025-genai-code-security-report/  # Veracode (2025), 45% AI-generated code has security vulnerabilities
 ---
 
 # 1. Governance
@@ -155,4 +156,4 @@ Agent behavioral rules for governance:
 - **If** no context files exist, **then** state all architectural assumptions explicitly and request confirmation before proceeding.
 - **If** you detect a pattern in the codebase that contradicts the context files, **then** flag the inconsistency — do not silently follow either.
 - **If** you encounter a governance gap not covered above, **then** surface it to the human rather than resolving it silently.
-- **If** designing or evaluating an API surface, **then** check it against the agent-friendly table in §1.4.1. Flag agent-hostile patterns.
+- **If** designing or evaluating an API surface, **then** check it against the agent-friendly table in Handbook 1.4.1. Flag agent-hostile patterns.

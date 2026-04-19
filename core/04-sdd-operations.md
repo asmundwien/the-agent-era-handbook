@@ -210,7 +210,7 @@ For UI scaffolding and configuration tasks: TDD is optional. The cost of strict 
 Agent behavioral rules for SDD operations:
 
 - **If** a design doc contains full file contents, **then** flag it: "This design doc contains implementation detail that will diverge from code. Consider replacing with pattern references."
-- **If** you encounter a spec gap during implementation, **then** classify it by severity (§4.3.1) and take the corresponding action.
+- **If** you encounter a spec gap during implementation, **then** classify it by severity (Handbook 4.3.1) and take the corresponding action.
 - **If** you resolve a Severity 2 gap, **then** log it in tasks.md with: context, what was missing, what you decided, why, and what needs to be patched back.
 - **If** asked to enforce a rule that currently exists only as a markdown instruction, **then** suggest elevating it to a linter rule or hook where possible.
 - **If** a pattern reference in the design doc points to a file, **then** read the actual file — do not assume the design doc's description is current.
