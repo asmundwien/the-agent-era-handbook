@@ -20,11 +20,17 @@ sources:
   - https://stevemcconnell.com/articles/upstream-decisions-downstream-costs/
   - https://arxiv.org/abs/2502.13069
   - https://arxiv.org/abs/2603.26233
+  - https://basecamp.com/shapeup/3.3-chapter-12  # Shape Up — discovered vs imagined tasks
+  - https://basecamp.com/shapeup/3.4-chapter-13  # Shape Up — hill charts and scope hammering
+  - https://github.com/bmad-code-org/BMAD-METHOD/issues/1199  # BMAD maintenance backlog pattern
+  - https://kanban.university/unplanned-work-the-hidden-sprint-surprise/  # Kanban classes of service for unplanned work
+  - https://wesmckinney.com/blog/mythical-agent-month/  # Brownfield barrier and agent-generated debt
+  - https://resources.scrumalliance.org/Article/scrum-anti-patterns-large-product-backlog  # Backlog size anti-patterns
 ---
 
 # 4. SDD Operations
 
-> **When to read this:** When calibrating design doc detail level, building enforcement mechanisms, handling spec gaps during implementation, or managing documents post-implementation.
+> **When to read this:** When calibrating design doc detail level, building enforcement mechanisms, handling spec gaps during implementation, managing documents post-implementation, or handling work discovered mid-session.
 
 ## TL;DR
 
@@ -32,6 +38,7 @@ sources:
 - **Enforce rules by constraint, not instruction.** Hooks and linters are deterministic. Markdown instructions are probabilistic (~85-90% compliance).
 - **Spec gaps are inevitable — handle them by severity.** Architectural gaps require humans. Trivial omissions can be resolved by the agent if logged.
 - **After implementation, the codebase is the source of truth.** Design docs record *why*. Code records *what*.
+- **Discovered work is captured, not acted on.** Classify, log to an intake log, and continue. Humans curate between sessions.
 
 ---
 
@@ -168,15 +175,90 @@ See Application section for the surfacing behavior this awareness enables.
 | **Spec** | Records what was built and why. Status → "Done." | Lightly — only if requirements change |
 | **Design** | Records architectural decisions and rationale. | Lightly — patched with gaps, then stable |
 | **Tasks** | Consumed and completed. Historical record. | No — frozen |
+| **Intake log** | Append-only during sessions. Curated between sessions. | Yes — actively (curated by human) |
 | **Code** | Source of truth for current implementation. | Yes — actively |
 
 **Key insight:** Code answers "What does the system do now?" Design docs answer "Why was it built this way?" Both needed. But they should not contain the same information.
 
 ---
 
-## 4.5 Pattern References vs Code Listings
+## 4.5 Discovered Work
 
-### 4.5.1 Why Pattern References Work Better
+The SDD pipeline (Handbook 3.2) handles *planned* work: spec, design, tasks, implementation. But task lists grow during implementation — this is normal, not a failure. Agents encounter edge cases, inconsistencies, and improvement opportunities at machine speed. This section handles *discovered* work: items that surface during implementation and do not fit the current task scope.
+
+### 4.5.1 Discovery Is a Byproduct, Not an Objective
+
+Discovery is a natural byproduct of focused implementation. An agent reading and modifying code encounters edge cases, inconsistencies, and latent issues as a side effect of doing its assigned work. Agents should not seek discoveries — they should surface them when implementation makes them unavoidable.
+
+The risk is not discovery. The risk is what happens next:
+
+- **Acting on discovered work** without governance causes scope explosion (Handbook 9.9.1).
+- **Ignoring discovered work** loses information. Defects discovered late cost 50-200x more to fix than defects caught at origin (Boehm & Papaccio, 1988). Letting a discovery evaporate from a session is a form of late discovery.
+
+The protocol below separates *capturing* discoveries from *acting* on them.
+
+### 4.5.2 The Discovery Protocol
+
+When an agent encounters work outside the current task scope, classify it (adapted from the BMAD Method's three-way triage, which reported ~70% overhead reduction vs. creating full stories for minor items):
+
+| Type | Definition | Agent action |
+|---|---|---|
+| **Blocker** | Cannot complete current task without resolving this | Stop. Escalate to human per Handbook 4.3 Severity 1. |
+| **Adjacent** | Related to current work, clear fix, small scope | Log it. Do not act. Continue current task. |
+| **Distant** | Unrelated to current work or requires its own spec cycle | Log it. Do not act. Continue current task. |
+
+**Security exception:** Classify as Blocker regardless of scope relevance: credentials or secrets exposed in code or logs, authentication/authorization checks demonstrably missing for endpoints handling user data, or direct evidence of data exposure. Escalate immediately — these are not safe to defer to between-session curation. General code quality concerns (e.g., a dependency with a known CVE, permissive CORS) are Adjacent or Distant, not security Blockers.
+
+Key rules:
+
+- Adjacent and Distant work is **never** implemented in the current session (the conversation in which the discovery occurs). Blockers are escalated to the human, who decides resolution.
+- The agent's job is classification and capture, not prioritization — prioritization is a human decision (Handbook 9.1).
+- **Expected failure direction:** Blocker over-classification. Agents under training pressure to be helpful will rationalize Adjacent items as Blockers to justify acting. Blockers should be rare — if most discoveries are classified as Blockers, the classification is likely wrong. The discriminator: "Can I complete my assigned task without resolving this?" If yes, it is not a Blocker. **When uncertain, classify as Adjacent and note the uncertainty.** This calibration accepts occasional rework from deferred genuine Blockers as the lesser cost — the agent may build on a broken foundation before the human curates, but the alternative (stopping work on every uncertain discovery) is more expensive in aggregate.
+
+### 4.5.3 The Intake Log
+
+Discovered items are logged in a structured, persistent artifact. The log is append-only during implementation; humans curate it between sessions.
+
+**Recommended location:** A project-level `intake.md` file. Discovered items often cross capability boundaries, making a per-capability location (e.g., a section in `tasks.md`) a poor fit.
+
+**Entry format:**
+
+```
+### [Short description]
+- **Found:** [file path, line number, or area of codebase]
+- **Classification:** Blocker / Adjacent / Distant
+- **Session:** [date or session identifier]
+- **Detail:** [factual description of what was discovered — what is wrong, missing, or improvable]
+```
+
+This is **not** a backlog. It is an intake log. Items here have not been triaged, prioritized, or approved. They are raw discoveries waiting for human decision. Agents must not treat intake log items as approved work.
+
+### 4.5.4 Intake Curation
+
+The human's responsibility between sessions:
+
+| Action | When | Result |
+|---|---|---|
+| **Promote** | Item is real and worth doing | Create a spec — item enters the SDD pipeline at Level 1 (Handbook 3.2) |
+| **Absorb** | Trivially small fix within an existing task's scope (see below) | Add to relevant `tasks.md` |
+| **Defer** | Real but not now | Leave in intake log with a note |
+| **Discard** | Noise, duplicate, or already resolved | Remove from intake log |
+
+**Absorb criteria:** Absorb is a deliberate relaxation of the SDD gate model for trivially small items. An item qualifies for Absorb only when it meets **both** criteria: (1) it meets Severity 2 criteria (Handbook 4.3.1) — the correct fix is determinable from existing codebase patterns with high confidence, only one reasonable alternative exists, no design decision required; and (2) it does not expand the existing task's scope — the fix touches files the task already touches and adds no new behavior, API surface, or user-visible state. Examples: a missing null check following the pattern in adjacent functions, a typo in a string literal, a missing import, dead code in a file being modified. Counter-examples that require Promote instead: adding error handling for an unspecced case (new behavior), fixing a performance issue (design judgment), adding a validation rule (new constraint).
+
+**Decay policy:** An intake log that is never curated becomes a graveyard (a well-documented anti-pattern in product backlog research — Scrum Alliance recommends no more than ~20 items in a managed backlog, adapted here as a threshold for a raw intake queue). Items deferred for more than two full capability implementation cycles (spec → design → tasks → done) without human action should be reviewed and either promoted or discarded.
+
+**Hard cap:** If the intake log exceeds ~20 uncurated items, treat it as a process blocker — stop implementation and escalate to the human that curation must happen before work continues. Do not keep working while silently dropping discoveries. An uncurated intake log is a governance failure, and the handbook does not permit agents to work through governance failures silently (Handbook 1.3). This prevents the pipeline pressure documented in Handbook 1.1.1 — agents generating artifacts at machine speed while humans process them at human speed.
+
+### 4.5.5 Capacity for Discovery
+
+Do not schedule 100% of agent capacity for planned work. Discovery is part of implementation, not an interruption — Kanban practice reserves 5-20% of capacity for unplanned work. If every session across a project produces zero discoveries over multiple cycles, this is worth investigating as a project health signal.
+
+---
+
+## 4.6 Pattern References vs Code Listings
+
+### 4.6.1 Why Pattern References Work Better
 
 When a design doc says "implement following the pattern in `src/routes/projects.ts`," the agent:
 1. Reads the actual current code (which may have evolved since design was written)
@@ -188,7 +270,7 @@ When a design doc contains a full code listing, the agent:
 2. Discovers it doesn't compile (stale dependency, wrong API version)
 3. Fixes compilation errors, producing code that works but diverges from codebase patterns
 
-### 4.5.2 When Code Examples ARE Appropriate
+### 4.6.2 When Code Examples ARE Appropriate
 
 - **API contract types** — these define interfaces other code depends on
 - **Data model schemas** — these ARE the data contract
@@ -198,20 +280,20 @@ The distinction: examples that define contracts or introduce new patterns are ap
 
 ---
 
-## 4.6 Testing Strategy for SDD
+## 4.7 Testing Strategy for SDD
 
-### 4.6.1 The Two-Agent Split
+### 4.7.1 The Two-Agent Split
 
 For data model, API, and complex interaction tasks: one agent writes tests from acceptance criteria, a separate agent implements. The test-writing agent never sees the implementation. This prevents the known anti-pattern of self-referential tests (Handbook 9.9.4).
 
 For UI scaffolding and configuration tasks: TDD is optional. The cost of strict TDD exceeds its value for deterministic, low-risk changes.
 
-### 4.6.2 Visual Testing
+### 4.7.2 Visual Testing
 
 - **Visual smoke tests** should assert that CSS/styles are actually applied (computed style assertions, not just DOM structure). Agent-generated UI frequently has correct markup with missing or wrong styles.
 - **Visual regression baselines** must be generated from a known-good state — not from an unstyled or broken build. Establishing baselines from the agent's first output locks in any initial styling errors.
 
-### 4.6.3 E2E Test Consolidation
+### 4.7.3 E2E Test Consolidation
 
 - For static or informational pages: consolidate into user-workflow tests (one test covering a full user journey)
 - For functional flows (forms, interactions, multi-step processes): individual feature tests
@@ -222,9 +304,14 @@ For UI scaffolding and configuration tasks: TDD is optional. The cost of strict 
 
 Agent behavioral rules for SDD operations:
 
-- **If** a design doc contains full file contents, **then** flag it: "This design doc contains implementation detail that will diverge from code. Consider replacing with pattern references."
-- **If** you encounter a spec gap during implementation, **then** classify it by severity (Handbook 4.3.1) and take the corresponding action.
-- **If** you are assessing multiple spec gaps in a single artifact, **then** surface this to the human: "I am classifying N gaps in [artifact] simultaneously — presenting individually for review." This is awareness, not a guarantee of correct classification (Handbook 4.3.3).
-- **If** you resolve a Severity 2 gap, **then** log it in tasks.md with: context, what was missing, what you decided, why, and what needs to be patched back.
-- **If** asked to enforce a rule that currently exists only as a markdown instruction, **then** suggest elevating it to a linter rule or hook where possible.
-- **If** a pattern reference in the design doc points to a file, **then** read the actual file — do not assume the design doc's description is current.
+- **If** a design doc contains full file contents, **then** flag it: "This design doc contains implementation detail that will diverge from code. Consider replacing with pattern references." `[OBSERVABLE]`
+- **If** you encounter a spec gap during implementation, **then** classify it by severity (Handbook 4.3.1) and take the corresponding action. `[JUDGMENT]`
+- **If** you are assessing multiple spec gaps in a single artifact, **then** surface this to the human: "I am classifying N gaps in [artifact] simultaneously — presenting individually for review." This is awareness, not a guarantee of correct classification (Handbook 4.3.3). `[OBSERVABLE]`
+- **If** you resolve a Severity 2 gap, **then** log it in tasks.md with: context, what was missing, what you decided, why, and what needs to be patched back. `[OBSERVABLE]`
+- **If** asked to enforce a rule that currently exists only as a markdown instruction, **then** suggest elevating it to a linter rule or hook where possible. `[OBSERVABLE]`
+- **If** a pattern reference in the design doc points to a file, **then** read the actual file — do not assume the design doc's description is current. `[OBSERVABLE]`
+- **If** you discover a bug, inconsistency, or improvement opportunity outside the current task scope during implementation, **then** classify it (Blocker / Adjacent / Distant) per Handbook 4.5.2 and log it in the intake log. Do not implement Adjacent or Distant items. Classification is `[JUDGMENT]`; logging is `[OBSERVABLE]`.
+- **If** the discovered item is a Blocker, **then** stop and escalate to the human per Handbook 4.3 Severity 1. `[JUDGMENT]`
+- **If** you are tempted to fix a discovered item because it is small or obvious, **then** log it instead — scope discipline applies regardless of fix size (Handbook 9.9.1). `[JUDGMENT]`
+- **If** the project has no `intake.md` and you discover work, **then** create the `intake.md` file with the first entry — discoveries must land in persistent artifacts, not ephemeral session output (Handbook 9.5). `[OBSERVABLE]`
+- **If** the intake log contains more than ~20 uncurated items, **then** treat it as a process blocker — stop implementation and escalate to the human that curation must happen before work continues. `[OBSERVABLE]`

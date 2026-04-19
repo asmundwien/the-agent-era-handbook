@@ -36,6 +36,9 @@
 - [ ] Spec gap severity classification in use (Sev 1: stop, Sev 2: proceed + log, Sev 3: note)?
 - [ ] Sev 2 gaps patched back into design docs before completion?
 - [ ] Pattern references point to real codebase files, not markdown code blocks?
+- [ ] Discovered work classified (Blocker / Adjacent / Distant) and logged to intake log, not acted on (Handbook 4.5)?
+- [ ] Intake log (`intake.md`) exists and is curated between sessions?
+- [ ] Intake log under ~20 uncurated items (process blocker if exceeded)?
 
 ## Handbook 5 — Human-Agent Roles
 

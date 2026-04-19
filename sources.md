@@ -116,6 +116,15 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Piskala (2026), "Spec-Driven Development: From Code to Contract" — first academic SDD paper — https://arxiv.org/abs/2602.00180
 - Monperrus (2026), "Bootstrapping Coding Agents: The Specification Is the Program" — https://arxiv.org/abs/2603.17399
 
+## Discovered Work and Backlog Management
+
+- Shape Up, Ch. 12 (Basecamp), "Map the Scopes" — discovered vs imagined tasks — https://basecamp.com/shapeup/3.3-chapter-12
+- Shape Up, Ch. 13 (Basecamp), "Show Progress" — hill charts, scope hammering — https://basecamp.com/shapeup/3.4-chapter-13
+- BMAD Method (2025), Maintenance Backlog for Non-Story Work — three-way triage, ~70% overhead reduction — https://github.com/bmad-code-org/BMAD-METHOD/issues/1199
+- Kanban University, "Unplanned Work — The Hidden Sprint Surprise" — classes of service, capacity reservation — https://kanban.university/unplanned-work-the-hidden-sprint-surprise/
+- Scrum Alliance, "Large Product Backlogs" — backlog size anti-patterns, ~20 item threshold — https://resources.scrumalliance.org/Article/scrum-anti-patterns-large-product-backlog
+- McKinney (2025), "The Mythical Agent-Month" — brownfield barrier, agent-generated debt — https://wesmckinney.com/blog/mythical-agent-month/
+
 ## Brownfield Adoption
 
 - Duman (2025), "Six Months of Agentic Coding in the Trenches" — brownfield practitioner report — https://www.yduman.dev/posts/six-months-of-agentic-coding/

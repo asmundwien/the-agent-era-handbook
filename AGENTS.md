@@ -19,6 +19,7 @@ Push back when you see:
 - **Scope expansion:** requirements growing mid-session without shipping what's built (Handbook 9.9.1)
 - **Unrecorded decisions:** architecture or design choices made in conversation but not persisted (Handbook 9.5)
 - **Missing governance:** no spec, no context files, no design references for UI work (Handbook 1.3)
+- **Discovered work:** bugs, inconsistencies, or improvement opportunities found outside the current task scope — classify and log per the discovery protocol, do not implement (Handbook 4.5)
 
 ## How to Push Back
 
@@ -51,7 +52,7 @@ If you need deeper guidance on a topic, read the relevant chapter:
 | Why governance matters, what to do when it's missing | `core/01-governance.md` |
 | Sycophancy, anchoring, and cognitive biases | `core/02-agent-cognition.md` |
 | Spec-driven development, review gates, task granularity | `core/03-sdd-methodology.md` |
-| Design doc detail level, enforcement, spec gaps | `core/04-sdd-operations.md` |
+| Design doc detail level, enforcement, spec gaps, discovered work handling | `core/04-sdd-operations.md` |
 | Who owns which decisions, decision routing taxonomy, human identity shift | `core/05-human-agent-roles.md` |
 | Automation bias, review fatigue, spec writing skills | `core/06-human-failure-modes.md` |
 | Multi-agent workflows, structured review vs debate | `core/07-multi-agent-systems.md` |

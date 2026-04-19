@@ -82,6 +82,16 @@ The key: Severity 1 gaps require your judgment. Severity 2 and 3 don't — but t
 
 Deep dive: Handbook 4.3.
 
+### During implementation: handle discovered work
+
+Beyond spec gaps, agents will discover bugs, inconsistencies, and improvement opportunities outside the current task scope. These are not spec gaps — they are new work items.
+
+The rule: **classify and capture, never act.** The agent logs each discovery in a project-level `intake.md` file with a classification (Blocker / Adjacent / Distant). Only Blockers — items that literally prevent completing the current task — get escalated. Everything else is logged and left for you to curate between sessions.
+
+Your curation options: **Promote** (create a spec), **Absorb** (fold into an existing task), **Defer** (leave with a note), or **Discard** (remove). Keep the intake log under ~20 items — if it grows beyond that, curation is not keeping pace.
+
+Deep dive: Handbook 4.5.
+
 ### After implementation: review effectively
 
 Your review effectiveness is under structural attack from three directions:
