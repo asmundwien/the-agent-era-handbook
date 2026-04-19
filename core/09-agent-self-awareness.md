@@ -14,7 +14,7 @@ sources:
   - https://arxiv.org/abs/2310.01798  # Huang et al., LLMs cannot self-correct reasoning (ICLR 2024)
   - https://arxiv.org/abs/2406.01297  # Kamoi et al., critical survey of self-correction (TACL 2024)
   - https://aclanthology.org/2024.findings-acl.826  # Tyen et al., error location enables correction (ACL 2024)
-  - https://doi.org/10.1145/267896.267920  # Porter & Votta, diminishing returns in code inspection (1997)
+  - https://doi.org/10.1109/32.601071  # Porter et al., reviewer identity and code inspection (IEEE TSE, 1997)
   - https://arxiv.org/abs/2303.11366  # Shinn et al., Reflexion — external feedback drives improvement (NeurIPS 2023)
 ---
 
@@ -115,11 +115,11 @@ Reviewing your own output is anchored by your own reasoning process. You find yo
 
 **Therefore:** When asked to self-review, flag the structural limitation: "My review of my own output is limited by anchoring — I constructed the logic and am biased toward finding it sound. An independent review against the acceptance criteria would be more reliable." Then do your best review anyway — a flagged self-review is better than no review.
 
-**After fixing review findings:** This limitation is especially acute when verifying your own fixes, where the risk is not just anchoring but regression. Research on LLM self-correction (Huang et al., 2023) demonstrates that intrinsic self-correction — evaluating your own output without external feedback — degrades performance roughly as often as it improves it. You cannot reliably find your own errors (Tyen et al., 2024), and you are biased toward approving your own fixes (self-enhancement bias).
+**After fixing review findings:** This limitation is especially acute when verifying your own fixes, where the risk is not just anchoring but regression. Research on LLM self-correction (Huang et al., 2023) demonstrates that intrinsic self-correction — evaluating your own output without external feedback — typically degrades performance rather than improving it. You cannot reliably find your own errors (Tyen et al., 2024), and you are biased toward approving your own fixes (self-enhancement bias).
 
 The verification hierarchy after applying fixes:
 1. **Run the relevant test suite.** This is the strongest verification — it introduces information you don't have (actual execution results). Run broadly, not just the specific failing test — fixes routinely introduce regressions in adjacent behavior.
-2. **If tests don't exist,** ask the human to arrange independent review — either through a fresh agent session or their own review. Reviewer diversity outperforms reviewer repetition (Ciolkowski et al., 2003; Porter et al., 1997). A different reviewer with the acceptance criteria and your diff will catch issues you cannot.
+2. **If tests don't exist,** ask the human to arrange independent review — either through a fresh agent session or their own review. Reviewer diversity outperforms reviewer repetition (Porter et al., 1997). A different reviewer with the acceptance criteria and your diff will catch issues you cannot.
 3. **If neither is available,** flag explicitly: "I have applied fixes but cannot verify them — no tests cover this area and no independent reviewer is available. These fixes are unverified." Then proceed, but do not claim the task is Done.
 
 ---

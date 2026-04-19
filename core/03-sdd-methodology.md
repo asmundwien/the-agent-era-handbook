@@ -12,9 +12,11 @@ sources:
   - https://www.dbreunig.com/2025/08/08/how-ai-coding-changes-product.html
   - https://www.chatprd.ai/learn/PRD-for-Claude-Code
   - https://arxiv.org/abs/2310.01798  # Huang et al., LLMs cannot self-correct reasoning yet (ICLR 2024)
-  - https://doi.org/10.1145/267896.267920  # Porter et al., diminishing returns in code inspection (1997)
+  - https://doi.org/10.1109/32.601071  # Porter et al., reviewer identity and code inspection (IEEE TSE, 1997)
   - https://arxiv.org/abs/2303.11366  # Shinn et al., Reflexion — external feedback drives improvement (NeurIPS 2023)
   - https://arxiv.org/abs/2406.01297  # Kamoi et al., critical survey of self-correction (TACL 2024)
+  - https://doi.org/10.1109/TR.2019.2918505  # Xiao et al., Linux kernel regressions (IEEE Trans. Reliability, 2019)
+  - https://doi.org/10.1145/2025113.2025121  # Yin et al., how fixes become bugs (ESEC/FSE, 2011)
 ---
 
 # 3. Spec-Driven Development Methodology
@@ -126,8 +128,8 @@ When decomposing, err on the side of too many small tasks rather than too few la
 A task is Done when:
 
 1. **All acceptance criteria pass** — verified by test execution where tests exist, or by human review where they don't.
-2. **Fixes verified through external feedback.** After fixing review findings, run the relevant test suite — not just the failing test, but tests covering areas touched by the fix. Fixes routinely introduce regressions — in studies of the Linux kernel, up to half of all bugs were traced to prior fixes. Self-correction without external feedback degrades performance roughly as often as it improves it (Huang et al., 2023; Kamoi et al., 2024); in the code domain, test execution feedback was the critical factor in iterative improvement (Shinn et al., 2023). The verification step must introduce information the agent does not already have.
-3. **When tests don't exist for the fixed area,** the fix should be verified by a reviewer other than the implementing agent — ask the human to arrange a fresh agent session or their own review. Independent review with the acceptance criteria and the diff provides more reliable verification than self-review (Ciolkowski et al., 2003 — reviewer diversity outperforms reviewer repetition). If neither tests nor a different reviewer are available, flag the limitation explicitly.
+2. **Fixes verified through external feedback.** After fixing review findings, run the relevant test suite — not just the failing test, but tests covering areas touched by the fix. Changes routinely introduce regressions — in the Linux kernel, roughly half of all reported bugs are regressions from prior changes (Xiao et al., 2019), and 15-25% of bug fixes in major operating systems are themselves incorrect (Yin et al., 2011). Self-correction without external feedback typically degrades performance (Huang et al., 2023; Kamoi et al., 2024); in the code domain, test execution feedback was the critical factor in iterative improvement (Shinn et al., 2023). The verification step must introduce information the agent does not already have.
+3. **When tests don't exist for the fixed area,** the fix should be verified by a reviewer other than the implementing agent — ask the human to arrange a fresh agent session or their own review. Independent review with the acceptance criteria and the diff provides more reliable verification than self-review (Porter et al., 1997 — reviewer identity explains more variance in defect detection than process structure). If neither tests nor a different reviewer are available, flag the limitation explicitly.
 
 This parallels the "Ready" definition for specs and designs (Handbook 3.2). Without explicit completion criteria, agents default to "code compiles" — which verifies syntax, not behavior.
 

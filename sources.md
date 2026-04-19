@@ -56,12 +56,19 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - CCL leadership transitions — https://cclinnovation.org/wp-content/uploads/2020/03/understandingleadershipchallenges.pdf
 - Fowler (2025), "Humans and Agents in Software Engineering Loops" — Agentic Flywheel — https://martinfowler.com/articles/exploring-gen-ai/humans-and-agents.html
 - Kim & Yegge (2025), "The Three Developer Loops" — https://itrevolution.com/articles/the-three-developer-loops-a-new-framework-for-ai-assisted-coding/
+- Lord, Lepper & Preston (1984), "Considering the Opposite: A Corrective Strategy for Social Judgment" — "consider the opposite" reduces confirmation bias more effectively than general debiasing instructions (JPSP, vol. 47, no. 6) — https://doi.org/10.1037/0022-3514.47.6.1231
+- Warm, Parasuraman & Matthews (2008), "Vigilance Requires Hard Mental Work and Is Stressful" — sustained monitoring is cognitively demanding, not passive; converging behavioral and neural evidence (Human Factors, vol. 50, no. 3) — https://doi.org/10.1518/001872008X312152
+- Goldsmith & Reiter (2007), "What Got You Here Won't Get You There" — skills that drive individual contributor success become liabilities in management/leadership transitions — https://www.hachettebooks.com/titles/marshall-goldsmith/what-got-you-here-wont-get-you-there/9781401388775/
+- Greengard (2025), "The AI Deskilling Paradox" — AI assistance improves short-term performance while eroding core expertise over time (Communications of the ACM) — https://cacm.acm.org/news/the-ai-deskilling-paradox/
+- Lee et al. (2025), "The Impact of Generative AI on Critical Thinking" — higher AI confidence associated with less critical thinking; AI shifts thinking toward verification (Microsoft/CMU, CHI '25) — https://doi.org/10.1145/3706598.3713778
 
 ## Defect Amplification and Spec Quality
 
-- Boehm & Papaccio (1988), "Understanding and Controlling Software Costs" — upstream defect cost multiplier 50-200x
-- Pressman, "Software Engineering: A Practitioner's Approach" — defect amplification model (illustrating Boehm's cost escalation principle)
+- Boehm & Papaccio (1988), "Understanding and Controlling Software Costs" — upstream defect cost multiplier 50-200x (IEEE TSE, vol. 14, no. 10) — https://doi.org/10.1109/32.6191
+- Pressman & Maxim, "Software Engineering: A Practitioner's Approach" (9th ed., McGraw-Hill, 2020) — defect amplification model illustrating Boehm's cost escalation principle — https://www.mheducation.com/highered/product/software-engineering-a-practitioners-approach-pressman.html
 - McConnell (1996), "Upstream Decisions, Downstream Costs" — https://stevemcconnell.com/articles/upstream-decisions-downstream-costs/
+- Xiao et al. (2019), "An Empirical Study of Fault Triggers in the Linux Operating System" — roughly half of all Linux kernel bugs are regressions from prior changes (IEEE Trans. Reliability, vol. 68, no. 4) — https://doi.org/10.1109/TR.2019.2918505
+- Yin et al. (2011), "How Do Fixes Become Bugs?" — 14.8-24.4% of bug fixes in major operating systems are themselves incorrect (ESEC/FSE '11) — https://doi.org/10.1145/2025113.2025121
 - CodeRabbit (2025), "State of AI vs Human Code Generation" — AI code produces ~1.7x more issues — https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
 - Ambig-SWE (ICLR 2026), "Interactive Agents to Overcome Underspecificity" — clarification-seeking improves performance up to 74% — https://arxiv.org/abs/2502.13069
 - "Ask or Assume?" (2026), uncertainty-aware multi-agent scaffold — 69.4% vs 61.2% resolve rate — https://arxiv.org/abs/2603.26233
@@ -76,8 +83,7 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 
 ## Code Review Effectiveness
 
-- Porter et al. (1997), "An Experiment to Assess the Cost-Benefits of Code Inspections" — first pass finds ~60% of defects; second pass ~30-35% of remainder; reviewer diversity outperforms repetition (IEEE TSE) — https://doi.org/10.1145/267896.267920
-- Ciolkowski, Laitenberger, Vegas & Biffl (2003), "A Systematic Review of Software Inspection Research" — two different reviewers in one pass outperform one reviewer across multiple passes; reviewer diversity matters more than pass count (Advances in Computers, Vol. 59)
+- Porter, Siy, Toman & Votta (1997), "An Experiment to Assess the Cost-Benefits of Code Inspections in Large Scale Software Development" — reviewer identity explains more variance than process structure; adding sessions yields diminishing returns (IEEE TSE, vol. 23, no. 6) — https://doi.org/10.1109/32.601071
 - Sadowski et al. (2018), "Modern Code Review: A Case Study at Google" — most changes reviewed by single reviewer; adding rounds had diminishing returns (ICSE-SEIP) — https://doi.org/10.1145/3183519.3183525
 
 ## Requirements Engineering
@@ -110,6 +116,7 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - DORA AI Capabilities Model (2025), seven moderating capabilities — https://dora.dev/ai/
 - Liu et al. (2026), "Debt Behind the AI Boom" — 304K AI commits, 6,275 repos — https://arxiv.org/abs/2603.28592
 - CodeScene (2026), "AI-Ready Code: How Code Health Determines AI Performance" — https://codescene.com/hubfs/whitepapers/AI-Ready-Code-How-Code-Health-Determines-AI-Performance.pdf
+- DX (2025), "AI-Assisted Engineering: Q4 Impact Report" — 91% AI adoption, 22% of merged code AI-authored, 135,000+ developers surveyed — https://getdx.com/blog/ai-assisted-engineering-q4-impact-report-2025/
 
 ## SDD Methodology
 

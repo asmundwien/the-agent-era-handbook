@@ -26,6 +26,8 @@ sources:
   - https://kanban.university/unplanned-work-the-hidden-sprint-surprise/  # Kanban classes of service for unplanned work
   - https://wesmckinney.com/blog/mythical-agent-month/  # Brownfield barrier and agent-generated debt
   - https://resources.scrumalliance.org/Article/scrum-anti-patterns-large-product-backlog  # Backlog size anti-patterns
+  - https://doi.org/10.1109/32.6191  # Boehm & Papaccio, upstream defect costs (IEEE TSE, 1988)
+  - https://www.mheducation.com/highered/product/software-engineering-a-practitioners-approach-pressman.html  # Pressman, defect amplification model
 ---
 
 # 4. SDD Operations

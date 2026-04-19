@@ -15,6 +15,8 @@ sources:
   - https://arxiv.org/abs/2505.16944  # AGENTIF: Benchmarking Instruction Following in Agentic Scenarios (NeurIPS 2025)
   - https://arxiv.org/html/2510.22251v1  # Prompt Inversion: Guardrail-to-Handcuff Transition
   - https://arxiv.org/abs/2506.12469  # Five Levels of Autonomy for AI Agents
+  - https://www.sciencedirect.com/science/article/abs/pii/S0749597809000399  # Leroy (2009), attention residue
+  - https://www.hachettebooks.com/titles/marshall-goldsmith/what-got-you-here-wont-get-you-there/9781401388775/  # Goldsmith, leadership transition
 ---
 
 # 5. Human-Agent Roles

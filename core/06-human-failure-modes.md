@@ -22,6 +22,12 @@ sources:
   - https://pubmed.ncbi.nlm.nih.gov/22127471/  # Goddard, Roudsari & Wyatt, automation bias meta-review (2012)
   - https://www.sciencedirect.com/science/article/abs/pii/S0749597809000399  # Leroy, attention residue
   - https://medium.com/paypal-tech/pre-mortem-technically-working-backwards-1724eafbba02  # Pre-mortem technique
+  - https://doi.org/10.1037/0022-3514.47.6.1231  # Lord et al. (1984), "consider the opposite" debiasing
+  - https://doi.org/10.1518/001872008X312152  # Warm et al. (2008), vigilance cognitive demand
+  - https://doi.org/10.1145/3183519.3183525  # Sadowski et al. (2018), Google code review
+  - https://getdx.com/blog/ai-assisted-engineering-q4-impact-report-2025/  # DX (2025), 135K developer survey
+  - https://doi.org/10.1145/3706598.3713778  # Lee et al. (2025), AI and critical thinking (Microsoft/CMU)
+  - https://cacm.acm.org/news/the-ai-deskilling-paradox/  # Greengard (2025), deskilling paradox
 ---
 
 # 6. Human Failure Modes
