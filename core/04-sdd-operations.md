@@ -219,7 +219,7 @@ Key rules:
 
 Discovered items are logged in a structured, persistent artifact. The log is append-only during implementation; humans curate it between sessions.
 
-**Recommended location:** A project-level `intake.md` file. Discovered items often cross capability boundaries, making a per-capability location (e.g., a section in `tasks.md`) a poor fit.
+Discovered items are logged in a project-level `intake.md` file. Discovered items often cross capability boundaries, making a per-capability location (e.g., a section in `tasks.md`) a poor fit.
 
 **Entry format:**
 
