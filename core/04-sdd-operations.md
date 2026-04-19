@@ -17,6 +17,9 @@ sources:
   - https://github.com/github/spec-kit
   - https://kiro.dev/docs/specs/
   - https://stackoverflow.blog/2026/03/26/coding-guidelines-for-ai-agents-and-people-too/
+  - https://stevemcconnell.com/articles/upstream-decisions-downstream-costs/
+  - https://arxiv.org/abs/2502.13069
+  - https://arxiv.org/abs/2603.26233
 ---
 
 # 4. SDD Operations
@@ -145,6 +148,16 @@ Gaps are logged in a structured section of `tasks.md` during implementation. Dur
 
 This creates a learning loop: each implementation pass improves the design doc, which improves the next implementation pass.
 
+### 4.3.3 Known Failure Mode: Batch Classification
+
+A common failure pattern: an agent encounters multiple gaps and assesses them collectively rather than individually (e.g., "14 warnings, none blocking"). This masks Severity 1 items behind a group label. The defect amplification model (Pressman, after Boehm) shows that undetected upstream defects multiply at each phase — making collective dismissal particularly dangerous for foundational artifacts where downstream capabilities inherit every unresolved ambiguity.
+
+**Why this happens:** Agents default to non-interactive behavior and silent assumption-making (Ambig-SWE, ICLR 2026 — models struggle to distinguish well-specified from underspecified instructions). When facing many gaps simultaneously, the pressure to "keep moving" produces a collective assessment that no individual gap would survive on its own.
+
+**Why this handbook cannot prevent it:** This is a judgment-tier behavior (Handbook 4.2.2). The agent must accurately detect that it is under-classifying — which requires the same self-assessment capability that is failing. Instruction-level compliance for this pattern is estimated at ~85-90%. Mechanical enforcement (structured templates, automated gates) is the reliable mitigation; this section provides awareness, not prevention.
+
+See Application section for the surfacing behavior this awareness enables.
+
 ---
 
 ## 4.4 Post-Implementation Document Lifecycle
@@ -211,6 +224,7 @@ Agent behavioral rules for SDD operations:
 
 - **If** a design doc contains full file contents, **then** flag it: "This design doc contains implementation detail that will diverge from code. Consider replacing with pattern references."
 - **If** you encounter a spec gap during implementation, **then** classify it by severity (Handbook 4.3.1) and take the corresponding action.
+- **If** you are assessing multiple spec gaps in a single artifact, **then** surface this to the human: "I am classifying N gaps in [artifact] simultaneously — presenting individually for review." This is awareness, not a guarantee of correct classification (Handbook 4.3.3).
 - **If** you resolve a Severity 2 gap, **then** log it in tasks.md with: context, what was missing, what you decided, why, and what needs to be patched back.
 - **If** asked to enforce a rule that currently exists only as a markdown instruction, **then** suggest elevating it to a linter rule or hook where possible.
 - **If** a pattern reference in the design doc points to a file, **then** read the actual file — do not assume the design doc's description is current.

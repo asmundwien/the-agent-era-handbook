@@ -57,6 +57,16 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Fowler (2025), "Humans and Agents in Software Engineering Loops" — Agentic Flywheel — https://martinfowler.com/articles/exploring-gen-ai/humans-and-agents.html
 - Kim & Yegge (2025), "The Three Developer Loops" — https://itrevolution.com/articles/the-three-developer-loops-a-new-framework-for-ai-assisted-coding/
 
+## Defect Amplification and Spec Quality
+
+- Boehm & Papaccio (1988), "Understanding and Controlling Software Costs" — upstream defect cost multiplier 50-200x
+- Pressman, "Software Engineering: A Practitioner's Approach" — defect amplification model (illustrating Boehm's cost escalation principle)
+- McConnell (1996), "Upstream Decisions, Downstream Costs" — https://stevemcconnell.com/articles/upstream-decisions-downstream-costs/
+- CodeRabbit (2025), "State of AI vs Human Code Generation" — AI code produces ~1.7x more issues — https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
+- Ambig-SWE (ICLR 2026), "Interactive Agents to Overcome Underspecificity" — clarification-seeking improves performance up to 74% — https://arxiv.org/abs/2502.13069
+- "Ask or Assume?" (2026), uncertainty-aware multi-agent scaffold — 69.4% vs 61.2% resolve rate — https://arxiv.org/abs/2603.26233
+- Human-AI Synergy in Agentic Code Review (2026) — AI skips clarification step humans use — https://arxiv.org/html/2603.15911
+
 ## Requirements Engineering
 
 - Unterkalmsteiner et al. (2024), Requirements testability model — https://arxiv.org/html/2403.17479
