@@ -52,23 +52,20 @@ The following instructions are for **human operators** configuring agent context
 git submodule add https://github.com/asmundwien/the-agent-era-handbook.git
 ```
 
-**Step 2:** Point your coding agent at the handbook. `AGENTS.md` is the cross-tool convention — supported by Claude Code, Cursor, Windsurf, Cline, and OpenAI Codex. Add to your project's `AGENTS.md`:
-
-```markdown
-## Agent-Era Handbook
-Read: ./the-agent-era-handbook/AGENTS.md
-```
-
-**Step 3 (optional):** Use your tool's native features for stronger enforcement. See the platform-specific guide:
+**Step 2:** Set up your coding agent using the platform-specific guide:
 
 | Platform | Guide |
 |---|---|
 | Claude Code | [integration/claude-code.md](integration/claude-code.md) |
 | Cursor | [integration/cursor.md](integration/cursor.md) |
-| GitHub Copilot | [integration/github-copilot.md](integration/github-copilot.md) |
-| Windsurf | [integration/windsurf.md](integration/windsurf.md) |
-| Cline | [integration/cline.md](integration/cline.md) |
 | OpenAI Codex | [integration/openai-codex.md](integration/openai-codex.md) |
+
+**Fallback (any tool):** If your tool isn't listed above, `AGENTS.md` is a cross-tool convention supported by most coding agents. Add to your project's `AGENTS.md`:
+
+```markdown
+## Agent-Era Handbook
+Read: ./the-agent-era-handbook/AGENTS.md
+```
 
 For selective chapter loading and token budget management, see [integration/selective-loading.md](integration/selective-loading.md).
 

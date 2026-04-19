@@ -34,16 +34,13 @@ git submodule add https://github.com/asmundwien/the-agent-era-handbook.git
 
 Then follow the setup guide for your coding agent:
 
-| Platform | Guide |
-|---|---|
-| Claude Code | [integration/claude-code.md](claude-code.md) |
-| Cursor | [integration/cursor.md](cursor.md) |
-| GitHub Copilot | [integration/github-copilot.md](github-copilot.md) |
-| Windsurf | [integration/windsurf.md](windsurf.md) |
-| Cline | [integration/cline.md](cline.md) |
-| OpenAI Codex | [integration/openai-codex.md](openai-codex.md) |
+| Platform | Guide | Enforcement |
+|---|---|---|
+| Claude Code | [claude-code.md](claude-code.md) | Deterministic injection via hook |
+| Cursor | [cursor.md](cursor.md) | Rule injection + `@file` reference |
+| OpenAI Codex | [openai-codex.md](openai-codex.md) | Deterministic if cwd is in handbook dir, otherwise instruction-level |
 
-**Cross-tool shortcut:** `AGENTS.md` is recognized by Claude Code, Cursor, Windsurf, Cline, and OpenAI Codex. If your team uses multiple tools, placing `AGENTS.md` in your project root gives every tool the behavioral baseline with zero per-tool configuration.
+**Other tools:** `AGENTS.md` is a cross-tool convention recognized by most coding agents (including Windsurf, Cline, and GitHub Copilot). If your tool isn't listed above, see the fallback setup in the [README](../README.md).
 
 ## Cross-Chapter Dependencies
 
