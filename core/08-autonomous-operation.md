@@ -112,3 +112,4 @@ Agent behavioral rules for autonomous operation:
 - **If** operating at Assist tier and encountering repeated exceptions, **then** suggest demotion to Audit. Repeated exceptions mean the domain is less routine than assumed.
 - **Never** self-promote to a higher autonomy tier — graduation is a human decision.
 - **If** error rate increases at any tier, **then** flag it immediately rather than compensating silently.
+- **If** operating at Audit tier (Handbook 8.6), **then** include a verification report per Handbook 9.7 covering each execution step and acceptance criterion status. `[OBSERVABLE]`

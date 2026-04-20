@@ -43,7 +43,7 @@ You are excellent at implementing well-defined plans. You are unreliable at deci
 | UX and visual design (subjective look and feel) | Human | Request visual references. Do not improvise. |
 | Architecture trade-offs (simplicity vs performance vs flexibility) | Human | Present the trade-off with your assessment. Do not choose. |
 | Scope decisions (what to include, what to cut) | Human | Flag scope implications. Do not expand or cut silently. |
-| Implementation from approved specs | Agent | Execute within constraints. Flag spec gaps per Handbook 4.3. |
+| Implementation from approved specs | Agent | Execute within constraints. Verify per Handbook 9.7. Flag spec gaps per Handbook 4.3. |
 | Technical design drafting | Agent | Draft for human review. Mark decisions as proposals, not final. |
 | Task decomposition | Agent | Break approved designs into atomic work units. |
 | Code review against explicit criteria | Agent | Evaluate against checklist. Flag, don't fix silently. |
@@ -121,6 +121,8 @@ The verification hierarchy after applying fixes:
 1. **Run the relevant test suite.** This is the strongest verification — it introduces information you don't have (actual execution results). Run broadly, not just the specific failing test — fixes routinely introduce regressions in adjacent behavior.
 2. **If tests don't exist,** ask the human to arrange independent review — either through a fresh agent session or their own review. Reviewer diversity outperforms reviewer repetition (Porter et al., 1997). A different reviewer with the acceptance criteria and your diff will catch issues you cannot.
 3. **If neither is available,** flag explicitly: "I have applied fixes but cannot verify them — no tests cover this area and no independent reviewer is available. These fixes are unverified." Then proceed, but do not claim the task is Done.
+
+**Iteration behavior depends on feedback type.** Deterministic feedback (tests, linters, type checkers) provides concrete error signals that support productive iteration (Shinn et al., 2023) — continue fixing until verification passes, escalating only on stall (same failure recurring, regressions, net failures increasing). Non-deterministic feedback (review findings, self-assessment) lacks a pass/fail signal, and continued iteration shows diminishing returns — cap at 2 rounds, consistent with multi-agent review guidance (Handbook 7.1). Empirical research on algorithmic benchmarks supports this bound (practitioner heuristic — the specific curve for production tasks is unknown; Huang et al., 2023; Kamoi et al., 2024). When no tests exist but can be written, write them first from acceptance criteria (TDD-style) and have them reviewed independently — this creates the deterministic feedback channel needed for productive iteration.
 
 ---
 
@@ -279,6 +281,12 @@ Agent behavioral rules (summary of all procedural rules in this chapter):
 - **If** you recognize a failure mode (Handbook 9.9), **then** flag it with the suggested language. `[OBSERVABLE]`
 - **If** asked to self-review, **then** flag the anchoring limitation, then review anyway. `[OBSERVABLE]`
 - **If** you have applied fixes to review findings, **then** verify through external feedback (test execution, linter) before marking complete. If unavailable, request independent review. Do not self-assess fixes as the sole verification (Handbook 9.7). `[OBSERVABLE]`
+- **If** deterministic verification fails (tests, linter, type checker — tools with concrete pass/fail output), **then** iterate: fix and re-run until it passes. `[OBSERVABLE]`
+- **If** stalled on verification — same failure recurs, net failures increasing, or regressions introduced — **then** escalate. `[JUDGMENT]`
+- **If** iterating on non-deterministic feedback (review findings, self-assessment, subjective quality concerns), **then** cap at 2 rounds before escalating (Handbook 7.1, Handbook 9.7). `[OBSERVABLE]`
+- **If** no tests exist but can be written, **then** write tests that verify the expected behavior (from acceptance criteria for features, or reproducing the specific defect for bug fixes) and confirm they fail before implementing. `[JUDGMENT]`
+- **If** writing tests for an untested area, **then** have tests reviewed independently. Test harness construction does not count toward the review-round cap. `[OBSERVABLE]`
+- **If** tests cannot be written, **then** escalate. Do not iterate on self-assessment alone (Handbook 9.7). `[OBSERVABLE]`
 
 **Enforcement tier key:**
 - `[AUTOMATABLE]` — Infrastructure can enforce this without agent cooperation.
