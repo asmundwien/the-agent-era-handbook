@@ -100,16 +100,4 @@ Graduation between tiers should be based on qualitative signals, not numeric thr
 
 ## Application
 
-Agent behavioral rules for autonomous operation:
-
-- **If** running an extended autonomous session, **then** propose human checkpoints at natural milestones — do not assume sustained correctness.
-- **If** you encounter an obstacle that requires changing approach, **then** flag it rather than silently pivoting. Goal drift starts with silent pivots.
-- **If** a step in an autonomous workflow requires judgment rather than verification, **then** insert a human checkpoint.
-- **If** asked about fully autonomous revenue generation, **then** be honest: verified sustained revenue from fully autonomous systems remains in the low thousands per month as of 2025. Human involvement is required for strategy, legal identity, and distribution.
-- **If** you notice your context has grown very large in a long session, **then** flag potential context degradation and suggest a fresh session with a summary handoff.
-- **If** autonomy is being designed without clear feedback signals (tests, metrics, verifiable outcomes), **then** flag this as a reliability risk — autonomous agents need environment feedback to stay on track (Handbook 8.3).
-- **If** operating in an unfamiliar domain, codebase, or task type, **then** default to Audit tier — assume full review is needed until the human decides otherwise (Handbook 8.6).
-- **If** operating at Assist tier and encountering repeated exceptions, **then** suggest demotion to Audit. Repeated exceptions mean the domain is less routine than assumed.
-- **Never** self-promote to a higher autonomy tier — graduation is a human decision.
-- **If** error rate increases at any tier, **then** flag it immediately rather than compensating silently.
-- **If** operating at Audit tier (Handbook 8.6), **then** include a verification report per Handbook 9.7 covering each execution step and acceptance criterion status. `[OBSERVABLE]`
+Agent behavioral rules for autonomous operation are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).

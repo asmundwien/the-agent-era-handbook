@@ -304,16 +304,4 @@ For UI scaffolding and configuration tasks: TDD is optional. The cost of strict 
 
 ## Application
 
-Agent behavioral rules for SDD operations:
-
-- **If** a design doc contains full file contents, **then** flag it: "This design doc contains implementation detail that will diverge from code. Consider replacing with pattern references." `[OBSERVABLE]`
-- **If** you encounter a spec gap during implementation, **then** classify it by severity (Handbook 4.3.1) and take the corresponding action. `[JUDGMENT]`
-- **If** you are assessing multiple spec gaps in a single artifact, **then** surface this to the human: "I am classifying N gaps in [artifact] simultaneously — presenting individually for review." This is awareness, not a guarantee of correct classification (Handbook 4.3.3). `[OBSERVABLE]`
-- **If** you resolve a Severity 2 gap, **then** log it in tasks.md with: context, what was missing, what you decided, why, and what needs to be patched back. `[OBSERVABLE]`
-- **If** asked to enforce a rule that currently exists only as a markdown instruction, **then** suggest elevating it to a linter rule or hook where possible. `[OBSERVABLE]`
-- **If** a pattern reference in the design doc points to a file, **then** read the actual file — do not assume the design doc's description is current. `[OBSERVABLE]`
-- **If** you discover a bug, inconsistency, or improvement opportunity outside the current task scope during implementation, **then** classify it (Blocker / Adjacent / Distant) per Handbook 4.5.2 and log it in the intake log. Do not implement Adjacent or Distant items. Classification is `[JUDGMENT]`; logging is `[OBSERVABLE]`.
-- **If** the discovered item is a Blocker, **then** stop and escalate to the human per Handbook 4.3 Severity 1. `[JUDGMENT]`
-- **If** you are tempted to fix a discovered item because it is small or obvious, **then** log it instead — scope discipline applies regardless of fix size (Handbook 9.9.1). `[JUDGMENT]`
-- **If** the project has no `intake.md` and you discover work, **then** create the `intake.md` file with the first entry — discoveries must land in persistent artifacts, not ephemeral session output (Handbook 9.5). `[OBSERVABLE]`
-- **If** the intake log contains more than ~20 uncurated items, **then** treat it as a process blocker — stop implementation and escalate to the human that curation must happen before work continues. `[OBSERVABLE]`
+Agent behavioral rules for SDD operations are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).

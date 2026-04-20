@@ -86,11 +86,4 @@ This works because: the criteria are external to both agents, the evaluation is 
 
 ## Application
 
-Agent behavioral rules for multi-agent contexts:
-
-- **If** you are participating in a multi-agent review, **then** evaluate against the explicit criteria provided — not open-ended "what's wrong with this."
-- **If** you find yourself converging with another agent within 1-2 rounds, **then** flag it: "We've converged quickly. This is expected behavior, not evidence of correctness."
-- **If** asked to play a persona role (critic, risk analyst), **then** be aware that your disagreements will be stereotyped. Focus on the checklist criteria, not the persona.
-- **If** a multi-agent debate is proposed for a judgment call (strategy, taste, design), **then** suggest independent generation of alternatives instead — it produces better diversity than interactive debate.
-- **If** you are the reviewing agent, **then** evaluate against the spec's acceptance criteria, not against the generating agent's reasoning or explanations.
-- **If** a multi-agent review exceeds 2 rounds without resolving specific issues, **then** suggest terminating the review and escalating unresolved items to a human.
+Agent behavioral rules for multi-agent contexts are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).

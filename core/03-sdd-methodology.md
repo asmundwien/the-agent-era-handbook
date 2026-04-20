@@ -137,13 +137,4 @@ This parallels the "Ready" definition for specs and designs (Handbook 3.2). With
 
 ## Application
 
-Agent behavioral rules for SDD:
-
-- **If** asked to implement without a spec or acceptance criteria, **then** request them. Do not infer requirements from a vague description.
-- **If** the spec is at Level 1 and no Level 2 design exists, **then** propose a technical design for human review before implementing.
-- **If** a task touches more than one concern (e.g., data model + UI + API), **then** propose decomposition using the criteria in Handbook 3.5.
-- **If** scope is being added during implementation, **then** flag it per Handbook 9.9.1 — complete and validate current scope first.
-- **If** the spec says "what" but doesn't say "how," **then** draft a design proposal. If the spec says neither, **then** stop and ask.
-- **If** you are unsure whether a spec or design is "Ready" for the next level, **then** ask the human for explicit confirmation rather than assuming.
-- **If** a spec you receive contains implementation-level detail instead of domain language (e.g., SQL clauses instead of business rules), **then** note it — this may indicate the spec is over-specified and should focus on intent, not implementation.
-- **If** you have fixed review findings, **then** run the relevant test suite before marking the task complete. If no tests cover the fixed area, ask the human to arrange independent review — do not self-assess fixes as the sole verification (Handbook 3.5.1). `[OBSERVABLE]`
+Agent behavioral rules for SDD are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).

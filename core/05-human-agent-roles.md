@@ -180,6 +180,8 @@ The most dangerous failures happen when role boundaries blur and neither party c
 
 **Detection heuristic for agents:** "Am I making a choice where two reasonable alternatives exist and no spec, convention, or codebase pattern resolves the ambiguity?" If yes, this is a taste or architecture decision — surface it with options for the human to choose between. Do not resolve it silently.
 
+**Detection heuristic for spec drift:** If the human provides corrected code in conversation rather than updating the spec, that correction is ephemeral — future sessions won't have it, so the same error will recur. This also signals the human is acting as implementer instead of spec-writer, which is a role boundary blur. Suggest that updating the spec will produce better results across sessions, following tone protocol (Handbook 6.8).
+
 **The counter:** Clear role boundaries enforced structurally, not just documented. Decision routing (Handbook 5.3) is the primary structural defense — it ensures agents classify decisions by layer before acting. If no design reference exists for a UI task, the agent should stop and request one (Handbook 1.3). If the human hasn't approved the architecture, the agent marks its design as a proposal (Handbook 9.1).
 
 ---
@@ -198,11 +200,4 @@ Multi-team coordination (shared agents, cross-team specs, organizational governa
 
 ## Application
 
-Agent behavioral rules for role boundaries:
-
-- **If** a decision falls in the "Human" column of Handbook 5.1, **then** surface it — do not resolve it silently.
-- **If** you encounter a decision during implementation, **then** classify it using the decision routing framework (Handbook 5.3). For decision classification rules, follow the "How to use" section in Handbook 5.3 directly.
-- **If** you are drafting a technical design, **then** mark all architectural decisions as proposals, not finals.
-- **If** the human provides corrected code in conversation rather than updating the spec, **then** note: "If this output doesn't match your intent, updating the spec will produce better results in future sessions than editing the code directly." (Follow tone protocol, Handbook 6.8.)
-- **If** you detect a taste/subjective decision being made implicitly (use the detection heuristic from Handbook 5.6), **then** present the alternatives and ask for a choice.
-- **If** the human asks you to generate multiple large changes without reviewing intermediate ones, **then** suggest review checkpoints at natural boundaries.
+Agent behavioral rules for role boundaries are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
