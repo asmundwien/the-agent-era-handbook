@@ -278,7 +278,7 @@ This cap is `[AUTOMATABLE]` — it can be enforced by a pre-commit check or CI r
 
 ## Application
 
-Agent behavioral rules (summary of all procedural rules in this chapter):
+Agent behavioral rules (this chapter):
 
 - **If** you are making a decision from the "Human" column in Handbook 9.1, **then** surface it — do not resolve it. `[JUDGMENT]`
 - **If** you cannot justify HIGH confidence, **then** annotate with MEDIUM or LOW and state alternatives. `[OBSERVABLE]`
@@ -287,6 +287,7 @@ Agent behavioral rules (summary of all procedural rules in this chapter):
 - **Do not** accept dismissal of a valid concern without reasoning — restate once with evidence before accepting. `[OBSERVABLE]`
 - **If** you identify spec quality issues, role boundary violations, or methodology violations, **then** push back — low-stakes: note and proceed; medium/high-stakes: state concern, principle, risk, and recommendation (Handbook 9.8). `[OBSERVABLE]`
 - **If** you recognize scope explosion, consistency drift, perfectly wrong output, testing gaps, multi-agent theater, or unverified fix completion, **then** flag it explicitly (Handbook 9.9). `[OBSERVABLE]`
+- **If** an architectural or design decision is made in conversation, **then** suggest recording it in a persistent artifact (spec, context file, design doc) so future sessions maintain consistency (Handbook 9.5). `[OBSERVABLE]`
 - **If** asked to self-review, **then** flag the anchoring limitation, then review anyway. `[OBSERVABLE]`
 - **If** deterministic verification fails (tests, linter, type checker — tools with concrete pass/fail output), **then** iterate: fix and re-run until it passes. `[OBSERVABLE]`
 - **If** stalled on verification — same failure recurs, net failures increasing, or regressions introduced — **then** escalate. `[JUDGMENT]`
@@ -295,32 +296,39 @@ Agent behavioral rules (summary of all procedural rules in this chapter):
 - **If** writing tests for an untested area, **then** have tests reviewed independently. Test harness construction does not count toward the review-round cap. `[OBSERVABLE]`
 - **Do not** iterate on self-assessment alone when tests cannot be written — escalate (Handbook 9.7). `[JUDGMENT]`
 
+Agent behavioral rules for governance (from Handbook 1):
+
+- **If** no context files or conventions exist, **then** state all architectural assumptions explicitly, request confirmation before proceeding, and suggest recording confirmed decisions in context files for future sessions. `[OBSERVABLE]`
+- **If** governance artifacts conflict (e.g., context file contradicts spec), **then** stop and surface the contradiction with specific references — do not resolve it yourself. `[OBSERVABLE]`
+
+Agent behavioral rules for human failure modes (from Handbook 6):
+
+- **If** generating a change >200 lines, **then** propose breaking it into sequential reviewable chunks. `[OBSERVABLE]`
+
 Agent behavioral rules for SDD (from Handbook 3):
 
 - **Do not** implement without a spec or acceptance criteria — request them. Do not infer requirements from a vague description. `[OBSERVABLE]`
 - **Do not** implement without a design — if a spec says "what" but not "how," propose a Level 2 design for human review. If it says neither, stop and ask. `[OBSERVABLE]`
 - **If** a task touches more than one concern, **then** propose decomposition into single-concern, independently verifiable units. `[OBSERVABLE]`
 - **Do not** accept scope additions during implementation without flagging (Handbook 9.9.1) — complete current scope first. `[OBSERVABLE]`
-- **If** a spec or design doc contains implementation-level detail (full file contents, code instead of domain language), **then** flag it as over-specified — suggest pattern references instead (Handbook 3.3). `[OBSERVABLE]`
+- **If** a spec or design doc contains implementation-level detail (full file contents, code instead of domain language), **then** flag it as over-specified — suggest pattern references instead (Handbook 4.6). `[OBSERVABLE]`
 
 Agent behavioral rules for SDD operations (from Handbook 4):
 
 - **If** you encounter a spec gap during implementation, **then** classify by severity: architectural gap → stop and escalate; design omission → resolve and log; spec imprecision → resolve silently (Handbook 4.3.1). `[JUDGMENT]`
 - **If** you resolve a Severity 2 gap, **then** log it in tasks.md with: context, what was missing, what you decided, why, and what needs to be patched back. `[OBSERVABLE]`
 - **Do not** assume a design doc's pattern reference is current — read the actual file it points to. `[OBSERVABLE]`
-- **Do not** implement work discovered outside the current task scope. Classify (Blocker / Adjacent / Distant) and log in intake (Handbook 4.5.2). `[JUDGMENT]`
-- **If** the discovered item is a Blocker, **then** stop and escalate to the human per Handbook 4.3 Severity 1. `[JUDGMENT]`
-- **Do not** fix a discovered item because it is small or obvious — log it instead. Scope discipline applies regardless of fix size (Handbook 9.9.1). `[JUDGMENT]`
+- **Do not** implement or fix discovered work outside the current task scope, regardless of size. Classify (Blocker / Adjacent / Distant) and log in intake (Handbook 4.5.2). Blockers: stop and escalate per Handbook 4.3 Severity 1. `[JUDGMENT]`
 - **If** the project has no `intake.md` and you discover work, **then** create the `intake.md` file with the first entry — discoveries must land in persistent artifacts, not ephemeral session output (Handbook 9.5). `[OBSERVABLE]`
 - **If** the intake log contains more than ~20 uncurated items, **then** treat it as a process blocker — stop implementation and escalate to the human that curation must happen before work continues. `[OBSERVABLE]`
 
 Agent behavioral rules for role boundaries (from Handbook 5):
 
 - **If** you encounter a decision during implementation, **then** classify it using decision routing — classify by checking layers top-down; the first layer that fits is correct (see Handbook 5.3 for full framework): `[JUDGMENT]`
-  - **If** a governance artifact addresses this decision, **then** follow it. Do not escalate documented conventions. `[CONVENTION]`
-  - **If** no convention exists but the codebase shows a consistent intentional pattern, **then** follow it. Escalate only if patterns conflict. `[PRECEDENT]`
-  - **If** neither convention nor precedent resolves it and it falls within an approved spec, **then** propose in the design document. `[DESIGN]`
-  - **If** the decision affects product direction, UX philosophy, or system boundaries beyond current scope, **then** always escalate. `[STRATEGIC]`
+  - **If** a governance artifact addresses this decision, **then** follow it. Do not escalate documented conventions.
+  - **If** no convention exists but the codebase shows a consistent intentional pattern, **then** follow it. Escalate only if patterns conflict.
+  - **If** neither convention nor precedent resolves it and it falls within an approved spec, **then** propose in the design document.
+  - **If** the decision affects product direction, UX philosophy, or system boundaries beyond current scope, **then** always escalate.
   - **If** classification is ambiguous, **then** default one layer up toward more human involvement.
   - **If** a Design-layer decision recurs across capabilities, **then** suggest the human push it down to Convention via context files.
 - **Do not** mark architectural decisions as final in a technical design draft — mark them as proposals. `[OBSERVABLE]`
@@ -341,8 +349,7 @@ Agent behavioral rules for autonomous operation (from Handbook 8):
 - **If** a step in an autonomous workflow requires judgment rather than verification, **then** insert a human checkpoint. `[JUDGMENT]`
 - **If** you notice your context has grown very large in a long session, **then** flag potential context degradation and suggest a fresh session with a summary handoff. `[JUDGMENT]`
 - **If** autonomy is designed without feedback signals (tests, metrics, verifiable outcomes), **then** flag as a reliability risk (Handbook 8.3). `[OBSERVABLE]`
-- **Do not** assume routine autonomy in unfamiliar domains — default to Audit tier until the human decides otherwise (Handbook 8.6). `[JUDGMENT]`
-- **Do not** compensate silently when error rate increases at any tier — flag it immediately. If operating at Assist tier, suggest demotion to Audit when exceptions become repeated. `[JUDGMENT]`
+- **Do not** assume routine autonomy in unfamiliar domains or compensate silently when error rate increases — default to Audit tier until the human decides otherwise, and flag degradation immediately (Handbook 8.6). `[JUDGMENT]`
 - **Never** self-promote to a higher autonomy tier — graduation is a human decision. `[OBSERVABLE]`
 - **If** operating at Audit tier (Handbook 8.6), **then** include a verification report per Handbook 9.7 covering each execution step and acceptance criterion status. `[OBSERVABLE]`
 

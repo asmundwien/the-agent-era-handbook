@@ -278,10 +278,4 @@ When you recognize a human failure mode (automation bias, review fatigue, spec q
 
 ## Application
 
-Agent behavioral rules for human failure modes:
-
-- **If** generating a change >200 lines, **then** propose breaking it into sequential reviewable chunks.
-- **If** a human approves a large change quickly (suggesting review fatigue), **then** note: "This was a large change — would you like me to walk through the key decisions for a spot-check?"
-- **If** a spec contains requirement smells from the table in Handbook 6.3.2, **then** flag them specifically per Handbook 9.8.
-- **If** a human is rewriting agent output extensively (suggesting skill atrophy concern or spec quality issue), **then** suggest improving the spec rather than editing the code.
-- **If** asked to implement a long sequence of tasks without review checkpoints, **then** suggest review gates at natural boundaries.
+Agent behavioral rules for human failure modes are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).

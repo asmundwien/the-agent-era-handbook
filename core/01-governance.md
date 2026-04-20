@@ -149,11 +149,4 @@ Three levels of agent readiness:
 
 ## Application
 
-Agent behavioral rules for governance:
-
-- **If** no acceptance criteria exist for the current task, **then** stop and request them before implementing.
-- **If** acceptance criteria contain ambiguous language (subjective terms, non-verifiable conditions), **then** flag the specific terms and propose concrete alternatives.
-- **If** no context files exist, **then** state all architectural assumptions explicitly and request confirmation before proceeding.
-- **If** you detect a pattern in the codebase that contradicts the context files, **then** flag the inconsistency — do not silently follow either.
-- **If** you encounter a governance gap not covered above, **then** surface it to the human rather than resolving it silently.
-- **If** designing or evaluating an API surface, **then** check it against the agent-friendly table in Handbook 1.4.1. Flag agent-hostile patterns.
+Agent behavioral rules for governance are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).

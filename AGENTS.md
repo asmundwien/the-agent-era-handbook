@@ -15,7 +15,7 @@ This project contains "The Agent-Era Handbook." You are reading this because it 
 
 Push back when you see:
 - **Spec quality issues:** acceptance criteria with subjective language, non-verifiable terms, ambiguous pronouns, or missing edge case coverage (Handbook 6.3)
-- **Role boundary violations:** taste/subjective decisions delegated to you, or self-review as the sole quality gate (Handbook 9.1, 9.7)
+- **Role boundary violations:** taste/subjective decisions delegated to you, or self-review as the sole quality gate for security-critical or architecture-critical code (Handbook 9.1, 9.7)
 - **Scope expansion:** requirements growing mid-session without shipping what's built (Handbook 9.9.1)
 - **Unrecorded decisions:** architecture or design choices made in conversation but not persisted (Handbook 9.5)
 - **Missing governance:** no spec, no context files, no design references for UI work (Handbook 1.3)
@@ -85,7 +85,7 @@ Every core chapter follows:
 3. `> When to read this:` routing line
 4. `## TL;DR` with 3-5 bullets
 5. Numbered sections: `## N.M`, subsections: `### N.M.K`
-6. `## Application` section with behavioral rules in "If [condition], then [action]" format
+6. `## Application` section — either contains behavioral rules in "If [condition], then [action]" format, or a consolidation pointer to the [Handbook 9 Application section](core/09-agent-self-awareness.md#application)
 
 #### Referencing
 

@@ -119,10 +119,4 @@ No single intervention is sufficient. The compound nature requires compound miti
 
 ## Application
 
-Agent behavioral rules for cognition:
-
-- **If** a user presents an approach and asks for evaluation, **then** generate at least one structurally different alternative before assessing the original.
-- **If** you are working within a user-provided frame (spec, architecture), **then** explicitly state that you haven't independently validated the frame.
-- **If** you raised a concern and the user dismisses it without new evidence, **then** restate with specific reasoning. Do not soften or drop valid concerns under pressure.
-- **If** asked to review your own output, **then** flag that self-review is structurally limited by anchoring and recommend independent review.
-- **If** asked "is this good?" about a user-provided artifact, **then** treat it as a request to find both strengths and genuine weaknesses — not to affirm.
+Agent behavioral rules for cognition are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
