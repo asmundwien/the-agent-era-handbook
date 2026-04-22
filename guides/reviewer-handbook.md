@@ -30,11 +30,13 @@ Cognitive psychology: performance on monitoring tasks degrades after 15-20 minut
 
 ## The Review Protocol
 
-### Before reviewing: read the spec
+### Before reviewing: read the intent, constraints, and proposed AC
 
-Review the spec and acceptance criteria *before* seeing the implementation. Know what the code should do. This anchors your expectations to the spec, not to the agent's choices.
+Review the human-provided intent and key constraints *and* the agent-proposed acceptance criteria *before* seeing the implementation. Know what the code should do. This anchors your expectations to the intent, not to the agent's choices.
 
-Without this step, you evaluate "does this code make sense?" instead of "does this code do what was specified?" The first question is much easier to satisfy.
+Without this step, you evaluate "does this code make sense?" instead of "does this code do what was intended?" The first question is much easier to satisfy.
+
+**Review the agent-proposed AC as part of the audit.** The agent proposes full acceptance criteria from the human's intent. These may include edge cases the human did not specify. Check: are the proposed AC complete? Do they match the domain? Did the agent miss anything? This is a key part of the audit step (Handbook 3.2, Level 3).
 
 ### Pass 1: Understand
 
@@ -50,9 +52,9 @@ Go through the acceptance criteria one by one:
 - [ ] What happens at the boundaries (null, empty, zero, max)?
 - [ ] What happens under concurrent access?
 - [ ] What happens if this operation fails partway?
-- [ ] Is this testing the spec's intent or the agent's implementation?
+- [ ] Is this testing the human's intent or the agent's implementation?
 
-The checklist is the key. Free-form review finds what jumps out at you. Checklist review finds what the spec requires. These overlap, but not completely.
+The checklist is the key. Free-form review finds what jumps out at you. Checklist review finds what the acceptance criteria require. These overlap, but not completely.
 
 ### The adversarial question
 
@@ -78,11 +80,11 @@ Specific prompts that work:
 
 Code that compiles, passes tests, looks reasonable — but doesn't do what the user needs. This is the hardest failure mode because it requires comparing the implementation against the *intent*, not against the *syntax*.
 
-**Signal:** The code handles the happy path but the spec had edge cases that aren't covered. Or the code handles a scenario the spec didn't mention — meaning the agent guessed.
+**Signal:** The code handles the happy path but the acceptance criteria had edge cases that aren't covered. Or the code handles a scenario the constraints didn't mention — meaning the agent guessed.
 
 ### Self-referential tests
 
-If the agent wrote both the implementation and the tests, the tests verify the agent's logic — not the spec's requirements. Tests that were written from acceptance criteria (before implementation) catch different bugs than tests written after the code.
+If the agent wrote both the implementation and the tests, the tests verify the agent's logic — not the intent's requirements. Tests that were written from acceptance criteria (before implementation) catch different bugs than tests written after the code.
 
 **Signal:** Every test passes on the first run. Real TDD produces failing tests first.
 
@@ -90,21 +92,21 @@ If the agent wrote both the implementation and the tests, the tests verify the a
 
 Agent output doesn't distinguish "I'm certain about this" from "I'm guessing." If the agent is using the handbook's confidence protocol, look for MEDIUM and LOW annotations — those are the areas that need your deepest attention.
 
-**Signal:** No uncertainty flags anywhere in a complex change. Either the spec was perfectly complete (unlikely) or the agent didn't flag its guesses. (Note: the agent needs the handbook loaded for confidence annotations to appear — see the setup section at the end of this guide.)
+**Signal:** No uncertainty flags anywhere in a complex change. Either the constraints were perfectly complete (unlikely) or the agent didn't flag its guesses. (Note: the agent needs the handbook loaded for confidence annotations to appear — see the setup section at the end of this guide.)
 
 ## When You Find a Defect
 
-1. **Classify:** Is this a spec problem (ambiguous or incomplete acceptance criteria) or an implementation problem (spec is clear but the code is wrong)?
-2. **If spec problem:** Update the spec first, then regenerate. Don't just fix the code — the same spec will produce the same error next session.
-3. **If implementation problem:** File it as a specific, reproducible finding. If the agent is still in session, provide the finding and let it fix. If not, a new session with the spec + finding will produce better results than you editing the code directly.
+1. **Classify:** Is this a constraint problem (ambiguous or incomplete intent) or an implementation problem (constraints are clear but the code is wrong)?
+2. **If constraint problem:** Update the intent or constraints first, then re-execute. Don't just fix the code — the same constraints will produce the same error next session.
+3. **If implementation problem:** File it as a specific, reproducible finding. If the agent is still in session, provide the finding and let it fix. If not, a new session with the intent + constraints + finding will produce better results than you editing the code directly.
 4. **If pattern problem:** The agent used a pattern that works but doesn't match the codebase. Update the context files so future sessions follow the right pattern.
 5. **After the fix: demand test results, not assurances.** When the agent fixes a defect, ask for test execution results — not a self-assessment that the fix "looks correct." The agent cannot reliably evaluate its own fixes without external feedback (Handbook 9.7). If the agent says "fix applied" without citing test results, ask: "What test output confirms this fix works and hasn't broken anything else?" If no tests exist, review the fix yourself or send it to a fresh agent session — the implementing agent's self-assessment is anchored.
 
-## If You're Also the Spec Author
+## If You're Also the Intent Author
 
-You have an additional bias: anchoring on your own spec. You wrote the acceptance criteria, so you see what you expected to see. The agent implemented your mental model — including its blind spots.
+You have an additional bias: anchoring on your own intent. You wrote the key constraints, so you see what you expected to see. The agent implemented your mental model — including its blind spots.
 
-**Counter:** Before reviewing, run through the edge case checklist (Handbook 6.3) against your own spec. Did you cover null inputs, boundaries, concurrency, deletion cascades, partial failure, stale data, and scale? If not, the agent's implementation has unspecified behavior in those areas — and you won't notice because you didn't think of them either.
+**Counter:** Before auditing, run through the edge case checklist (Handbook 6.3) against your own constraints. Did you cover null inputs, boundaries, concurrency, deletion cascades, partial failure, stale data, and scale? The agent should have proposed AC for these — but if your intent was silent on them, the agent's proposals may reflect its assumptions rather than your domain knowledge.
 
 ## Making It Sustainable
 
@@ -114,6 +116,6 @@ To sustain this long-term:
 - **Keep changes small.** This is the single most effective intervention.
 - **Use the agent to help review.** A fresh agent session reviewing against the acceptance criteria catches different issues than the generating session.
 - **Maintain your coding skills.** Write code periodically. The ability to write is what enables you to review. Skill atrophy is real and accelerating.
-- **Measure outcomes, not feelings.** Track bugs in production, spec-to-implementation accuracy, and edge cases caught in review. Don't trust your perception of velocity.
+- **Measure outcomes, not feelings.** Track bugs in production, intent-to-implementation accuracy, and edge cases caught in audit. Don't trust your perception of velocity.
 
 Deep dive: Handbook 6.1 (automation bias), 6.2 (review fatigue), 6.5 (skill atrophy), 2.3 (anchoring), 9.7 (self-review limits), 3.5.1 (task completion).

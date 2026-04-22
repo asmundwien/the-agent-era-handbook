@@ -63,7 +63,7 @@ Automation bias is one of the most replicated findings in human factors research
 | **Checklist-based review** | Externalizes vigilance — you check against criteria, not intuition | Strong (consistent across domains) |
 | **Adversarial framing** ("how could this fail?") | Activates different cognitive mode than "does this work?" | Medium-strong ("consider the opposite" debiasing, Lord et al., 1984) |
 | **Two-pass review** | First pass: understand. Second pass: evaluate. Separates comprehension from judgment. | Medium |
-| **Spec-first review** | Review spec before seeing implementation. Know what to expect. | Medium |
+| **Intent-first review** | Review intent and constraints before seeing implementation. Know what to expect. | Medium |
 | **Time-boxed sessions** (15-20 min with breaks) | Vigilance degrades after 15-20 min of sustained monitoring | Strong (cognitive psychology) |
 
 ---
@@ -86,9 +86,9 @@ Vigilance decrement is rapid — performance on monitoring/detection tasks degra
 
 ---
 
-## 6.3 Spec Writing Skills
+## 6.3 Intent Articulation Skills
 
-This is the human's new primary craft. Six sub-skills, ordered by difficulty:
+This is the human's new primary craft — expressing intent and constraints clearly enough for agents to execute. Six sub-skills, ordered by difficulty:
 
 ### 6.3.1 Format Compliance (days to learn)
 
@@ -192,7 +192,7 @@ The perception gap means self-reported productivity is unreliable. Measure outco
 **Process health:**
 - Review-to-approve ratio: what percentage of reviews require revisions?
 - Spec gap severity distribution: are gaps trending toward minor clarifications or major missing sections?
-- Time from spec approval to working implementation
+- Time from intent definition to working implementation
 
 **Skill maintenance:**
 - Periodic comprehension checks: can you explain what the agent built without reading the code? (Handbook 5.5)

@@ -1,6 +1,6 @@
 ---
 chapter: 4
-title: SDD Operations
+title: Development Operations
 audience:
   primary: [orchestrator, agent-implementer]
   secondary: [reviewer, agent-advisor, agent-reviewer]
@@ -8,18 +8,16 @@ sources:
   - https://addyosmani.com/blog/good-spec/
   - https://addyosmani.com/blog/ai-coding-workflow/
   - https://addyosmani.com/blog/future-agentic-coding/
-  - https://vishalgandhi.in/spec-driven-development/
-  - https://www.augmentcode.com/guides/spec-driven-development-ai-agents-explained
   - https://www.thoughtworks.com/en-us/insights/blog/agile-engineering-practices/spec-driven-development-unpacking-2025-new-engineering-practices
   - https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
   - https://tessl.io/blog/taming-agents-with-specifications-what-the-experts-say/
   - https://marmelab.com/blog/2025/11/12/spec-driven-development-waterfall-strikes-back.html
-  - https://github.com/github/spec-kit
-  - https://kiro.dev/docs/specs/
   - https://stackoverflow.blog/2026/03/26/coding-guidelines-for-ai-agents-and-people-too/
   - https://stevemcconnell.com/articles/upstream-decisions-downstream-costs/
   - https://arxiv.org/abs/2502.13069
   - https://arxiv.org/abs/2603.26233
+  - https://arxiv.org/abs/2510.23761  # TDFlow — 94.3% SWE-bench Verified with human-written tests
+  - https://arxiv.org/abs/2412.02883  # TDD-Bench Verified — agents achieve 23.6% writing failing tests (IBM, 2024)
   - https://basecamp.com/shapeup/3.3-chapter-12  # Shape Up — discovered vs imagined tasks
   - https://basecamp.com/shapeup/3.4-chapter-13  # Shape Up — hill charts and scope hammering
   - https://github.com/bmad-code-org/BMAD-METHOD/issues/1199  # BMAD maintenance backlog pattern
@@ -30,21 +28,25 @@ sources:
   - https://www.mheducation.com/highered/product/software-engineering-a-practitioners-approach-pressman.html  # Pressman, defect amplification model
 ---
 
-# 4. SDD Operations
+# 4. Development Operations
 
-> **When to read this:** When calibrating design doc detail level, building enforcement mechanisms, handling spec gaps during implementation, managing documents post-implementation, or handling work discovered mid-session.
+> **When to read this:** When calibrating design doc detail level, building enforcement mechanisms, handling constraint gaps during implementation, managing documents post-implementation, or handling work discovered mid-session.
 
 ## TL;DR
 
-- **Design docs specify decisions, not implementations.** Keep it if removing it would force an architectural decision. Remove it if the agent can derive it from conventions.
-- **Enforce rules by constraint, not instruction.** Hooks and linters are deterministic. Markdown instructions are probabilistic (~85-90% compliance).
-- **Spec gaps are inevitable — handle them by severity.** Architectural gaps require humans. Trivial omissions can be resolved by the agent if logged.
+- **Design docs are agent-produced implementation artifacts.** They specify decisions, not implementations. For architecture tasks (Handbook 3.6), the human reviews them before implementation.
+- **Enforce rules by constraint, not instruction.** Tests and hooks are deterministic (~99%). Markdown instructions are probabilistic (~85-90% compliance). Tests are the primary enforcement mechanism.
+- **Constraint gaps are inevitable — handle them by severity.** Architectural gaps require humans. Trivial omissions can be resolved by the agent if logged.
 - **After implementation, the codebase is the source of truth.** Design docs record *why*. Code records *what*.
 - **Discovered work is captured, not acted on.** Classify, log to an intake log, and continue. Humans curate between sessions.
 
 ---
 
 ## 4.1 Design Document Granularity
+
+Design docs are agent-produced during Level 2 execution (Handbook 3.2). They are implementation artifacts — not governance artifacts, and they do not establish precedent for future work. For architecture-type tasks (Handbook 3.6), the human reviews the design before implementation proceeds. For all other tasks, the design is ephemeral.
+
+The granularity question still matters: an agent-produced design that is too detailed or too vague creates the same problems whether or not a human reviews it.
 
 ### 4.1.1 The Problem
 
@@ -92,6 +94,7 @@ Rules can be enforced at three levels, in decreasing reliability:
 |---|---|---|---|
 | **Impossible** | Config/tooling makes the violation physically impossible | 100% | CSS theme that only exposes design tokens |
 | **Caught automatically** | Hooks/linters detect and block the violation | ~99% | Linter rule for `noDefaultExport`, commit-msg hook |
+| **Caught automatically** | Tests fail when behavior deviates from acceptance criteria | ~99% | Failing test suite, TDD red/green cycle |
 | **Instructed** | Markdown docs tell the agent not to do it | ~85-90% | "Do not use arbitrary color values" in a context file |
 
 **Invest in the highest level possible.** Every rule that exists only as instruction should be evaluated: can it be moved to "caught automatically" or "impossible"?
@@ -112,7 +115,7 @@ Rules can be enforced at three levels, in decreasing reliability:
 **Agent permission restrictions** (settings.json):
 - Deny lists for dangerous operations (force push, hard reset).
 - Read-deny on secret files (.env).
-- Write-deny on constitution files (context files, spec docs, design system files).
+- Write-deny on constitution files (context files, design system files).
 
 **The "every mistake becomes a rule" principle:** When an agent makes a mistake, don't just fix it — encode the prevention as a constraint. Update context files, add a lint rule, or add a hook check. Monotonically improving constraint surface.
 
@@ -137,11 +140,13 @@ The honest conclusion: roughly one-third of this handbook's rules will never exc
 
 ---
 
-## 4.3 Spec Gap Handling
+## 4.3 Constraint Gap Handling
+
+When intent, acceptance criteria, or the constitution are insufficient for the agent to proceed with confidence, classify the gap by severity.
 
 ### 4.3.1 Severity Classification
 
-**Severity 1 — Architectural gap.** The agent must choose between multiple reasonable alternatives and no spec, convention, or codebase pattern resolves the choice. **Action: stop and ask.** Examples: auth model for an endpoint, inheritance vs materialization, cache invalidation strategy, error response shape when no codebase convention exists.
+**Severity 1 — Architectural gap.** The agent must choose between multiple reasonable alternatives and no intent, convention, or codebase pattern resolves the choice. **Action: stop and ask.** Examples: auth model for an endpoint, inheritance vs materialization, cache invalidation strategy, error response shape when no codebase convention exists.
 
 **Severity 2 — Design omission.** Something is missing but the correct solution is determinable from existing codebase patterns with high confidence — only one reasonable alternative exists. **Action: proceed, log the gap.** Examples: missing type declaration devDependency (existing pattern obvious), need to split app definition from server startup for testability (standard practice), error response shape when 15 existing endpoints use the same format.
 
@@ -153,7 +158,7 @@ The honest conclusion: roughly one-third of this handbook's rules will never exc
 
 Gaps are logged in a structured section of `tasks.md` during implementation. During review:
 - Severity 2 gaps must be patched back into the design doc before the capability is marked Done.
-- Severity 3 gaps are noted for context and may inform future spec writing.
+- Severity 3 gaps are noted for context and may inform future intent articulation.
 
 This creates a learning loop: each implementation pass improves the design doc, which improves the next implementation pass.
 
@@ -174,9 +179,9 @@ See Application section for the surfacing behavior this awareness enables.
 | Document | After implementation | Maintained? |
 |---|---|---|
 | **Constitution** (context files, design system) | Living rulebook. Updated when conventions change. | Yes — actively |
-| **Spec** | Records what was built and why. Status → "Done." | Lightly — only if requirements change |
-| **Design** | Records architectural decisions and rationale. | Lightly — patched with gaps, then stable |
-| **Tasks** | Consumed and completed. Historical record. | No — frozen |
+| **Intent + AC** | Records what was built and why. Status → "Done." | Lightly — only if requirements change |
+| **Design** (agent-produced) | Records design decisions and rationale. Implementation artifact. | No — ephemeral unless architecture task |
+| **Tasks** (agent-produced) | Consumed and completed. Historical record. | No — frozen |
 | **Intake log** | Append-only during sessions. Curated between sessions. | Yes — actively (curated by human) |
 | **Code** | Source of truth for current implementation. | Yes — actively |
 
@@ -186,7 +191,7 @@ See Application section for the surfacing behavior this awareness enables.
 
 ## 4.5 Discovered Work
 
-The SDD pipeline (Handbook 3.2) handles *planned* work: spec, design, tasks, implementation. But task lists grow during implementation — this is normal, not a failure. Agents encounter edge cases, inconsistencies, and improvement opportunities at machine speed. This section handles *discovered* work: items that surface during implementation and do not fit the current task scope.
+The development hierarchy (Handbook 3.2) handles *planned* work: intent, agent execution, audit. But task lists grow during implementation — this is normal, not a failure. Agents encounter edge cases, inconsistencies, and improvement opportunities at machine speed. This section handles *discovered* work: items that surface during implementation and do not fit the current task scope.
 
 ### 4.5.1 Discovery Is a Byproduct, Not an Objective
 
@@ -207,7 +212,7 @@ When an agent encounters work outside the current task scope, classify it (adapt
 |---|---|---|
 | **Blocker** | Cannot complete current task without resolving this | Stop. Escalate to human per Handbook 4.3 Severity 1. |
 | **Adjacent** | Related to current work, clear fix, small scope | Log it. Do not act. Continue current task. |
-| **Distant** | Unrelated to current work or requires its own spec cycle | Log it. Do not act. Continue current task. |
+| **Distant** | Unrelated to current work or requires its own development cycle | Log it. Do not act. Continue current task. |
 
 **Security exception:** Classify as Blocker regardless of scope relevance: credentials or secrets exposed in code or logs, authentication/authorization checks demonstrably missing for endpoints handling user data, or direct evidence of data exposure. Escalate immediately — these are not safe to defer to between-session curation. General code quality concerns (e.g., a dependency with a known CVE, permissive CORS) are Adjacent or Distant, not security Blockers.
 
@@ -241,14 +246,14 @@ The human's responsibility between sessions:
 
 | Action | When | Result |
 |---|---|---|
-| **Promote** | Item is real and worth doing | Create a spec — item enters the SDD pipeline at Level 1 (Handbook 3.2) |
+| **Promote** | Item is real and worth doing | Write intent + key constraints — item enters the development hierarchy at Level 1 (Handbook 3.2) |
 | **Absorb** | Trivially small fix within an existing task's scope (see below) | Add to relevant `tasks.md` |
 | **Defer** | Real but not now | Leave in intake log with a note |
 | **Discard** | Noise, duplicate, or already resolved | Remove from intake log |
 
-**Absorb criteria:** Absorb is a deliberate relaxation of the SDD gate model for trivially small items. An item qualifies for Absorb only when it meets **both** criteria: (1) it meets Severity 2 criteria (Handbook 4.3.1) — the correct fix is determinable from existing codebase patterns with high confidence, only one reasonable alternative exists, no design decision required; and (2) it does not expand the existing task's scope — the fix touches files the task already touches and adds no new behavior, API surface, or user-visible state. Examples: a missing null check following the pattern in adjacent functions, a typo in a string literal, a missing import, dead code in a file being modified. Counter-examples that require Promote instead: adding error handling for an unspecced case (new behavior), fixing a performance issue (design judgment), adding a validation rule (new constraint).
+**Absorb criteria:** Absorb is a deliberate relaxation for trivially small items. An item qualifies for Absorb only when it meets **both** criteria: (1) it meets Severity 2 criteria (Handbook 4.3.1) — the correct fix is determinable from existing codebase patterns with high confidence, only one reasonable alternative exists, no design decision required; and (2) it does not expand the existing task's scope — the fix touches files the task already touches and adds no new behavior, API surface, or user-visible state. Examples: a missing null check following the pattern in adjacent functions, a typo in a string literal, a missing import, dead code in a file being modified. Counter-examples that require Promote instead: adding error handling for an unspecced case (new behavior), fixing a performance issue (design judgment), adding a validation rule (new constraint).
 
-**Decay policy:** An intake log that is never curated becomes a graveyard (a well-documented anti-pattern in product backlog research — Scrum Alliance recommends no more than ~20 items in a managed backlog, adapted here as a threshold for a raw intake queue). Items deferred for more than two full capability implementation cycles (spec → design → tasks → done) without human action should be reviewed and either promoted or discarded.
+**Decay policy:** An intake log that is never curated becomes a graveyard (a well-documented anti-pattern in product backlog research — Scrum Alliance recommends no more than ~20 items in a managed backlog, adapted here as a threshold for a raw intake queue). Items deferred for more than two full capability implementation cycles (intent → execution → audit → done) without human action should be reviewed and either promoted or discarded.
 
 **Hard cap:** If the intake log exceeds ~20 uncurated items, treat it as a process blocker — stop implementation and escalate to the human that curation must happen before work continues. Do not keep working while silently dropping discoveries. An uncurated intake log is a governance failure, and the handbook does not permit agents to work through governance failures silently (Handbook 1.3). This prevents the pipeline pressure documented in Handbook 1.1.1 — agents generating artifacts at machine speed while humans process them at human speed.
 
@@ -282,20 +287,29 @@ The distinction: examples that define contracts or introduce new patterns are ap
 
 ---
 
-## 4.7 Testing Strategy for SDD
+## 4.7 Test-Driven Constraint Strategy
 
-### 4.7.1 The Two-Agent Split
+Tests are the primary mechanism for constraining agent implementation (see Handbook 3.1 for the evidence). This section covers the operational workflow for test-driven constraints.
 
-For data model, API, and complex interaction tasks: one agent writes tests from acceptance criteria, a separate agent implements. The test-writing agent never sees the implementation. This prevents the known anti-pattern of self-referential tests (Handbook 9.9.4).
+### 4.7.1 The Constraint Loop
 
-For UI scaffolding and configuration tasks: TDD is optional. The cost of strict TDD exceeds its value for deterministic, low-risk changes.
+1. **Agent proposes acceptance criteria and tests** from the human's intent and key constraints. The agent draws on the constitution (conventions, patterns) and edge case categories (Handbook 3.3) to propose comprehensive criteria.
+2. **Human reviews proposed tests at audit** (Level 3, Handbook 3.2). Are the right behaviors tested? Are edge cases covered? This is cheaper than writing tests from scratch — reviewing is less cognitive load than authoring.
+3. **Agent implements to pass the tests.** The tests are the primary constraint. The agent iterates until tests pass, using deterministic feedback (Handbook 9.7).
+4. **Where tests aren't feasible** (UI, config, early greenfield), the constitution and intent serve as constraints. The human audits the output directly.
 
-### 4.7.2 Visual Testing
+**Honest limitation:** Agents cannot reliably author failing tests. The best model achieved only 23.6% fail-to-pass rate when writing tests autonomously (TDD-Bench, IBM, 2024). Agent-proposed tests are more reliable when the domain is well-understood and the codebase provides rich examples. For novel domains, the human should write or closely review the failing tests before implementation begins — the model degrades gracefully to human-authored TDD.
+
+### 4.7.2 The Two-Agent Split
+
+For critical work (data model, API, complex interactions): one agent writes tests from acceptance criteria, a separate agent implements. The test-writing agent never sees the implementation. This prevents the known anti-pattern of self-referential tests (Handbook 9.9.4).
+
+### 4.7.3 Visual Testing
 
 - **Visual smoke tests** should assert that CSS/styles are actually applied (computed style assertions, not just DOM structure). Agent-generated UI frequently has correct markup with missing or wrong styles.
 - **Visual regression baselines** must be generated from a known-good state — not from an unstyled or broken build. Establishing baselines from the agent's first output locks in any initial styling errors.
 
-### 4.7.3 E2E Test Consolidation
+### 4.7.4 E2E Test Consolidation
 
 - For static or informational pages: consolidate into user-workflow tests (one test covering a full user journey)
 - For functional flows (forms, interactions, multi-step processes): individual feature tests
@@ -304,4 +318,4 @@ For UI scaffolding and configuration tasks: TDD is optional. The cost of strict 
 
 ## Application
 
-Agent behavioral rules for SDD operations are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for development operations are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).

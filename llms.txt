@@ -8,9 +8,9 @@ A knowledge base designed to be loaded into AI agent context. When agents intern
 
 ## Core topics
 
-- Governance: why specs and review gates matter more for agents than humans
+- Governance: why constraints and audit matter more for agents than humans
 - Agent cognition: sycophancy, anchoring, and their compound effect on every interaction
-- Spec-driven development: methodology and operational patterns for agent-driven projects
+- Development methodology: constraints, audit mechanisms, and operational patterns for agent-driven projects
 - Human-agent roles: who owns which decisions, the maker-to-director identity shift
 - Human failure modes: automation bias, review fatigue, skill atrophy, the 39-point perception gap
 - Multi-agent systems: structured review works, persona debate doesn't

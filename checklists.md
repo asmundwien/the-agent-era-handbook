@@ -9,7 +9,7 @@
 - [ ] Constitution document (AGENTS.md or equivalent) with project rules, architecture, boundaries?
 - [ ] Design system with concrete visual references?
 - [ ] Automated verification (linting, type checks, pre-commit hooks)?
-- [ ] Review gates between spec levels?
+- [ ] Task-type routing with appropriate oversight per task (Handbook 3.6)?
 - [ ] Boundary system (always do / ask first / never do)?
 - [ ] Agent isolation strategy (worktrees, separate sessions, scoped context)?
 - [ ] Protocol for missing governance (Handbook 1.3)?
@@ -21,16 +21,17 @@
 - [ ] Separation between generating agent and reviewing agent?
 - [ ] Awareness that "Is this good?" is structurally broken as an evaluation question?
 
-## Handbook 3 — SDD Methodology
+## Handbook 3 — Development Methodology
 
-- [ ] Every feature has explicit acceptance criteria before implementation?
-- [ ] Review gates between spec levels with explicit "Ready" confirmation?
+- [ ] Every feature has human-provided intent + key constraints before implementation, with full AC proposed by agent and reviewed at audit?
+- [ ] Constraints (negative boundaries) defined alongside intent?
 - [ ] Tasks decomposed to single-concern, verifiable, isolated units (Handbook 3.5)?
 - [ ] Agent speed used for iteration velocity, not feature accumulation?
 - [ ] Fixes verified through test execution or independent review, not self-assessment (Handbook 3.5.1)?
 - [ ] Full relevant test suite run after fixes, not just the specific failing test?
+- [ ] Audit mechanisms (tests, linters, type checks) enforce constraints mechanically?
 
-## Handbook 4 — SDD Operations
+## Handbook 4 — Development Operations
 
 - [ ] Design docs specify decisions and contracts, not full file contents?
 - [ ] Coding conventions enforced by linters, not just instructions?

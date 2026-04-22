@@ -118,7 +118,7 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - CodeScene (2026), "AI-Ready Code: How Code Health Determines AI Performance" — https://codescene.com/hubfs/whitepapers/AI-Ready-Code-How-Code-Health-Determines-AI-Performance.pdf
 - DX (2025), "AI-Assisted Engineering: Q4 Impact Report" — 91% AI adoption, 22% of merged code AI-authored, 135,000+ developers surveyed — https://getdx.com/blog/ai-assisted-engineering-q4-impact-report-2025/
 
-## SDD Methodology
+## Development Methodology
 
 - Augment Code SDD guide — https://www.augmentcode.com/guides/what-is-spec-driven-development
 - Augment Code best practices — https://www.augmentcode.com/blog/best-practices-for-using-ai-coding-agents
@@ -135,6 +135,11 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Darrow, state of vibe-coding (2026) — https://www.kristindarrow.com/insights/the-state-of-vibecoding-in-feb-2026
 - Piskala (2026), "Spec-Driven Development: From Code to Contract" — first academic SDD paper — https://arxiv.org/abs/2602.00180
 - Monperrus (2026), "Bootstrapping Coding Agents: The Specification Is the Program" — https://arxiv.org/abs/2603.17399
+- TDFlow — https://arxiv.org/abs/2510.23761
+- TDD-Bench Verified (IBM, 2024) — https://arxiv.org/abs/2412.02883
+- Willison, red/green TDD — https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/
+- Gorman, TDD + AI — https://codemanship.wordpress.com/2026/01/09/why-does-test-driven-development-work-so-well-in-ai-assisted-programming/
+- Brooker, spec mutability — https://brooker.co.za/blog/2026/04/09/waterfall-vs-spec.html
 
 ## Discovered Work and Backlog Management
 

@@ -2,7 +2,7 @@
 
 > **Who this is for:** A developer transitioning from writing code to directing AI agents day-to-day.
 > **Time to read:** 12 minutes.
-> **Core chapters referenced:** Handbook 3 (SDD), 4 (Operations), 5 (Roles), 6 (Failure Modes).
+> **Core chapters referenced:** Handbook 3 (Development Methodology), 4 (Development Operations), 5 (Roles), 6 (Failure Modes).
 
 ## The Uncomfortable Truth
 
@@ -12,49 +12,56 @@ This guide won't pretend the transition is easy. It will give you the practical 
 
 ## The Daily Workflow
 
-### Before you start: write the spec
+### Before you start: provide intent + key constraints
 
-The spec is your primary output now. Not code — the spec. A good spec produces correct agent output on first pass. A bad spec produces confident garbage.
+Your intent and constraints are your primary output now. Not code — the constraints. Clear intent with 3-5 non-negotiable criteria produces correct agent output on first pass. Vague intent produces confident garbage.
 
-**What a good spec looks like:**
-- Given/When/Then acceptance criteria for every behavior
-- Edge cases covered (null inputs, boundaries, concurrency, deletion cascades, partial failure)
+**What good intent + constraints looks like:**
+- Intent in domain language ("Users should be able to delete their account")
+- 3-5 key constraints in Given/When/Then format — the things that matter most
 - Domain language, not implementation details ("support optimistic locking" not "add WHERE updated_at = :original")
-- Single-sentence requirements where possible (longer requirements exponentially reduce testability)
+- Single-sentence constraints where possible (longer requirements exponentially reduce testability)
 
 **A concrete example:**
 
 ```
-Feature: User account deletion
+Intent: User account deletion
 
-Given a user with an active account and 3 pending orders
-When the user requests account deletion
-Then the account is marked for deletion (not immediately removed)
-And the user receives a confirmation email with a 14-day cancellation window
-And active sessions are terminated
-And the deletion request is recorded in the audit log
-
-Edge cases:
+Key constraints:
+- Given a user with an active account
+  When the user requests account deletion
+  Then the account is marked for deletion (not immediately removed)
+  And a 14-day cancellation window begins
 - Given the user has a pending payment
   When they request deletion
-  Then the system blocks deletion and shows "Complete or cancel pending payments first"
-- Given two deletion requests arrive simultaneously (e.g., user clicks twice)
-  When the second request is processed
-  Then it is silently ignored (idempotent)
-- Given the 14-day window expires
-  When the system processes the deletion
-  Then all personal data is removed but order history is retained (anonymized) for compliance
+  Then the system blocks deletion until payments are resolved
+- Deletion must be idempotent (duplicate requests silently ignored)
 ```
 
-**What a bad spec looks like:**
+The agent proposes full acceptance criteria from this — including edge cases like concurrent access, the 14-day expiry flow, session termination, and audit logging. You review these at audit.
+
+**What bad intent looks like:**
 - "Handle errors appropriately" (non-verifiable)
 - "Make the UI user-friendly" (subjective)
 - "The system should quickly process requests" (ambiguous adverb)
 - Multi-paragraph requirements mixing what, how, and why
 
-You will be tempted to skip spec writing because "agents are fast, I'll just iterate." This is the #1 failure mode. Fast iteration on a bad foundation produces a lot of wrong things quickly.
+You will be tempted to skip constraint-writing because "agents are fast, I'll just iterate." This is the #1 failure mode. Fast iteration on unclear intent produces a lot of wrong things quickly.
 
 Deep dive: Handbook 3.3, 6.3.
+
+### Before you start: classify the task type
+
+Not every task needs the same level of oversight. Before the agent executes, classify the task (Handbook 3.6):
+
+| Task type | Your input | Gate |
+|---|---|---|
+| Bug fix / maintenance | Intent — or a failing test IS the intent | Audit output after |
+| Feature (settled architecture) | Intent + key constraints | Audit output after |
+| Feature (new architecture) | Intent + key constraints | Review design before implementation |
+| Irreversible changes | Intent + key constraints | Review design before implementation |
+
+When the classification is ambiguous, escalate to the higher-gate path. It is always safer to review than to skip review.
 
 ### During implementation: one task at a time
 
@@ -68,9 +75,9 @@ Give the agent one task per session. Review before moving to the next. Don't bat
 
 Deep dive: Handbook 3.5.
 
-### During implementation: handle spec gaps
+### During implementation: handle constraint gaps
 
-The agent will discover things the spec didn't cover. This is normal. Classify by severity:
+The agent will discover things your constraints didn't cover. This is normal — the model expects it. Classify by severity:
 
 | Severity | What it is | Agent action |
 |---|---|---|
@@ -78,17 +85,17 @@ The agent will discover things the spec didn't cover. This is normal. Classify b
 | **2 — Omission** | Something missing but the answer is obvious from existing patterns | Proceed and log the gap. |
 | **3 — Imprecision** | Criterion is incomplete but intent is clear | Proceed and note it. |
 
-The key: Severity 1 gaps require your judgment. Severity 2 and 3 don't — but they must be logged so you can review them and update the design doc.
+The key: Severity 1 gaps require your judgment. Severity 2 and 3 don't — but they must be logged so you can review them at audit.
 
 Deep dive: Handbook 4.3.
 
 ### During implementation: handle discovered work
 
-Beyond spec gaps, agents will discover bugs, inconsistencies, and improvement opportunities outside the current task scope. These are not spec gaps — they are new work items.
+Beyond constraint gaps, agents will discover bugs, inconsistencies, and improvement opportunities outside the current task scope. These are not constraint gaps — they are new work items.
 
 The rule: **classify and capture, never act.** The agent logs each discovery in a project-level `intake.md` file with a classification (Blocker / Adjacent / Distant). Only Blockers — items that literally prevent completing the current task — get escalated. Everything else is logged and left for you to curate between sessions.
 
-Your curation options: **Promote** (create a spec), **Absorb** (fold into an existing task), **Defer** (leave with a note), or **Discard** (remove). Keep the intake log under ~20 items — if it grows beyond that, curation is not keeping pace.
+Your curation options: **Promote** (create a new task with intent + constraints), **Absorb** (fold into an existing task), **Defer** (leave with a note), or **Discard** (remove). Keep the intake log under ~20 items — if it grows beyond that, curation is not keeping pace.
 
 Deep dive: Handbook 4.5.
 
@@ -106,7 +113,7 @@ Your review effectiveness is under structural attack from three directions:
 - **Adversarial framing.** Ask "how could this fail?" not "does this work?"
 - **Two-pass review.** First: understand what it does. Second: evaluate if it's correct.
 - **Time-boxed sessions.** Vigilance degrades after 15-20 minutes. Take breaks.
-- **Review the spec before seeing the code.** Know what to expect.
+- **Review your intent + constraints before seeing the code.** Know what to expect. Also review the agent-proposed AC — did the agent cover the right edge cases?
 
 Deep dive: Handbook 6.1-6.2.
 
@@ -122,13 +129,13 @@ It compiles. Tests pass. It looks right. So you approve it. But "it compiles and
 
 The dopamine hit of crafting an elegant solution is gone. The new reward — "the system I set up produced a correct result" — is real but psychologically different. This is normal.
 
-**Counter:** Redefine success. A spec that produces correct code on first pass is your new craft. Time-block: either code yourself or direct agents in a given block. Don't interleave (23 minutes to regain focus after switching).
+**Counter:** Redefine success. Intent + constraints that produce correct output on first pass is your new craft. Time-block: either code yourself or direct agents in a given block. Don't interleave (23 minutes to regain focus after switching).
 
-### You will blame the agent for bad specs
+### You will blame the agent for unclear intent
 
-When agent output is wrong, the instinct is to blame the agent. But if the spec was ambiguous, the agent did what it was trained to do — make a confident decision. The spec IS the product now.
+When agent output is wrong, the instinct is to blame the agent. But if your intent or constraints were ambiguous, the agent did what it was trained to do — make a confident decision. Your constraints ARE the product now.
 
-**Counter:** When output is wrong, fix the spec first. Then regenerate. Don't just fix the code — the same spec will produce the same error next session.
+**Counter:** When output is wrong, fix the intent or constraints first. Then re-execute. Don't just fix the code — the same constraints will produce the same error next session.
 
 ### Your skills will atrophy if you let them
 
@@ -141,7 +148,7 @@ Deep dive: Handbook 6.4-6.5.
 ## The Agent Can Help You
 
 If you load the handbook into your agents' context, they will:
-- Flag spec quality issues before implementing (requirement smells, missing edge cases)
+- Flag intent quality issues before executing (requirement smells, missing constraints)
 - Surface decisions that require your judgment instead of resolving them silently
 - Flag scope creep when requirements expand mid-session
 - Note when they're making low-confidence decisions

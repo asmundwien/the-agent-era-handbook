@@ -17,8 +17,8 @@ Every chapter follows the same structure:
 |---|---|---|
 | [01](01-governance.md) | Governance | Strategic, Orchestrator, Agent-advisor |
 | [02](02-agent-cognition.md) | Agent Cognition | All agent roles, Orchestrator, Reviewer |
-| [03](03-sdd-methodology.md) | SDD Methodology | Strategic, Orchestrator, Agent-advisor |
-| [04](04-sdd-operations.md) | SDD Operations | Orchestrator, Agent-implementer |
+| [03](03-development-methodology.md) | Development Methodology | Strategic, Orchestrator, Agent-advisor |
+| [04](04-development-operations.md) | Development Operations | Orchestrator, Agent-implementer |
 | [05](05-human-agent-roles.md) | Human-Agent Roles | Strategic, Orchestrator, Agent-advisor |
 | [06](06-human-failure-modes.md) | Human Failure Modes | Orchestrator, Reviewer |
 | [07](07-multi-agent-systems.md) | Multi-Agent Systems | Orchestrator, Agent-advisor, Agent-reviewer |

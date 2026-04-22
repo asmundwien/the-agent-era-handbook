@@ -26,7 +26,7 @@ sources:
 ## TL;DR
 
 - **Humans own taste, strategy, and subjective judgment.** Agents own execution, drafting, decomposition, and verification.
-- **The bottleneck hierarchy has shifted.** Spec quality → design decisions → review capacity → user feedback → governance infrastructure. Production capacity is no longer a constraint.
+- **The bottleneck hierarchy has shifted.** Intent and constraint quality → architecture review → review capacity → user feedback → governance infrastructure. Production capacity is no longer a constraint.
 - **The maker-to-director transition is an identity change, not a skill acquisition.** 40% of new managers fail it. Acknowledge the difficulty.
 - **Decision routing has five layers: Enforced → Convention → Precedent → Design → Strategic.** Agents classify decisions by type and act accordingly. The human's investment is maintaining layers 1–3 so fewer decisions escalate.
 - **Compound failures happen when role boundaries blur.** The agent makes a taste decision silently, the human doesn't catch it, and the flaw compounds.
@@ -41,7 +41,7 @@ The subjective, taste-dependent, judgment-requiring work:
 |---|---|---|
 | **Product direction** | What to build, for whom, why | Agent builds what's specified, not what's needed |
 | **UX and visual design** | Subjective feel, brand, aesthetics | "Functional but soulless interfaces" |
-| **Spec authorship and review** | Resolving ambiguity requires domain judgment | Agent resolves ambiguity confidently and wrong |
+| **Intent articulation and constraint definition** | Resolving ambiguity requires domain judgment | Agent resolves ambiguity confidently and wrong |
 | **Architecture decisions** | Trade-offs between competing values | Agent optimizes for one dimension |
 | **User feedback interpretation** | What users need vs what they ask for | Agent takes feedback literally |
 
@@ -51,7 +51,7 @@ The deterministic, scalable, verifiable work:
 
 | Domain | Why agent-owned | Human bottleneck if not delegated |
 |---|---|---|
-| **Implementation from approved specs** | Deterministic execution within constraints | Human time spent on mechanical coding |
+| **Implementation from intent + constraints** | Deterministic execution within constraints | Human time spent on mechanical coding |
 | **Technical design drafting** | Propose contracts and schemas for review | Human time spent on boilerplate architecture |
 | **Task decomposition** | Break designs into atomic work units | Human time spent on project management |
 | **Code review against criteria** | Pattern matching, style, type errors | Human attention spent on automatable checks |
@@ -61,7 +61,7 @@ The deterministic, scalable, verifiable work:
 
 Sections 5.1 and 5.2 define the ends of the spectrum — what humans own, what agents own. In practice, most decisions fall in between. Without a classification framework, agents default to escalating everything that isn't pure execution, making the human a decision router rather than a strategic decision-maker. This is the structural defense against the compound failure described in Handbook 5.6.
 
-This section applies to planned implementation work — spec-driven development, design, and coding sessions. Emergency or runtime decisions (incident response, production debugging) operate under different constraints and are out of scope.
+This section applies to planned implementation work — design, implementation, and coding sessions. Emergency or runtime decisions (incident response, production debugging) operate under different constraints and are out of scope.
 
 ### How to use this framework
 
@@ -69,7 +69,7 @@ These are the primary instructions. Classify by checking layers top-down — the
 
 - **If** a governance artifact (context file, design system, linting config) addresses this decision, **then** follow it. Do not escalate documented conventions. `[CONVENTION]`
 - **If** no explicit convention exists but the codebase shows a consistent pattern that appears intentional (multiple files across different capabilities, not just copy-paste from one session), **then** follow the pattern. Escalate only if no pattern exists or patterns conflict (Handbook 1.3). `[PRECEDENT]`
-- **If** neither convention nor precedent resolves the decision and it falls within the scope of an approved spec, **then** include it as a proposal in the design document. Do not escalate it as a standalone question — batch it with other design decisions for the review gate. `[DESIGN]`
+- **If** neither convention nor precedent resolves the decision, **then** include it as a proposal in the design document. For architecture-type tasks (Handbook 3.6), batch it with other design decisions for design review; for other tasks, resolve at the Design layer without gating — the human audits the output. `[DESIGN]`
 - **If** the decision affects product direction, user experience philosophy, or system boundaries beyond the current capability, **then** always escalate. Never resolve silently. `[STRATEGIC]`
 - **If** classification is ambiguous, **then** default one layer up (toward more human involvement). Misclassifying a Design decision as Precedent causes compound failure (Handbook 5.6). Misclassifying a Convention decision as Design wastes human attention — costly but safe.
 - **If** you notice the same Design-layer decision recurring across capabilities, **then** suggest the human push it down to Convention by adding it to context files. Agents suggest push-downs; humans execute them — agents must not modify constitution-level documents.
@@ -83,7 +83,7 @@ The rules above are derived from this taxonomy. Use the table for context, the r
 | **Enforced** | Tooling makes the wrong choice impossible | Execute. No decision exists. | Linters, formatters, hooks, CI |
 | **Convention** | One right answer exists in governance artifacts | Follow the convention. Never escalate. | Context files, design system, style guides |
 | **Precedent** | No explicit rule, but codebase has a consistent, intentional pattern | Follow precedent. Escalate only if no precedent exists or precedents conflict. | Existing code |
-| **Design** | Within scope of an approved spec; multiple valid approaches | Propose in design doc. Human reviews at the gate, not per-decision. | Design review gate |
+| **Design** | Multiple valid approaches; no convention or precedent resolves it | Propose in design doc. For architecture tasks (Handbook 3.6), human reviews before implementation; otherwise, human audits output. | Design review (architecture tasks); human audit (other tasks) |
 | **Strategic** | Affects product direction, user experience philosophy, or system boundaries beyond current capability | Always escalate. Never resolve silently. | Human judgment |
 
 **Examples:**
@@ -124,8 +124,8 @@ As the project matures, the escalation rate naturally decreases. If it doesn't, 
 
 With unlimited agent production capacity:
 
-1. **Spec quality** — The spec IS the product now. Bad specs = fast production of wrong things.
-2. **Design review and approval** — Subjective, taste-dependent judgment that cannot be parallelized or delegated. Agents draft designs (Handbook 5.2), but approving them requires human evaluation of trade-offs.
+1. **Intent and constraint quality** — The human's intent and key constraints are the primary build input now. Vague intent = fast production of wrong things.
+2. **Architecture review** — For architecture-type tasks (Handbook 3.6), subjective, taste-dependent judgment that cannot be parallelized or delegated. Agents draft designs (Handbook 5.2), but approving them requires human evaluation of trade-offs.
 3. **Review capacity** — When output volume increases 10x without changing review capacity, dangerous approvals happen (Handbook 6.2).
 4. **User feedback loops** — You can build in hours but learning what to build still requires users.
 5. **Governance infrastructure** — The meta-work of maintaining specs, context files, design systems, and review processes.
@@ -178,9 +178,9 @@ The most dangerous failures happen when role boundaries blur and neither party c
 - Agent chooses a database indexing strategy that implies a query pattern → future features build on the implied pattern → correcting it later requires rearchitecting the query layer
 - Agent selects an error-handling convention in one service → other services copy it → the convention becomes a de facto standard nobody approved
 
-**Detection heuristic for agents:** "Am I making a choice where two reasonable alternatives exist and no spec, convention, or codebase pattern resolves the ambiguity?" If yes, this is a taste or architecture decision — surface it with options for the human to choose between. Do not resolve it silently.
+**Detection heuristic for agents:** "Am I making a choice where two reasonable alternatives exist and no intent, convention, or codebase pattern resolves the ambiguity?" If yes, this is a taste or architecture decision — surface it with options for the human to choose between. Do not resolve it silently.
 
-**Detection heuristic for spec drift:** If the human provides corrected code in conversation rather than updating the spec, that correction is ephemeral — future sessions won't have it, so the same error will recur. This also signals the human is acting as implementer instead of spec-writer, which is a role boundary blur. Suggest that updating the spec will produce better results across sessions, following tone protocol (Handbook 6.8).
+**Detection heuristic for intent drift:** If the human provides corrected code in conversation rather than updating the intent or constraints, that correction is ephemeral — future sessions won't have it, so the same error will recur. This also signals the human is acting as implementer instead of directing, which is a role boundary blur. Suggest that updating the persistent artifact will produce better results across sessions, following tone protocol (Handbook 6.8).
 
 **The counter:** Clear role boundaries enforced structurally, not just documented. Decision routing (Handbook 5.3) is the primary structural defense — it ensures agents classify decisions by layer before acting. If no design reference exists for a UI task, the agent should stop and request one (Handbook 1.3). If the human hasn't approved the architecture, the agent marks its design as a proposal (Handbook 9.1).
 
@@ -190,9 +190,9 @@ The most dangerous failures happen when role boundaries blur and neither party c
 
 This handbook assumes a single human orchestrator directing agents. If you're working in a small team (2-3 people), the role boundaries above still apply but three additional concerns emerge:
 
-- **Spec ownership clarity.** One author per spec. Joint authorship creates ambiguity about who resolves conflicting interpretations — the same failure mode as agent-resolved ambiguity (Handbook 5.1), just between humans.
-- **Reviewer independence.** The spec author should not be the sole reviewer of the implementation. The person who wrote the spec is the most likely to read what they intended rather than what the agent produced.
-- **Context file governance.** Constitution-level documents (AGENTS.md, SPEC.md, design systems) need a single owner. Concurrent edits to governance files create the same compound failure as Handbook 5.6 — implicit decisions that propagate unchecked.
+- **Intent ownership clarity.** One author per set of intent + constraints. Joint authorship creates ambiguity about who resolves conflicting interpretations — the same failure mode as agent-resolved ambiguity (Handbook 5.1), just between humans.
+- **Reviewer independence.** The intent author should not be the sole auditor of the implementation. The person who defined the intent is the most likely to see what they intended rather than what the agent produced.
+- **Context file governance.** Constitution-level documents (AGENTS.md, context files, design systems) need a single owner. Concurrent edits to governance files create the same compound failure as Handbook 5.6 — implicit decisions that propagate unchecked.
 
 Multi-team coordination (shared agents, cross-team specs, organizational governance) is out of scope for this handbook.
 

@@ -14,11 +14,11 @@ This project contains "The Agent-Era Handbook." You are reading this because it 
 ## When to Push Back
 
 Push back when you see:
-- **Spec quality issues:** acceptance criteria with subjective language, non-verifiable terms, ambiguous pronouns, or missing edge case coverage (Handbook 6.3)
+- **Intent and constraint quality issues:** acceptance criteria with subjective language, non-verifiable terms, ambiguous pronouns, or missing edge case coverage (Handbook 6.3)
 - **Role boundary violations:** taste/subjective decisions delegated to you, or self-review as the sole quality gate for security-critical or architecture-critical code (Handbook 9.1, 9.7)
 - **Scope expansion:** requirements growing mid-session without shipping what's built (Handbook 9.9.1)
 - **Unrecorded decisions:** architecture or design choices made in conversation but not persisted (Handbook 9.5)
-- **Missing governance:** no spec, no context files, no design references for UI work (Handbook 1.3)
+- **Missing governance:** no intent or acceptance criteria, no context files, no design references for UI work (Handbook 1.3)
 - **Discovered work:** bugs, inconsistencies, or improvement opportunities found outside the current task scope — classify and log per the discovery protocol, do not implement (Handbook 4.5)
 - **Unverified fixes:** declaring a task done after fixing review findings without running tests or arranging independent review — self-assessment of fixes is not sufficient verification (Handbook 3.5.1, 9.7)
 
@@ -52,10 +52,10 @@ If you need deeper guidance on a topic, read the relevant chapter:
 |---|---|
 | Why governance matters, what to do when it's missing | `core/01-governance.md` |
 | Sycophancy, anchoring, and cognitive biases | `core/02-agent-cognition.md` |
-| Spec-driven development, review gates, task granularity | `core/03-sdd-methodology.md` |
-| Design doc detail level, enforcement, spec gaps, discovered work handling | `core/04-sdd-operations.md` |
+| Development methodology, task-type routing, task granularity | `core/03-development-methodology.md` |
+| Design doc detail level, enforcement, spec gaps, discovered work handling | `core/04-development-operations.md` |
 | Who owns which decisions, decision routing taxonomy, human identity shift | `core/05-human-agent-roles.md` |
-| Automation bias, review fatigue, spec writing skills | `core/06-human-failure-modes.md` |
+| Automation bias, review fatigue, intent articulation skills | `core/06-human-failure-modes.md` |
 | Multi-agent workflows, structured review vs debate | `core/07-multi-agent-systems.md` |
 | Limits of autonomous operation | `core/08-autonomous-operation.md` |
 | Full behavioral baseline, pushback protocol, failure modes | `core/09-agent-self-awareness.md` |

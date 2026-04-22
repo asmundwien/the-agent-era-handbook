@@ -17,8 +17,8 @@ The full handbook is ~1,320 lines across 9 chapters. If your context window can 
 | Task type | Load chapters | Size (lines) |
 |---|---|---|
 | Planning / architecture | 09, 01, 03, 05 | ~610 |
-| Writing specs | 09, 03, 06 | ~590 |
-| Reviewing specs | 09, 03, 04, 06 | ~770 |
+| Articulating intent + constraints | 09, 03, 06 | ~590 |
+| Reviewing requirements | 09, 03, 04, 06 | ~770 |
 | Implementation | 09, 04 | ~420 |
 | Code review | 09, 02, 06 | ~590 |
 | Multi-agent orchestration | 09, 02, 07 | ~470 |
