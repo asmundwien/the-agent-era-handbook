@@ -61,6 +61,11 @@ Consolidated bibliography of all research cited across the handbook. Organized b
 - Goldsmith & Reiter (2007), "What Got You Here Won't Get You There" — skills that drive individual contributor success become liabilities in management/leadership transitions — https://www.hachettebooks.com/titles/marshall-goldsmith/what-got-you-here-wont-get-you-there/9781401388775/
 - Greengard (2025), "The AI Deskilling Paradox" — AI assistance improves short-term performance while eroding core expertise over time (Communications of the ACM) — https://cacm.acm.org/news/the-ai-deskilling-paradox/
 - Lee et al. (2025), "The Impact of Generative AI on Critical Thinking" — higher AI confidence associated with less critical thinking; AI shifts thinking toward verification (Microsoft/CMU, CHI '25) — https://doi.org/10.1145/3706598.3713778
+- Johnson, Bradshaw, Feltovich et al. (2014), "Coactive Design: Designing Support for Interdependence in Joint Activity" — observability, predictability, directability as requirements for joint human-agent activity (JHRI, vol. 3, no. 1) — https://doi.org/10.5898/JHRI.3.1.Johnson
+- Lee & See (2004), "Trust in Automation: Designing for Appropriate Reliance" — trust calibrated across purpose, process, performance dimensions (Human Factors, vol. 46, no. 1) — https://doi.org/10.1518/hfes.46.1.50.30392
+- Fok & Weld (2024), "In Search of Verifiability: Explanations Rarely Enable Complementary Performance in AI-Advised Decision Making" — explanations only reduce over-reliance when they enable answer verification (AI Magazine) — https://onlinelibrary.wiley.com/doi/full/10.1002/aaai.12182
+- Danziger, Levav & Avnaim-Pesso (2011), "Extraneous Factors in Judicial Decisions" — decision quality degrades across sequential judgments; cited for general principle, not specific effect sizes which have methodological criticism (PNAS, vol. 108, no. 17) — https://doi.org/10.1073/pnas.1018033108
+- Parasuraman, Sheridan & Wickens (2000), "A Model for Types and Levels of Human Interaction with Automation" — autonomy varies by information processing stage (IEEE Trans. SMC-A, vol. 30, no. 3) — https://doi.org/10.1109/3468.844354
 
 ## Defect Amplification and Spec Quality
 

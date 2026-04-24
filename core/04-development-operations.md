@@ -26,6 +26,8 @@ sources:
   - https://resources.scrumalliance.org/Article/scrum-anti-patterns-large-product-backlog  # Backlog size anti-patterns
   - https://doi.org/10.1109/32.6191  # Boehm & Papaccio, upstream defect costs (IEEE TSE, 1988)
   - https://www.mheducation.com/highered/product/software-engineering-a-practitioners-approach-pressman.html  # Pressman, defect amplification model
+  - https://doi.org/10.5898/JHRI.3.1.Johnson  # Johnson et al. (2014), Coactive Design
+  - https://doi.org/10.1518/hfes.46.1.50.30392  # Lee & See (2004), trust in automation
 ---
 
 # 4. Development Operations
@@ -216,6 +218,10 @@ When an agent encounters work outside the current task scope, classify it (adapt
 
 **Security exception:** Classify as Blocker regardless of scope relevance: credentials or secrets exposed in code or logs, authentication/authorization checks demonstrably missing for endpoints handling user data, or direct evidence of data exposure. Escalate immediately — these are not safe to defer to between-session curation. General code quality concerns (e.g., a dependency with a known CVE, permissive CORS) are Adjacent or Distant, not security Blockers.
 
+**Actionability is a second, independent dimension.** Items vary on relationship to current work (Blocker/Adjacent/Distant) AND on actionability: whether the item can be auto-resolved, requires human judgment, or is unclear. These dimensions are orthogonal — a Distant item can be auto-resolvable (known dependency patch); a Blocker can require judgment (architectural conflict). Auto-resolvable means the item meets the Severity 2 criteria from Handbook 4.3.1 — the correct fix is determinable from existing codebase patterns with high confidence and only one reasonable alternative exists.
+
+**Actionability does not authorize action.** It is metadata for the human curator — it tells them which items they can process quickly and which need deliberation. The existing rule still holds: Adjacent and Distant work is never implemented in the current session. **Expected failure direction:** over-classifying as auto-resolvable. Agents biased toward helpfulness will see more items as simple than they are. When uncertain, classify as requires-judgment.
+
 Key rules:
 
 - Adjacent and Distant work is **never** implemented in the current session (the conversation in which the discovery occurs). Blockers are escalated to the human, who decides resolution.
@@ -224,9 +230,7 @@ Key rules:
 
 ### 4.5.3 The Intake Log
 
-Discovered items are logged in a structured, persistent artifact. The log is append-only during implementation; humans curate it between sessions.
-
-Discovered items are logged in a project-level `intake.md` file. Discovered items often cross capability boundaries, making a per-capability location (e.g., a section in `tasks.md`) a poor fit.
+Discovered items are logged in a project-level `intake.md` file — an append-only artifact during implementation, curated by humans between sessions. Discovered items often cross capability boundaries, making a per-capability location (e.g., a section in `tasks.md`) a poor fit.
 
 **Entry format:**
 
@@ -234,11 +238,14 @@ Discovered items are logged in a project-level `intake.md` file. Discovered item
 ### [Short description]
 - **Found:** [file path, line number, or area of codebase]
 - **Classification:** Blocker / Adjacent / Distant
+- **Actionability:** auto-resolvable / requires judgment / unclear
 - **Session:** [date or session identifier]
-- **Detail:** [factual description of what was discovered — what is wrong, missing, or improvable]
+- **Detail:** [factual description of what was discovered]
 ```
 
 This is **not** a backlog. It is an intake log. Items here have not been triaged, prioritized, or approved. They are raw discoveries waiting for human decision. Agents must not treat intake log items as approved work.
+
+Intake is also the primary collaboration surface between human and agent — a shared artifact both parties depend on but use differently. Effective intake logs let the human see what was found and why it was classified that way, predict how categories of items will be handled, and redirect classification behavior without rebuilding the system. Classification quality over time is what calibrates autonomy per category (Handbook 8.6).
 
 ### 4.5.4 Intake Curation
 
@@ -256,6 +263,12 @@ The human's responsibility between sessions:
 **Decay policy:** An intake log that is never curated becomes a graveyard (a well-documented anti-pattern in product backlog research — Scrum Alliance recommends no more than ~20 items in a managed backlog, adapted here as a threshold for a raw intake queue). Items deferred for more than two full capability implementation cycles (intent → execution → audit → done) without human action should be reviewed and either promoted or discarded.
 
 **Hard cap:** If the intake log exceeds ~20 uncurated items, treat it as a process blocker — stop implementation and escalate to the human that curation must happen before work continues. Do not keep working while silently dropping discoveries. An uncurated intake log is a governance failure, and the handbook does not permit agents to work through governance failures silently (Handbook 1.3). This prevents the pipeline pressure documented in Handbook 1.1.1 — agents generating artifacts at machine speed while humans process them at human speed.
+
+**Curation effectiveness.**
+
+1. **Three-outcome decisions.** Curation maps to three outcomes: act now (Promote/Absorb), defer, or discard. When a fourth option seems necessary, the intake classification was imprecise.
+2. **Signal-to-noise.** If nearly all items require human judgment, the agent's classification is too conservative — items that could be assessed quickly are consuming human attention. If nearly none require judgment, the agent is not surfacing enough nuance for the human to maintain situation awareness. This is a diagnostic for the human curator reviewing system health, not a classification target for the agent. The agent's failure-direction guidance — default to requires-judgment when uncertain — takes precedence.
+3. **Curation is a mode switch.** Batch it into a dedicated block rather than interleaving with implementation work. Context-switching between implementation and curation predicts deferred curation and eventual pipeline blockage (see hard cap above).
 
 ### 4.5.5 Capacity for Discovery
 

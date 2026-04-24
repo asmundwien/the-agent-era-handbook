@@ -28,6 +28,8 @@ sources:
   - https://getdx.com/blog/ai-assisted-engineering-q4-impact-report-2025/  # DX (2025), 135K developer survey
   - https://doi.org/10.1145/3706598.3713778  # Lee et al. (2025), AI and critical thinking (Microsoft/CMU)
   - https://cacm.acm.org/news/the-ai-deskilling-paradox/  # Greengard (2025), deskilling paradox
+  - https://onlinelibrary.wiley.com/doi/full/10.1002/aaai.12182  # Fok & Weld (2024), explainability requires verifiability
+  - https://doi.org/10.1073/pnas.1018033108  # Danziger, Levav & Avnaim-Pesso (2011), sequential decision fatigue
 ---
 
 # 6. Human Failure Modes
@@ -65,6 +67,8 @@ Automation bias is one of the most replicated findings in human factors research
 | **Two-pass review** | First pass: understand. Second pass: evaluate. Separates comprehension from judgment. | Medium |
 | **Intent-first review** | Review intent and constraints before seeing implementation. Know what to expect. | Medium |
 | **Time-boxed sessions** (15-20 min with breaks) | Vigilance degrades after 15-20 min of sustained monitoring | Strong (cognitive psychology) |
+
+These countermeasures apply to code review specifically, but automation bias affects any human evaluation of agent output — including intake curation (Handbook 4.5.4). When curating agent-classified intake items, the structural countermeasure is explainability: requiring agents to show classification reasoning so the human evaluates reasoning, not just approves a label. Explainability reduces over-reliance only when it enables *verification* of the AI's answer (Fok & Weld, 2024). For intake classification, this condition is met: the human can check whether the agent's assessment of actionability matches the actual fix complexity. Decision fatigue applies equally — cap complex curation decisions per session, as judgment quality degrades with volume.
 
 ---
 

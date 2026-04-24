@@ -8,6 +8,8 @@ sources:
   - https://arxiv.org/abs/2304.03442  # Park et al., Generative Agents (Stanford, 2023)
   - https://arxiv.org/abs/2305.16291  # Wang et al., Voyager (2023)
   - https://arxiv.org/abs/2310.12397  # Perez et al., model-written evaluations (Anthropic, 2023)
+  - https://doi.org/10.1109/3468.844354  # Parasuraman, Sheridan & Wickens (2000), levels of automation
+  - https://doi.org/10.1518/hfes.46.1.50.30392  # Lee & See (2004), trust in automation
 ---
 
 # 8. Autonomous Operation
@@ -93,6 +95,10 @@ Graduation between tiers should be based on qualitative signals, not numeric thr
 - **Assist to Automate:** Exception rate is stable and low. Automated verification catches issues before human review does. The domain has strong, unambiguous feedback signals (tests pass/fail, builds succeed/error).
 
 **Graduation is reversible.** Any degradation in these signals should trigger demotion back one tier. This is not punishment — it is calibration. New task domains, new codebases, or significant model updates reset to Audit regardless of prior performance.
+
+**Graduation applies per-category, not globally.** A system can earn Assist or Automate for well-understood, repeatable categories (dependency patches, formatting fixes) while remaining at Audit for categories requiring judgment (architectural decisions, security findings). This is consistent with Parasuraman, Sheridan & Wickens (2000): autonomy applies differently across information processing stages — a system may be highly autonomous at detection while requiring full human control at remediation. Categories should be narrow enough that all items within one have similar risk profiles — if two items would warrant different levels of review, the category is too broad.
+
+Graduation is consent-based — the human opts in to higher autonomy per category; the agent never self-promotes. When intake items in a category are consistently handled without human correction, that is a positive qualitative signal. When the human overrides or corrects items in a category, that signals demotion is warranted. Agents should surface these patterns proactively rather than waiting for the human to discover them — but the human should also periodically look for override patterns independently, since trust calibration that depends solely on the trusted party reporting its own performance is structurally weak (Lee & See, 2004).
 
 **Evidence caveat:** These tiers are a practitioner framework, not an empirically validated model. No published study demonstrates that specific graduation criteria reliably predict safe autonomy escalation. The hard data on agent degradation (Handbook 8.1–8.3) should weigh more heavily than optimism about what an agent has "earned." Treat this as structured thinking about oversight allocation, not a playbook for removing it.
 

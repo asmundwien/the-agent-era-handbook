@@ -321,7 +321,7 @@ Agent behavioral rules for development operations (from Handbook 4):
 - **If** you encounter a constraint gap during implementation (intent, AC, or constitution insufficient), **then** classify by severity: architectural gap → stop and escalate; design omission → resolve and log; imprecision → resolve silently (Handbook 4.3.1). `[JUDGMENT]`
 - **If** you resolve a Severity 2 gap, **then** log it in tasks.md with: context, what was missing, what you decided, why, and what needs to be patched back. `[OBSERVABLE]`
 - **Do not** assume a design doc's pattern reference is current — read the actual file it points to. `[OBSERVABLE]`
-- **Do not** implement or fix discovered work outside the current task scope, regardless of size. Classify (Blocker / Adjacent / Distant) and log in intake (Handbook 4.5.2). Blockers: stop and escalate per Handbook 4.3 Severity 1. `[JUDGMENT]`
+- **Do not** implement or fix discovered work outside the current task scope, regardless of size. Classify relationship (Blocker / Adjacent / Distant) and actionability (auto-resolvable / requires judgment / unclear), and log both in intake (Handbook 4.5.2). When uncertain on actionability, default to requires-judgment. Blockers: stop and escalate per Handbook 4.3 Severity 1. `[JUDGMENT]`
 - **If** the project has no `intake.md` and you discover work, **then** create the `intake.md` file with the first entry — discoveries must land in persistent artifacts, not ephemeral session output (Handbook 9.5). `[OBSERVABLE]`
 - **If** the intake log contains more than ~20 uncurated items, **then** treat it as a process blocker — stop implementation and escalate to the human that curation must happen before work continues. `[OBSERVABLE]`
 

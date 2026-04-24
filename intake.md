@@ -59,6 +59,52 @@
   - Smashing Magazine (Feb 2026) — Pre-Action consent, In-Action transparency, Post-Action safety pattern for agentic AI
   - Full research cached at: Mission Control user memory (`research_auto_remediation_patterns.md`, `research_triage_queue_ux.md`)
 
+### HCI gap: Situation awareness during agent operation
+- **Found:** Cross-cutting gap across Ch5 (human-agent roles), Ch8 (autonomous operation), Ch9 (agent self-awareness)
+- **Classification:** Distant
+- **Session:** 2026-04-23
+- **Task context:** HCI research audit of handbook coverage
+- **Detail:** The handbook addresses post-hoc review (what to check after the agent finishes) but not how the human maintains awareness *during* agent operation. Endsley's Situation Awareness model (L1 Perception / L2 Comprehension / L3 Projection) is entirely absent. For the Assist tier (Ch8.6) where 70-85% of work proceeds without intervention, there is no guidance on maintaining selective awareness — knowing where to focus and where to trust. This gap matters more as sessions get longer and agents operate more autonomously. Not engineering a solution now — will surface as a pain point when it does.
+  **Research pointers:** Endsley (1995, 2022 — extension to human-AI teams), SADE ladder framework, van de Merwe et al. (2024) SA systematic review.
+
+### HCI gap: Directability and mid-task interaction
+- **Found:** Ch5.3 (decision routing), Ch8.6 (autonomy tiers)
+- **Classification:** Distant
+- **Session:** 2026-04-23
+- **Task context:** HCI research audit of handbook coverage
+- **Detail:** The handbook models human-agent interaction at defined checkpoints (intent → design review → audit). It does not address mid-task course correction — what happens when the human wants to redirect while the agent is executing. Coactive Design (Johnson et al. 2014) identifies *directability* as one of three requirements for joint activity. Horvitz (1999) describes mixed-initiative principles for fluid initiative transfer based on context. The handbook's model is closer to a guard-rail architecture than a mixed-initiative one. This may be fine for current agentic workflows (which are checkpoint-based by nature), but could become a gap as continuous agent operation matures.
+  **Research pointers:** Horvitz (1999) mixed-initiative principles, Allen et al. (1999) task vs dialogue initiative, Johnson et al. (2014) Coactive Design directability requirement.
+
+### HCI gap: Trust repair and under-trust
+- **Found:** Ch6.1 (automation bias), Ch8.6 (graduating autonomy)
+- **Classification:** Distant
+- **Session:** 2026-04-23
+- **Task context:** HCI research audit of handbook coverage
+- **Detail:** The handbook thoroughly covers over-trust (Ch6.1 automation bias, 55-70% compliance rates) but is silent on under-trust (the human who refuses to delegate, creating bottlenecks) and trust repair (what happens after a significant agent error — how does the relationship recover?). Lee & See (2004) distinguish trust (attitude) from reliance (behavior) and identify that miscalibration goes both directions. Vaccaro et al. (2024, Nature Human Behaviour, 106 experiments) found that when AI outperforms humans, combining *hurts* — partly because humans who under-trust override correct AI output. This will surface as a pain point when agents demonstrate competence in a domain but the human continues operating at Audit tier unnecessarily.
+  **Research pointers:** Lee & See (2004) trust framework, Vaccaro et al. (2024) meta-analysis, Dzindolet et al. (2003) trust repair after observed errors.
+
+### HCI gap: Amershi guidelines coverage (~30-40%)
+- **Found:** Cross-cutting across Ch5, Ch6, Ch8, Ch9
+- **Classification:** Distant
+- **Session:** 2026-04-23
+- **Task context:** HCI research audit of handbook coverage
+- **Detail:** Amershi et al.'s 18 Guidelines for Human-AI Interaction (CHI 2019, ~1,360 citations) is the most widely adopted HCI framework for AI systems. The handbook covers 4-5 well, 6-7 partially, 6-7 are absent. Key absent guidelines: efficient invocation/dismissal (G7/G8), granular feedback mechanisms (G15), global controls (G17), change notification (G18), and proactive contextual information (G3/G4). These are interaction design guidelines — they describe how the agent presents itself, not just how it behaves. The handbook is strong on behavioral specification but thin on interaction design. This gap may narrow naturally as the handbook is consumed by systems (like Mission Control) that implement the interaction layer. Not clear yet whether the handbook itself should cover interaction design or leave it to implementations.
+  **Research pointers:** Amershi et al. (CHI 2019), the 2025 scoping review of mixed-initiative visual analytics (arXiv:2509.19152) which found only a narrow subset of Horvitz's principles broadly adopted.
+
+### Security exception boundary: "missing" vs "incomplete" checks
+- **Found:** Ch4.5.2 (security exception paragraph)
+- **Classification:** Distant
+- **Session:** 2026-04-25
+- **Task context:** Agent compliance testing during intake-collaboration-surface review
+- **Detail:** The security exception says "classify as Blocker regardless of scope relevance: authentication/authorization checks demonstrably missing for endpoints handling user data." The boundary between "missing" (no auth at all) and "incomplete" (auth exists but is insufficient — e.g., middleware authenticates but doesn't check token expiry) is undefined. This produces materially different agent behavior: Blocker = stop work and escalate; Adjacent = log and continue. The exception's examples are designed for clear-cut cases. The gray zone — auth exists but is demonstrably insufficient — needs either explicit guidance or an example clarifying the boundary.
+
+### Gap vs discovery jurisdiction overlap for pre-existing failures
+- **Found:** Ch4.3 (constraint gap handling) and Ch4.5 (discovered work)
+- **Classification:** Distant
+- **Session:** 2026-04-25
+- **Task context:** Agent compliance testing during intake-collaboration-surface review
+- **Detail:** When an agent discovers a pre-existing failure that is adjacent to the current task (e.g., a broken test import in a file related to the current migration), sections 4.3 and 4.5 both plausibly apply. Section 4.3 (constraint gaps) authorizes fixing Severity 2 gaps and logging them. Section 4.5 (discovered work) prohibits acting on Adjacent/Distant items "regardless of size." The discriminator is supposed to be scope — 4.3 handles gaps within the current task, 4.5 handles items outside it. But a pre-existing failure adjacent to the current task sits on the boundary: the agent could classify it as a Severity 2 gap (and fix it) or as discovered work (and log it without acting). No tiebreaker is provided. The two sections authorize different actions for the same item depending on which the agent applies first.
+
 ### Domain-specific AC review templates
 - **Found:** Ch3.3 (constraints + audit model), review process
 - **Classification:** Distant
