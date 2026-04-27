@@ -197,4 +197,4 @@ If either discriminator fires, the task gets a pre-implementation review gate â€
 
 ## Application
 
-Agent behavioral rules for development workflow are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for development workflow are consolidated in [AGENTS.md](../AGENTS.md).

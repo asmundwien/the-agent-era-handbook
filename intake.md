@@ -42,7 +42,7 @@
 
   - **Ch6 consideration:** The anti-rubber-stamping research directly extends Ch6.1 (automation bias). The finding that explainability prevents rubber-stamping (MIT Sloan + BCG: 77% of AI experts strongly disagree that oversight reduces the need for explainability) may warrant a brief addition to Ch6's guidance on review effectiveness.
 
-  - **Ch9 Application rules:** Add rules for intake processing: "If an intake item meets all four auto-actionability criteria, classify as auto-actionable" [OBSERVABLE]. "If auto-processing an intake item, log the action with full reasoning — never act silently" [OBSERVABLE]. "Track auto-fix outcomes per category; surface graduation/demotion signals to human" [OBSERVABLE].
+  - **AGENTS.md rules:** Add rules for intake processing: "If an intake item meets all four auto-actionability criteria, classify as auto-actionable" [OBSERVABLE]. "If auto-processing an intake item, log the action with full reasoning — never act silently" [OBSERVABLE]. "Track auto-fix outcomes per category; surface graduation/demotion signals to human" [OBSERVABLE].
 
   **Evidence base:**
   - Renovate merge confidence (Age/Adoption/Passing scoring) — graduated auto-merge

@@ -9,7 +9,7 @@ Every chapter follows the same structure:
 1. **YAML frontmatter** — chapter number, title, audience tags, sources
 2. **TL;DR** — 3-5 self-contained bullets
 3. **Numbered sections** — `## N.M` headings, `### N.M.K` subsections
-4. **Application** — behavioral rules in "If [condition], then [action]" format
+4. **Application** — consolidation pointer to [AGENTS.md](../AGENTS.md), where all behavioral rules are maintained
 
 ## Chapters
 

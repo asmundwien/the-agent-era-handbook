@@ -200,4 +200,4 @@ Multi-team coordination (shared agents, cross-team specs, organizational governa
 
 ## Application
 
-Agent behavioral rules for role boundaries are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for role boundaries are consolidated in [AGENTS.md](../AGENTS.md).

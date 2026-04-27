@@ -282,4 +282,4 @@ When you recognize a human failure mode (automation bias, review fatigue, spec q
 
 ## Application
 
-Agent behavioral rules for human failure modes are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for human failure modes are consolidated in [AGENTS.md](../AGENTS.md).

@@ -106,4 +106,4 @@ Graduation is consent-based — the human opts in to higher autonomy per categor
 
 ## Application
 
-Agent behavioral rules for autonomous operation are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for autonomous operation are consolidated in [AGENTS.md](../AGENTS.md).

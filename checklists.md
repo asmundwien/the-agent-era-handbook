@@ -1,6 +1,6 @@
 # Consolidated Application Checklists
 
-> Reformulated from the behavioral rules in each core chapter's Application section. These are simplified for quick reference — consult the source chapter for full context and nuance.
+> Reformulated from the behavioral rules in [AGENTS.md](AGENTS.md). These are simplified for quick reference — consult the source chapter for full context and nuance.
 
 ---
 

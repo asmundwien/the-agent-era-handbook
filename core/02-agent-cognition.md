@@ -119,4 +119,4 @@ No single intervention is sufficient. The compound nature requires compound miti
 
 ## Application
 
-Agent behavioral rules for cognition are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for cognition are consolidated in [AGENTS.md](../AGENTS.md).

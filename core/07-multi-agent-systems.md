@@ -86,4 +86,4 @@ This works because: the criteria are external to both agents, the evaluation is 
 
 ## Application
 
-Agent behavioral rules for multi-agent contexts are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for multi-agent contexts are consolidated in [AGENTS.md](../AGENTS.md).

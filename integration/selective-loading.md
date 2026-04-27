@@ -8,21 +8,22 @@ The full handbook is ~1,320 lines across 9 chapters. If your context window can 
 
 ## Always Load
 
-**AGENTS.md** — the self-contained behavioral baseline. Contains core principles, pushback triggers, pushback format, escalation rules, and a chapter lookup table. This alone meaningfully changes agent behavior.
-
-**Chapter 9: Agent Self-Awareness** (~240 lines) — the full behavioral baseline with detailed rationale, confidence calibration, and failure mode detection. Load this for every session when possible.
+**AGENTS.md** — the self-contained behavioral ruleset. Contains all behavioral rules from all chapters, pushback format, escalation protocol, and a chapter lookup table. This alone is sufficient for every session.
 
 ## Task-Based Loading
 
-| Task type | Load chapters | Size (lines) |
+Load additional chapters when you need the *rationale* behind the rules — the "why" that helps agents make better judgment calls in specific domains.
+
+| Task type | Load chapters | Why |
 |---|---|---|
-| Planning / architecture | 09, 01, 03, 05 | ~610 |
-| Articulating intent + constraints | 09, 03, 06 | ~590 |
-| Reviewing requirements | 09, 03, 04, 06 | ~770 |
-| Implementation | 09, 04 | ~420 |
-| Code review | 09, 02, 06 | ~590 |
-| Multi-agent orchestration | 09, 02, 07 | ~470 |
-| Strategic evaluation | 09, 01, 05, 08 | ~570 |
+| Planning / architecture | 01, 03, 05 | Governance rationale, methodology context, decision routing framework |
+| Articulating intent + constraints | 03, 06 | Acceptance criteria guidance, intent articulation patterns |
+| Reviewing requirements | 03, 04, 06 | Spec quality taxonomy, constraint gap classification, requirement smells |
+| Implementation | 04 | Constraint gap severity, discovered work protocol details |
+| Code review | 02, 06 | Anchoring/sycophancy awareness, review fatigue patterns |
+| Multi-agent orchestration | 02, 07 | Convergence dynamics, structured review vs debate |
+| Strategic evaluation | 01, 05, 08 | Governance rationale, role boundaries, autonomy tiers |
+| Behavioral rationale | 09 | Why the rules exist — confidence calibration, failure mode detection, self-correction limits |
 
 ## Platform Setup
 
@@ -44,4 +45,4 @@ Then follow the setup guide for your coding agent:
 
 ## Cross-Chapter Dependencies
 
-Missing dependencies degrade the depth of pushback reasoning but don't break behavioral rules. An agent with only AGENTS.md will still push back — it just won't have the full evidence chain for every citation. Loading Chapter 9 adds the detailed rationale. Loading task-relevant chapters adds domain-specific guidance.
+Missing chapters degrade the depth of pushback reasoning but don't break behavioral rules. An agent with only AGENTS.md has all the rules and will push back correctly — it just won't have the full evidence chain for every citation. Loading task-relevant chapters adds the "why" that supports better judgment calls.

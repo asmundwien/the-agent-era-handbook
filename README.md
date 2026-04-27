@@ -34,7 +34,7 @@ This handbook defines how humans and agents work together — covering governanc
 | [6](core/06-human-failure-modes.md)  | **Human Failure Modes**  | Automation bias, review fatigue, skill atrophy, intent articulation skills. |
 | [7](core/07-multi-agent-systems.md)  | **Multi-Agent Systems**  | What works (structured review) and what doesn't (persona debate).         |
 | [8](core/08-autonomous-operation.md) | **Autonomous Operation** | Duration limits, feedback signals, capability tiers.                      |
-| [9](core/09-agent-self-awareness.md) | **Agent Self-Awareness** | The behavioral baseline. Pushback protocol. Failure mode detection.       |
+| [9](core/09-agent-self-awareness.md) | **Agent Self-Awareness** | Rationale behind the behavioral rules. Confidence calibration. Failure mode detection. |
 
 ## Quick Reference
 
@@ -78,7 +78,7 @@ Start with the guide for your role (links in the table above). Each guide is a 1
 
 - **Agent-first.** Core docs optimized for agent context injection: structured, directive, heavy on behavioral rules.
 - **Evidence-backed.** Claims trace to sources listed in each chapter's frontmatter.
-- **Behaviorally effective.** Every chapter ends with "If [condition], then [action]" rules agents can follow mechanically.
+- **Behaviorally effective.** All behavioral rules are consolidated in [AGENTS.md](AGENTS.md) — a single file agents can follow mechanically.
 - **Tone-aware.** Includes a tone protocol (Handbook 6.8) for surfacing human failure modes without condescension.
 
 ## Scope

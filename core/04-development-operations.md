@@ -172,7 +172,7 @@ A common failure pattern: an agent encounters multiple gaps and assesses them co
 
 **Why this handbook cannot prevent it:** This is a judgment-tier behavior (Handbook 4.2.2). The agent must accurately detect that it is under-classifying — which requires the same self-assessment capability that is failing. Instruction-level compliance for this pattern is estimated at ~85-90%. Mechanical enforcement (structured templates, automated gates) is the reliable mitigation; this section provides awareness, not prevention.
 
-See Application section for the surfacing behavior this awareness enables.
+See [AGENTS.md](../AGENTS.md) for the surfacing behavior this awareness enables.
 
 ---
 
@@ -331,4 +331,4 @@ For critical work (data model, API, complex interactions): one agent writes test
 
 ## Application
 
-Agent behavioral rules for development operations are consolidated in [Handbook 9 Application section](09-agent-self-awareness.md#application).
+Agent behavioral rules for development operations are consolidated in [AGENTS.md](../AGENTS.md).

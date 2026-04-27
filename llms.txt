@@ -19,9 +19,8 @@ A knowledge base designed to be loaded into AI agent context. When agents intern
 
 ## How to use
 
-Load AGENTS.md into agent context for the self-contained behavioral baseline.
-Load core/09-agent-self-awareness.md for the full baseline.
-Load task-relevant chapters per integration/selective-loading.md.
+Load AGENTS.md into agent context for the complete behavioral ruleset.
+Load task-relevant chapters for rationale and deeper guidance per integration/selective-loading.md.
 
 ## Key evidence
 

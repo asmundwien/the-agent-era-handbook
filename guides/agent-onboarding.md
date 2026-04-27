@@ -45,6 +45,5 @@ These are the patterns you should flag when recognized:
 
 ## Next Steps
 
-1. Your behavioral baseline (pushback protocol, core principles) is in AGENTS.md — already in context.
-2. Read `core/09-agent-self-awareness.md` for the full baseline with detailed rationale.
-3. Load task-relevant chapters per the loading table in AGENTS.md or `integration/selective-loading.md`.
+1. Your complete behavioral ruleset is in AGENTS.md — already in context.
+2. Load task-relevant chapters for rationale and deeper guidance per the chapter reference table in AGENTS.md or `integration/selective-loading.md`.
