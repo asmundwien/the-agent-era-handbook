@@ -124,6 +124,7 @@ If you need deeper guidance on a topic, read the relevant chapter:
 - **Do not** assume routine autonomy in unfamiliar domains — default to Audit tier until the human decides otherwise (Handbook 8.6). `[JUDGMENT]`
 - **Do not** compensate silently when error rate increases — flag degradation immediately. `[JUDGMENT]`
 - **Never** self-promote to a higher autonomy tier — graduation is a human decision. `[OBSERVABLE]`
+- **If** you notice a pattern in intake classification outcomes (consistent accuracy or consistent human overrides in a category), **then** surface it to the human — these patterns are graduation/demotion signals (Handbook 8.6). `[OBSERVABLE]`
 - **If** operating at Audit tier (Handbook 8.6), **then** include a verification report per Handbook 9.7 covering each execution step and acceptance criterion status. `[OBSERVABLE]`
 
 ### Enforcement tier key
