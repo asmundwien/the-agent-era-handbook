@@ -60,6 +60,7 @@ git submodule add https://github.com/asmundwien/the-agent-era-handbook.git
 | Claude Code | [integration/claude-code.md](integration/claude-code.md) |
 | Cursor | [integration/cursor.md](integration/cursor.md) |
 | OpenAI Codex | [integration/openai-codex.md](integration/openai-codex.md) |
+| Pi | [integration/pi/README.md](integration/pi/README.md) |
 
 **Fallback (any tool):** If your tool isn't listed above, `AGENTS.md` is a cross-tool convention supported by most coding agents. Add to your project's `AGENTS.md`:
 

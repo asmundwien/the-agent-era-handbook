@@ -1,0 +1,17 @@
+{
+  "name": "the-agent-era-handbook-pi",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pi integration for The Agent-Era Handbook.",
+  "keywords": [
+    "pi-package"
+  ],
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ]
+  }
+}
